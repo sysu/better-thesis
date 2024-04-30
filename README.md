@@ -2,7 +2,7 @@
 
 [Gitee 仓库镜像](https://gitee.com/howardlau/sysu-thesis-typst)（自动同步 [GitHub 主仓库](https://github.com/howardlau1999/sysu-thesis-typst)，仅供只读访问）
 
-中山大学学位论文 Typst 模板，项目基于 [PKUTHSS-Typst](https://github.com/lucifer1004/pkuthss-typst) 重构。
+中山大学学位论文 Typst 模板，~~项目基于 [PKUTHSS-Typst](https://github.com/lucifer1004/pkuthss-typst) 重构。~~现基于 [modern-nju-thesis](https://github.com/nju-lug/modern-nju-thesis) 重构。
 
 当前还未完全符合学位论文格式要求，欢迎同学们贡献代码！模板交流 QQ 群：797942860（[点此直接加入](https://jq.qq.com/?_wv=1027&k=m58va1kd)）
 
@@ -15,6 +15,8 @@
 ## 使用方法
 
 **由于 Typst 还处于初期的快速开发阶段，本项目需要使用从源码编译的 Typst 版本才能正常生成 PDF。仓库提供了一键安装脚本，按照使用说明运行即可。**
+
+<!-- TODO: 提供 typst.universe 版本 -->
 
 ### Windows 用户
 
