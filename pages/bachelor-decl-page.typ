@@ -31,7 +31,7 @@
 
   v(6pt)
 
-  align(center, image("../assets/vi/nju-emblem-purple.svg", width: 1.95cm))
+  align(center, image("../assets/sysu-emblem.svg", width: 1.95cm))
 
   v(-12pt)
 

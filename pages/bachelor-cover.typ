@@ -115,10 +115,10 @@
   } else {
     // 封面图标
     v(6pt)
-    image("../assets/vi/nju-emblem.svg", width: 2.38cm)
+    image("../assets/sysu-emblem.svg", width: 2.38cm)
     v(22pt)
     // 调整一下左边的间距
-    pad(image("../assets/vi/nju-name.svg", width: 10.5cm), left: 0.4cm)
+    pad(image("../assets/sysu-banner.svg", width: 10.5cm), left: 0.4cm)
     v(2pt)
   }
 
