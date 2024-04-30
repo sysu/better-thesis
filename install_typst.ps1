@@ -1,6 +1,9 @@
 ﻿# Install Rustup with Powershell
 $OutputEncoding = [System.Text.Encoding]::UTF8
 
+# Use TUNA rustup mirror
+$Env:RUSTUP_DIST_SERVER = "https://mirrors.tuna.tsinghua.edu.cn/rustup"
+
 # Check if Rust is already installed
 if (Get-Command cargo -ErrorAction SilentlyContinue) {
   Write-Output "检测到 Rust 已安装，尝试更新。"
@@ -13,7 +16,7 @@ else {
 
   # Run the installer
   Write-Output "运行 Rustup 安装程序..."
-  Invoke-Command $Env:Temp/rustup-init.exe -y
+  Start-Process -FilePath $Env:Temp/rustup-init.exe -Args -y
 
   # Add Rustup to the PATH
   Write-Output "将 Rustup 添加到 PATH 环境变量..."
