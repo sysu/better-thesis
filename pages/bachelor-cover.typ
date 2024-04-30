@@ -100,10 +100,10 @@
       }
     )
   }
-  
+
 
   // 4.  正式渲染
-  
+
   pagebreak(weak: true, to: if twoside { "odd" })
 
   // 居中对齐
@@ -124,7 +124,7 @@
 
   // 将中文之间的空格间隙从 0.25 em 调整到 0.5 em
   text(size: 字号.一号, font: fonts.宋体, spacing: 200%, weight: "bold")[本 科 毕 业 论 文]
-  
+
   if anonymous {
     v(155pt)
   } else {

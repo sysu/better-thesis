@@ -123,7 +123,7 @@
   let meta-info-value = info-value.with(info-inset: meta-info-inset, is-meta: true)
   let defence-info-key = info-key.with(info-inset: defence-info-inset)
   let defence-info-value = info-value.with(info-inset: defence-info-inset)
-  
+
 
   // 4.  正式渲染
   pagebreak(weak: true, to: if twoside { "odd" })
@@ -163,7 +163,7 @@
   text(size: 28pt, font: fonts.宋体, spacing: 200%, weight: "bold",
     if doctype == "doctor" { "博 士 学 位 论 文" } else { "硕 士 学 位 论 文" },
   )
-  
+
   if (anonymous) {
     v(132pt)
   } else {
@@ -235,7 +235,7 @@
   set par(leading: 1.3em)
 
   v(45pt)
-  
+
   text(font: fonts.黑体, size: 字号.二号, weight: "bold", info.title-en.intersperse("\n").sum())
 
   v(36pt)
@@ -256,7 +256,7 @@
 
   if info.supervisor-ii-en != "" {
     v(-4pt)
-    
+
     text(font: fonts.黑体, size: 字号.四号, anonymous-text("supervisor-ii-en", info.supervisor-ii-en))
 
     v(-9pt)
@@ -281,7 +281,7 @@
   v(6pt)
 
   info.major-en
-  
+
   v(46pt)
 
   if not anonymous {

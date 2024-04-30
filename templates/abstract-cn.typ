@@ -4,7 +4,7 @@
 
 #par(justify: true, first-line-indent: 2em, leading: 行距)[
   #heading(numbering: none, outlined: false, "摘要")
-  
+
   #include "../chapters/abstract-cn.typ"
   #import "../chapters/abstract-cn.typ": 中文关键词
 

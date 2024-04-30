@@ -18,7 +18,7 @@
     #cjk-name (#latin-name CJK Regular): 落霞与孤鹜齐飞，秋水共长天一色。
 
     #cjk-name (#latin-name Latin Regular): The fanfare of birds announces the morning.
-    
+
     *#cjk-name (#latin-name CJK Bold): 落霞与孤鹜齐飞，秋水共长天一色。*
 
     *#cjk-name (#latin-name Latin Bold): The fanfare of birds announces the morning.*

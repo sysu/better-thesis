@@ -21,7 +21,7 @@
 #set text(字号.二号)
 #v(60pt)
 #grid(
-  columns: (80pt, 300pt), 
+  columns: (80pt, 300pt),
   [
     #set align(right + top)
     题目：

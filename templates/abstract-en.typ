@@ -14,7 +14,7 @@
   //   Directed by #英文导师名
   // ]
   #heading(numbering: none, outlined: false, "ABSTRACT")
-  
+
   #include "../chapters/abstract-en.typ"
   #import "../chapters/abstract-en.typ": 英文关键词
 

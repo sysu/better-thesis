@@ -1,4 +1,4 @@
-@echo off 
+@echo off
 chcp 65001>nul
 set Path=%cd%\;%Path%
 set TYPST_FONT_PATHS=%cd%\fonts

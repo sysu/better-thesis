@@ -25,7 +25,7 @@ jobs:
     steps:
       - name: Checkout master
         uses: actions/checkout@v3
-        with:  
+        with:
           fetch-depth: 0
       - name: Setup Pages
         uses: actions/configure-pages@v2
@@ -64,7 +64,7 @@ jobs:
         with:
           name: github-pages
       - name: Extract artifact
-        run: | 
+        run: |
           mkdir -p $RUNNER_TEMP/gitee_pages
           tar -C $RUNNER_TEMP/gitee_pages -xf artifact.tar
       - name: Deploy to Gitee Pages
@@ -77,7 +77,7 @@ jobs:
 
           git config --global user.name "Howard Lau"
           git config --global user.email "howardlau1999@hotmail.com"
-          
+
           cd $RUNNER_TEMP/gitee_pages
           git init
           git checkout -b gh-pages

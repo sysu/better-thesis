@@ -21,7 +21,7 @@
     weight: "bold",
     "某某学院\n硕士研究生论文开题报告",
   ))
-  
+
   v(8em)
 
   let info-inset = 0pt

@@ -241,7 +241,7 @@
         }
       } else if el.func() == heading {
         // Handle headings
-        if el.level == 1 {  
+        if el.level == 1 {
           link(el_loc, chinesenumbering(..counter(heading).at(el_loc), location: el_loc))
         } else {
           link(el_loc, [
@@ -266,7 +266,7 @@
   set align(left + top)
   set text(字号.小四)
 
-  include "templates/declaration.typ" 
+  include "templates/declaration.typ"
 
   locate(loc => {
     if alwaysstartodd {
@@ -275,7 +275,7 @@
   })
 
   include "templates/abstract-cn.typ"
-  
+
   pagebreak()
 
   locate(loc => {
@@ -319,7 +319,7 @@
   if not blind {
     par(justify: true, first-line-indent: 2em, leading: 行距)[
       #heading(numbering: none, "致谢")
-      
+
       #include "chapters/acknowledgement.typ"
     ]
 

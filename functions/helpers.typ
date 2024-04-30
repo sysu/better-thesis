@@ -5,7 +5,7 @@
   } else {
     let ret = ()
     let len = lists.fold(
-      lists.first().len(), 
+      lists.first().len(),
       (a, b) => if a > b.len() { b.len() } else { a }
     )
 

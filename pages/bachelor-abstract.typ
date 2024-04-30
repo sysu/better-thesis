@@ -78,7 +78,7 @@
       #set par(first-line-indent: 2em)
 
       #fake-par
-      
+
       #body
     ]
 
