@@ -1,7 +1,6 @@
-// 南京大学学位论文模板 modern-nju-thesis
-// Author: https://github.com/OrangeX4
-// Repo: https://github.com/nju-lug/modern-nju-thesis
-// 在线模板可能不会更新得很及时，如果需要最新版本，请关注 Repo
+// 中山大学学位论文 Typst 模板 sysu-thesis-typst
+// 基于 [南京大学学位论文模板](https://github.com/nju-lug/modern-nju-thesis) 重构中
+// Repo: https://github.com/sysu/sysu-thesis-typst
 
 #import "@preview/anti-matter:0.0.2": anti-inner-end as mainmatter-end
 #import "layouts/doc.typ": doc
@@ -183,7 +182,7 @@
         )
       }
     },
-    
+
     // 中文摘要页，通过 type 分发到不同函数
     abstract: (..args) => {
       if doctype == "master" or doctype == "doctor" {
