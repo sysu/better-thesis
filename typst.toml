@@ -1,0 +1,15 @@
+[package]
+name = "sysu-thesis-typst"
+version = "0.1.0"
+entrypoint = "lib.typ"
+repository = "https://github.com/sysu/sysu-thesis-typst"
+authors = ["howardlau1999 <@howardlau1999>", "Sunny Huang <@huangjj27>"]
+license = "MIT"
+description = "A Typst template for SYSU thesis"
+keywords = ["SYSU", "typst"]
+categories = ["thesis"]
+
+[template]
+path = "template"
+entrypoint = "thesis.typ"
+# thumbnail = "thumbnail.png"
