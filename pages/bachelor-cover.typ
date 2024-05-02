@@ -13,8 +13,8 @@
   min-title-lines: 2,
   info-inset: (x: 0pt, bottom: 1pt),
   info-key-width: 72pt,
-  info-key-font: "楷体",
-  info-value-font: "楷体",
+  info-key-font: "黑体",
+  info-value-font: "宋体",
   column-gutter: -3pt,
   row-gutter: 11.5pt,
   anonymous-info-keys: ("grade", "student-id", "author", "supervisor", "supervisor-ii"),
@@ -25,7 +25,7 @@
   // 1.  默认参数
   fonts = 字体 + fonts
   info = (
-    title: ("基于 Typst 的", "南京大学学位论文"),
+    title: ("基于 Typst 的", "中山大学学位论文模板"),
     grade: "20XX",
     student-id: "1234567890",
     author: "张三",
@@ -48,28 +48,37 @@
   }
 
   // 3.  内置辅助函数
-  let info-key(body) = {
+  let info-key(
+    font: fonts.at(info-key-font, default: "黑体"),
+    size: 字号.小三,
+    body,
+  ) = {
     rect(
       width: 100%,
       inset: info-inset,
       stroke: none,
       text(
-        font: fonts.at(info-key-font, default: "楷体"),
-        size: 字号.三号,
-        body
+        font: font,
+        size: size,
+        body,
       ),
     )
   }
 
-  let info-value(key, body) = {
+  let info-value(
+    font: fonts.at(info-value-font, default: "宋体"),
+    size: 字号.小三,
+    key,
+    body
+  ) = {
     set align(center)
     rect(
       width: 100%,
       inset: info-inset,
       stroke: (bottom: stoke-width + black),
       text(
-        font: fonts.at(info-value-font, default: "宋体"),
-        size: 字号.三号,
+        font: font,
+        size: size,
         weight: if (key in bold-info-keys) { bold-level } else { "regular" },
         bottom-edge: "descender",
         body,
@@ -77,9 +86,16 @@
     )
   }
 
-  let info-long-value(key, body) = {
+  let info-long-value(
+    font: fonts.at(info-value-font, default: "宋体"),
+    size: 字号.小三,
+    key,
+    body
+  ) = {
     grid.cell(colspan: 3,
       info-value(
+        font: font,
+        size: size,
         key,
         if anonymous and (key in anonymous-info-keys) {
           "██████████"
@@ -90,8 +106,15 @@
     )
   }
 
-  let info-short-value(key, body) = {
+  let info-short-value(
+    font: fonts.at(info-value-font, default: "宋体"),
+    size: 字号.小三,
+    key,
+    body
+  ) = {
     info-value(
+      font: font,
+      size: size,
       key,
       if anonymous and (key in anonymous-info-keys) {
         "█████"
@@ -120,39 +143,43 @@
   line(length: 200%, stroke: 0.05cm + sysucolor.green);
   v(1.5cm)
 
-  if anonymous {
-    v(155pt)
-  } else {
-    v(67pt)
-  }
+  // 论文题目
+  h(0.7cm)
+  block(width: 100%, grid(
+    columns: (25%, 1fr, 75%, 1fr),
+    column-gutter: column-gutter,
+    row-gutter: row-gutter,
+    info-key(size: 字号.二号, "题目："),
+    ..info.title.map((s) => 
+      info-long-value(size: 字号.二号, font: 字体.黑体, "title", s)
+    ).intersperse(info-key(size: 字号.二号, "　")),
+  ))
+  v(2.7cm)
 
-  block(width: 318pt, grid(
+  // 学生与指导老师信息
+  block(width: 75%, grid(
     columns: (info-key-width, 1fr, info-key-width, 1fr),
     column-gutter: column-gutter,
     row-gutter: row-gutter,
+    info-key("姓　　名"),
+    info-long-value("author", info.author),
+    info-key("学　　号"),
+    info-long-value("student-id", info.student-id),
     info-key("院　　系"),
     info-long-value("department", info.department),
     info-key("专　　业"),
     info-long-value("major", info.major),
-    info-key("题　　目"),
-    ..info.title.map((s) => info-long-value("title", s)).intersperse(info-key("　")),
-    info-key("年　　级"),
-    info-short-value("grade", info.grade),
-    info-key("学　　号"),
-    info-short-value("student-id", info.student-id),
-    info-key("学生姓名"),
-    info-long-value("author", info.author),
     info-key("指导教师"),
-    info-short-value("supervisor", info.supervisor.at(0)),
-    info-key("职　　称"),
-    info-short-value("supervisor", info.supervisor.at(1)),
+    info-long-value("supervisor", text[ #info.supervisor.at(0)（#info.supervisor.at(1)） ]),
+    // info-short-value("supervisor", info.supervisor.at(0)),
+    // info-key("职　　称"),
+    // info-short-value("supervisor", info.supervisor.at(1)),
     ..(if info.supervisor-ii != () {(
       info-key("第二导师"),
-      info-short-value("supervisor-ii", info.supervisor-ii.at(0)),
-      info-key("职　　称"),
-      info-short-value("supervisor-ii", info.supervisor-ii.at(1)),
+      info-long-value("supervisor", text[ #info.supervisor-ii.at(0)（#info.supervisor-ii.at(1)） ]),
     )} else {()}),
-    info-key("提交日期"),
-    info-long-value("submit-date", info.submit-date),
   ))
+  v(2em)
+
+  text(font: 字体.黑体, size: 字号.四号)[#info.submit-date]
 }
