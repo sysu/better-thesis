@@ -115,11 +115,8 @@
   } else {
     // 封面图标
     v(6pt)
-    image("../assets/sysu-emblem.svg", width: 2.38cm)
-    v(22pt)
-    // 调整一下左边的间距
-    pad(image("../assets/sysu-banner.svg", width: 10.5cm), left: 0.4cm)
-    v(2pt)
+    // 使用校方官方 VI 系统的 logo，来源：https://home3.sysu.edu.cn/sysuvi/index.html
+    image("../assets/vi/sysu_logo.svg", width: 3cm)
   }
 
   // 将中文之间的空格间隙从 0.25 em 调整到 0.5 em
