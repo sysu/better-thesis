@@ -33,3 +33,11 @@
   // 这一行分别是「Courier New（Windows 等宽英文字体）」、「思源等宽黑体（简体）」、「思源等宽黑体」、「黑体（Windows）」、「黑体（MacOS）」
   等宽: ("Courier New", "Menlo", "IBM Plex Mono", "Source Han Sans HW SC", "Source Han Sans HW", "Noto Sans Mono CJK SC", "SimHei", "Heiti SC", "STHeiti"),
 )
+
+// 定义中山大学规范颜色
+// 参考 http://home3.sysu.edu.cn/sysuvi/content/zaisheng/b/C-1-5.jpg
+#let sysucolor = (
+  green: cmyk(100%, 0%, 100%, 60%),
+  red: cmyk(30%, 100%, 100%, 50%),
+  black: cmyk(0%, 0%, 0%, 100%),
+)
