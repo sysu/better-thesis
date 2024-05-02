@@ -1,5 +1,5 @@
 #import "../utils/datetime-display.typ": datetime-display
-#import "../utils/style.typ": 字号, 字体
+#import "../utils/style.typ": 字号, 字体, sysucolor
 
 // 本科生封面
 #let bachelor-cover(
@@ -109,18 +109,16 @@
   // 居中对齐
   set align(center)
 
-  // 匿名化处理去掉封面标识
-  if anonymous {
-    v(52pt)
-  } else {
-    // 封面图标
-    v(6pt)
-    // 使用校方官方 VI 系统的 logo，来源：https://home3.sysu.edu.cn/sysuvi/index.html
-    image("../assets/vi/sysu_logo.svg", width: 3cm)
-  }
+  // 封面校徽
+  // 使用校方官方 VI 系统的 logo，来源：https://home3.sysu.edu.cn/sysuvi/index.html
+  image("../assets/vi/sysu_logo.svg", width: 3cm)
 
-  // 将中文之间的空格间隙从 0.25 em 调整到 0.5 em
-  text(size: 字号.一号, font: fonts.宋体, spacing: 200%, weight: "bold")[本 科 毕 业 论 文]
+  text(size: 字号.小初, font: 字体.宋体, weight: "bold", fill: sysucolor.green)[本科生毕业论文（设计）]
+  v(-2em)
+  line(length: 200%, stroke: 0.12cm + sysucolor.green);
+  v(-0.8em)
+  line(length: 200%, stroke: 0.05cm + sysucolor.green);
+  v(1.5cm)
 
   if anonymous {
     v(155pt)
