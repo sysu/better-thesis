@@ -144,6 +144,7 @@
   v(1.5cm)
 
   // 论文题目
+  // TODO: 修复黑车字加粗没有生效的问题
   h(0.7cm)
   block(width: 100%, grid(
     columns: (25%, 1fr, 75%, 1fr),
