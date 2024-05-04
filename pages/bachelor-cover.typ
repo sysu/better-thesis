@@ -4,7 +4,6 @@
 // 本科生封面
 #let bachelor-cover(
   // documentclass 传入的参数
-  anonymous: false,
   twoside: false,
   fonts: (:),
   info: (:),
@@ -97,11 +96,7 @@
         font: font,
         size: size,
         key,
-        if anonymous and (key in anonymous-info-keys) {
-          "██████████"
-        } else {
-          body
-        }
+        body,
       )
     )
   }
@@ -116,11 +111,7 @@
       font: font,
       size: size,
       key,
-      if anonymous and (key in anonymous-info-keys) {
-        "█████"
-      } else {
-        body
-      }
+      body,
     )
   }
 

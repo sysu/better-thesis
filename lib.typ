@@ -152,7 +152,6 @@
         panic("postdoc has not yet been implemented.")
       } else {
         bachelor-cover(
-          anonymous: anonymous,
           twoside: twoside,
           ..args,
           fonts: fonts + args.named().at("fonts", default: (:)),
