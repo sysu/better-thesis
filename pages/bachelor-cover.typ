@@ -68,7 +68,7 @@
     font: fonts.at(info-value-font, default: "宋体"),
     size: 字号.小三,
     key,
-    body
+    body,
   ) = {
     set align(center)
     rect(
@@ -89,7 +89,7 @@
     font: fonts.at(info-value-font, default: "宋体"),
     size: 字号.小三,
     key,
-    body
+    body,
   ) = {
     grid.cell(colspan: 3,
       info-value(
