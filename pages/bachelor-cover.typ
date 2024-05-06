@@ -18,7 +18,6 @@
   row-gutter: 11.5pt,
   bold-info-keys: ("title",),
   bold-level: "bold",
-  datetime-display: datetime-display,
 ) = {
   // 1.  默认参数
   fonts = 字体 + fonts
