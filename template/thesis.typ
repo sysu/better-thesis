@@ -22,8 +22,8 @@
   // 可自定义字体，先英文字体后中文字体，应传入「宋体」、「黑体」、「楷体」、「仿宋」、「等宽」
   // fonts: (楷体: ("Times New Roman", "FZKai-Z03S")),
   info: (
-    title: ("基于 Typst 的", "南京大学学位论文"),
-    title-en: "My Title in English",
+    title: ("基于 Typst 的", "中山大学学位论文模板"),
+    title-en: "A Typst Template for SYSU thesis",
     grade: "20XX",
     student-id: "1234567890",
     author: "张三",

@@ -44,8 +44,8 @@
   // 默认参数
   fonts = 字体 + fonts
   info = (
-    title: ("基于 Typst 的", "南京大学学位论文"),
-    title-en: "NJU Thesis Template for Typst",
+    title: ("基于 Typst 的", "中山大学学位论文模板"),
+    title-en: "A Typst Template for SYSU thesis",
     grade: "20XX",
     student-id: "1234567890",
     author: "张三",
