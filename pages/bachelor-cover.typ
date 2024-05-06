@@ -16,7 +16,6 @@
   info-value-font: "宋体",
   column-gutter: -3pt,
   row-gutter: 11.5pt,
-  anonymous-info-keys: ("grade", "student-id", "author", "supervisor", "supervisor-ii"),
   bold-info-keys: ("title",),
   bold-level: "bold",
   datetime-display: datetime-display,
