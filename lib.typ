@@ -10,6 +10,7 @@
 #import "pages/fonts-display-page.typ": fonts-display-page
 #import "pages/bachelor-cover.typ": bachelor-cover
 #import "pages/master-cover.typ": master-cover
+#import "pages/bachelor-title-page.typ": bachelor-title-page
 #import "pages/bachelor-decl-page.typ": bachelor-decl-page
 #import "pages/master-decl-page.typ": master-decl-page
 #import "pages/bachelor-abstract.typ": bachelor-abstract
@@ -152,6 +153,22 @@
         panic("postdoc has not yet been implemented.")
       } else {
         bachelor-cover(
+          twoside: twoside,
+          ..args,
+          fonts: fonts + args.named().at("fonts", default: (:)),
+          info: info + args.named().at("info", default: (:)),
+        )
+      }
+    },
+
+    // 扉页，通过 type 分发到不同函数
+    title-page: (..args) => {
+      if doctype == "master" or doctype == "doctor" {
+        panic("master or doctor has not yet been implemented.")
+      } else if doctype == "postdoc" {
+        panic("postdoc has not yet been implemented.")
+      } else {
+        bachelor-title-page(
           twoside: twoside,
           ..args,
           fonts: fonts + args.named().at("fonts", default: (:)),

@@ -1,8 +1,8 @@
 #import "../utils/datetime-display.typ": datetime-display
-#import "../utils/style.typ": 字号, 字体, sysucolor
+#import "../utils/style.typ": 字号, 字体,
 
-// 本科生封面
-#let bachelor-cover(
+// 本科生论文扉页
+#let bachelor-title-page(
   // documentclass 传入的参数
   twoside: false,
   fonts: (:),
@@ -16,13 +16,12 @@
   info-value-font: "宋体",
   column-gutter: -3pt,
   row-gutter: 11.5pt,
-  bold-info-keys: ("title",),
-  bold-level: "bold",
 ) = {
   // 1.  默认参数
   fonts = 字体 + fonts
   info = (
     title: ("基于 Typst 的", "中山大学学位论文模板"),
+    title-en: "A Typst Template for SYSU thesis",
     grade: "20XX",
     student-id: "1234567890",
     author: "张三",
@@ -37,6 +36,9 @@
   if type(info.title) == str {
     info.title = info.title.split("\n")
   }
+  if type(info.title-en) == str {
+    info.title-en = info.title-en.split("\n")
+  }
   // 2.2 根据 min-title-lines 填充标题
   info.title = info.title + range(min-title-lines - info.title.len()).map((it) => "　")
   // 2.3 处理提交日期
@@ -47,7 +49,7 @@
   // 3.  内置辅助函数
   let info-key(
     font: fonts.at(info-key-font, default: "黑体"),
-    size: 字号.小三,
+    size: 字号.三号,
     body,
   ) = {
     rect(
@@ -64,7 +66,7 @@
 
   let info-value(
     font: fonts.at(info-value-font, default: "宋体"),
-    size: 字号.小三,
+    size: 字号.三号,
     key,
     body,
   ) = {
@@ -76,7 +78,6 @@
       text(
         font: font,
         size: size,
-        weight: if (key in bold-info-keys) { bold-level } else { "regular" },
         bottom-edge: "descender",
         body,
       ),
@@ -85,7 +86,7 @@
 
   let info-long-value(
     font: fonts.at(info-value-font, default: "宋体"),
-    size: 字号.小三,
+    size: 字号.三号,
     key,
     body,
   ) = {
@@ -101,7 +102,7 @@
 
   let info-short-value(
     font: fonts.at(info-value-font, default: "宋体"),
-    size: 字号.小三,
+    size: 字号.三号,
     key,
     body
   ) = {
@@ -113,38 +114,20 @@
     )
   }
 
-
-  // 4.  正式渲染
-
+  // 4. 正式渲染
   pagebreak(weak: true, to: if twoside { "odd" })
+  v(30pt)
 
-  // 居中对齐
-  set align(center)
-
-  // 封面校徽
-  // 使用校方官方 VI 系统的 logo，来源：https://home3.sysu.edu.cn/sysuvi/index.html
-  image("../assets/vi/sysu_logo.svg", width: 3cm)
-
-  text(size: 字号.小初, font: 字体.宋体, weight: "bold", fill: sysucolor.green)[本科生毕业论文（设计）]
-  v(-2em)
-  line(length: 200%, stroke: 0.12cm + sysucolor.green);
-  v(-0.8em)
-  line(length: 200%, stroke: 0.05cm + sysucolor.green);
-  v(1.5cm)
-
-  // 论文题目
-  // TODO: 修复黑车字加粗没有生效的问题
-  h(0.7cm)
-  block(width: 100%, grid(
-    columns: (25%, 1fr, 75%, 1fr),
-    column-gutter: column-gutter,
-    row-gutter: row-gutter,
-    info-key(size: 字号.二号, "题目："),
-    ..info.title.map((s) =>
-      info-long-value(size: 字号.二号, font: 字体.黑体, "title", s)
-    ).intersperse(info-key(size: 字号.二号, "　")),
-  ))
-  v(2.7cm)
+  set align(center + horizon)
+  for part in info.title {
+    text(size: 字号.二号, font: 字体.黑体)[ #part ]
+    linebreak()
+  }
+  v(2em)
+  for part-en in info.title-en {
+    text(size: 字号.二号, font: 字体.黑体)[ #part-en ]
+    linebreak()
+  }
 
   // 学生与指导老师信息
   set align(center + bottom)
@@ -172,5 +155,5 @@
   ))
   v(2em)
 
-  text(font: 字体.黑体, size: 字号.小四)[#info.submit-date]
+  text(font: 字体.黑体, size: 字号.四号)[#info.submit-date]
 }
