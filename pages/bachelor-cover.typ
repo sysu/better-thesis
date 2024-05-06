@@ -142,7 +142,7 @@
     column-gutter: column-gutter,
     row-gutter: row-gutter,
     info-key(size: 字号.二号, "题目："),
-    ..info.title.map((s) => 
+    ..info.title.map((s) =>
       info-long-value(size: 字号.二号, font: 字体.黑体, "title", s)
     ).intersperse(info-key(size: 字号.二号, "　")),
   ))
@@ -173,5 +173,5 @@
   ))
   v(2em)
 
-  text(font: 字体.黑体, size: 字号.四号)[#info.submit-date]
+  text(font: 字体.黑体, size: 字号.小四)[#info.submit-date]
 }
