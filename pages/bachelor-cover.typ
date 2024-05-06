@@ -162,13 +162,13 @@
     info-key("专　　业"),
     info-long-value("major", info.major),
     info-key("指导教师"),
-    info-long-value("supervisor", text[ #info.supervisor.at(0)（#info.supervisor.at(1)） ]),
+    info-long-value("supervisor", text[ #info.supervisor.at(0) #info.supervisor.at(1) ]),
     // info-short-value("supervisor", info.supervisor.at(0)),
     // info-key("职　　称"),
     // info-short-value("supervisor", info.supervisor.at(1)),
     ..(if info.supervisor-ii != () {(
       info-key("第二导师"),
-      info-long-value("supervisor", text[ #info.supervisor-ii.at(0)（#info.supervisor-ii.at(1)） ]),
+      info-long-value("supervisor", text[ #info.supervisor-ii.at(0) #info.supervisor-ii.at(1) ]),
     )} else {()}),
   ))
   v(2em)
