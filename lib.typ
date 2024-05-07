@@ -190,7 +190,6 @@
         panic("postdoc has not yet been implemented.")
       } else {
         bachelor-decl-page(
-          anonymous: anonymous,
           twoside: twoside,
           ..args,
           fonts: fonts + args.named().at("fonts", default: (:)),
