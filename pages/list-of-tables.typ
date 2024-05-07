@@ -27,7 +27,7 @@
   // 1.  默认参数
   fonts = 字体 + fonts
   if (title-text-args == auto) {
-    title-text-args = (font: fonts.宋体, size: 字号.三号, weight: "bold")
+    title-text-args = (font: fonts.黑体, size: 字号.三号, weight: "bold")
   }
   // 字体与字号
   if (font == auto) {
