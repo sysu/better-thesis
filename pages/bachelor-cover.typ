@@ -1,5 +1,5 @@
 #import "../utils/datetime-display.typ": datetime-display
-#import "../utils/style.typ": 字号, 字体, sysucolor
+#import "../utils/style.typ": 字号, 字体, fakebold, sysucolor
 
 // 本科生封面
 #let bachelor-cover(
@@ -141,7 +141,7 @@
     row-gutter: row-gutter,
     info-key(size: 字号.二号, "题目："),
     ..info.title.map((s) =>
-      info-long-value(size: 字号.二号, font: 字体.黑体, "title", s)
+      info-long-value(size: 字号.二号, font: 字体.黑体, "title", fakebold(s))
     ).intersperse(info-key(size: 字号.二号, "　")),
   ))
   v(2.7cm)

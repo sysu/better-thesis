@@ -1,3 +1,6 @@
+// 导入伪粗体工具
+#import "@preview/cuti:0.2.1": *
+
 #let 字号 = (
   初号: 42pt,
   小初: 36pt,
