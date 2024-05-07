@@ -22,7 +22,7 @@
     #invisible-heading(level: 1, outlined: outlined, outline-title)
 
     #align(center)[
-      #set text(size: 字号.小二, font: fonts.黑体)
+      #set text(size: 字号.三号, font: fonts.黑体)
       【摘#h(1em)要】
       #v(1em)
     ]
@@ -35,6 +35,6 @@
 
     #v(1em)
 
-    #text(font: 字体.宋体, weight: "bold")[关键词：]#(("",) + keywords.intersperse("，")).sum()
+    *关键词：*#keywords.join("，")
   ]
 }
