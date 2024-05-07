@@ -1,4 +1,4 @@
-#import "../utils/style.typ": 字号, 字体, fakebold
+#import "../utils/style.typ": 字号, 字体
 #import "../utils/invisible-heading.typ": invisible-heading
 
 // 本科生英文摘要页

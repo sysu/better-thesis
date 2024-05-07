@@ -1,5 +1,5 @@
 #import "../utils/datetime-display.typ": datetime-display
-#import "../utils/style.typ": 字号, 字体, fakebold, sysucolor
+#import "../utils/style.typ": 字号, 字体, sysucolor
 
 // 本科生封面
 #let bachelor-cover(
@@ -133,7 +133,6 @@
   v(1.5cm)
 
   // 论文题目
-  // TODO: 修复黑车字加粗没有生效的问题
   h(0.7cm)
   block(width: 100%, grid(
     columns: (25%, 1fr, 75%, 1fr),
@@ -141,7 +140,7 @@
     row-gutter: row-gutter,
     info-key(size: 字号.二号, "题目："),
     ..info.title.map((s) =>
-      info-long-value(size: 字号.二号, font: 字体.黑体, "title", fakebold(s))
+      info-long-value(size: 字号.二号, font: 字体.黑体, "title", s)
     ).intersperse(info-key(size: 字号.二号, "　")),
   ))
   v(2.7cm)

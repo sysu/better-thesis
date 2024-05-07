@@ -1,5 +1,5 @@
 #import "../utils/datetime-display.typ": datetime-display
-#import "../utils/style.typ": 字号, 字体, fakebold
+#import "../utils/style.typ": 字号, 字体
 
 // 本科生论文扉页
 #let bachelor-title-page(
@@ -120,12 +120,12 @@
 
   set align(center + horizon)
   for part in info.title {
-    text(size: 字号.二号, font: 字体.黑体)[ #fakebold(part) ]
+    text(size: 字号.二号, font: 字体.黑体, weight: "bold")[ #part ]
     linebreak()
   }
   v(2em)
   for part-en in info.title-en {
-    text(size: 字号.二号, font: 字体.黑体)[ #fakebold(part-en) ]
+    text(size: 字号.二号, weight: "bold")[ #part-en ]
     linebreak()
   }
 
