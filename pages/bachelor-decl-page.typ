@@ -1,5 +1,5 @@
 #import "../utils/indent.typ": indent
-#import "../utils/style.typ": 字号, 字体
+#import "../utils/style.typ": 字号, 字体, fakebold
 
 // 本科生声明页
 #let bachelor-decl-page(
@@ -10,8 +10,7 @@
 ) = {
   pagebreak(weak: true, to: if twoside { "odd" })
 
-  // heading(numbering: none, outlined: false)[学术诚信声明]
-  align(center, text(font: 字体.黑体, size: 字号.三号)[学术诚信声明])
+  align(center, fakebold(text(font: 字体.黑体, size: 字号.三号)[学术诚信声明]))
 
   set text(font: 字体.宋体, size: 字号.小四)
 
