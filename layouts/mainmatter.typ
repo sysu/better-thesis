@@ -19,13 +19,13 @@
   // 正文字体与字号参数
   text-args: auto,
   // 标题字体与字号
-  heading-font: auto,
-  heading-size: (字号.四号,),
-  heading-weight: ("regular",),
+  heading-font: (字体.黑体, 字体.黑体, 字体.宋体),
+  heading-size: (字号.三号, 字号.四号, 字号.小四),
+  heading-weight: ("regular", "regular", "bold"),
   heading-above: (2 * 15.6pt - 0.7em, 2 * 15.6pt - 0.7em),
   heading-below: (2 * 15.6pt - 0.7em, 1.5 * 15.6pt - 0.7em),
   heading-pagebreak: (true, false),
-  heading-align: (center, auto),
+  heading-align: (center, left, auto),
   // 页眉
   header-render: auto,
   header-vspace: 0em,
@@ -125,7 +125,7 @@
       set align(array-at(heading-align, it.level))
       it
     } else {
-      it
+      pad(left: 2em, it)
     }
   }
 
