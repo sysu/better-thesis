@@ -6,7 +6,7 @@ repository = "https://github.com/sysu/sysu-thesis-typst"
 authors = ["howardlau1999 <@howardlau1999>", "Sunny Huang <@huangjj27>"]
 license = "MIT"
 description = "中山大学学位论文 Typst 模板，A Typst template for SYSU thesis"
-keywords = ["SYSU", "typst"]
+keywords = ["SYSU", "thesis", "typst"]
 categories = ["thesis"]
 
 [template]
