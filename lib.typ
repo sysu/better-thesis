@@ -8,14 +8,14 @@
 #import "layouts/appendix.typ": appendix
 #import "pages/fonts-display-page.typ": fonts-display-page
 #import "pages/bachelor-cover.typ": bachelor-cover
-#import "pages/master-cover.typ": master-cover
+// #import "pages/master-cover.typ": master-cover
 #import "pages/bachelor-title-page.typ": bachelor-title-page
 #import "pages/bachelor-decl-page.typ": bachelor-decl-page
-#import "pages/master-decl-page.typ": master-decl-page
+// #import "pages/master-decl-page.typ": master-decl-page
 #import "pages/bachelor-abstract.typ": bachelor-abstract
-#import "pages/master-abstract.typ": master-abstract
+// #import "pages/master-abstract.typ": master-abstract
 #import "pages/bachelor-abstract-en.typ": bachelor-abstract-en
-#import "pages/master-abstract-en.typ": master-abstract-en
+// #import "pages/master-abstract-en.typ": master-abstract-en
 #import "pages/bachelor-outline-page.typ": bachelor-outline-page
 #import "pages/list-of-figures.typ": list-of-figures
 #import "pages/list-of-tables.typ": list-of-tables
