@@ -1,6 +1,6 @@
 // 中山大学学位论文 Typst 模板 sysu-thesis-typst
 // 基于 [南京大学学位论文模板](https://github.com/nju-lug/modern-nju-thesis) 重构中
-// Repo: https://github.com/sysu/sysu-thesis-typst
+// Repo: https://gitlab.com/sysu-gitlab/thesis-template/better-thesis
 
 #import "layouts/doc.typ": doc
 #import "layouts/preface.typ": preface
