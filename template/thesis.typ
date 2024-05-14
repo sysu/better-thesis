@@ -119,7 +119,7 @@
 
 == 图表
 
-引用@tbl:timing，引用@tbl:timing-tlt，以及@fig:nju-logo。引用图表时，表格和图片分别需要加上 `tbl:`和`fig:` 前缀才能正常显示编号。
+引用@tbl:timing，引用@tbl:timing-tlt，以及@fig:sysu-logo。引用图表时，表格和图片分别需要加上 `tbl:`和`fig:` 前缀才能正常显示编号。
 
 #align(center, (stack(dir: ltr)[
   #figure(
@@ -149,9 +149,9 @@
 ]))
 
 #figure(
-  image("images/nju-emblem.svg", width: 20%),
+  image("images/sysu_logo.svg", width: 20%),
   caption: [图片测试],
-) <nju-logo>
+) <sysu-logo>
 
 
 == 数学公式
@@ -230,7 +230,7 @@ $ F_n = floor(1 / sqrt(5) phi.alt^n) $
 附录内容，这里也可以加入图片，例如@fig:appendix-img。
 
 #figure(
-  image("images/nju-emblem.svg", width: 20%),
+  image("images/sysu_logo.svg", width: 20%),
   caption: [图片测试],
 ) <appendix-img>
 
