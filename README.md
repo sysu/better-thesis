@@ -1,6 +1,6 @@
 # 基于 Typst 的中山大学学位论文模板
 [![GitLab 仓库](https://img.shields.io/badge/gitlab-%23181717.svg?style=for-the-badge&logo=gitlab&logoColor=white)](https://gitlab.com/sysu-gitlab/thesis-template/better-thesis)
-[![GitHub 仓库](https://img.shields.io/badge/gitlab-%23181717.svg?style=for-the-badge&logo=gitlab&logoColor=white)](https://github.com/sysu/better-thesis)
+[![GitHub stars](https://img.shields.io/github/stars/Naereen/StrapDown.js.svg?style=social&label=Star&maxAge=2592000)](https://github.com/sysu/better-thesis/stargazers/)
 
 当前还未完全符合学位论文格式要求，欢迎同学们贡献代码！模板交流 QQ 群：797942860（[点此直接加入](https://jq.qq.com/?_wv=1027&k=m58va1kd)）
 
