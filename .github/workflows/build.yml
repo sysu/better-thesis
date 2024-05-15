@@ -25,7 +25,7 @@ jobs:
     steps:
       - name: Checkout master
         uses: actions/checkout@v3
-        with:  
+        with:
           fetch-depth: 0
       - name: Setup Pages
         uses: actions/configure-pages@v2
@@ -35,7 +35,7 @@ jobs:
         # run: 'sudo apt-get update && sudo apt install -y ripgrep wget curl && (curl -s https://api.github.com/repos/typst/typst/releases | rg "browser_download_url.*typst-x86_64-unknown-linux-gnu.tar.gz" | head -1 | cut -d : -f 2,3 | tr -d \" | wget -qi -) && tar xf typst-x86_64-unknown-linux-gnu.tar.gz && sudo mv typst-x86_64-unknown-linux-gnu/typst /usr/local/bin/typst'
         run: 'cargo install --git https://github.com/typst/typst typst-cli'
       - name: Build PDF
-        run: 'mkdir build && typst compile --font-path fonts thesis.typ build/thesis.pdf'
+        run: 'mkdir build && typst compile --root=. --font-path=fonts template/thesis.typ build/thesis.pdf'
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
@@ -64,7 +64,7 @@ jobs:
         with:
           name: github-pages
       - name: Extract artifact
-        run: | 
+        run: |
           mkdir -p $RUNNER_TEMP/gitee_pages
           tar -C $RUNNER_TEMP/gitee_pages -xf artifact.tar
       - name: Deploy to Gitee Pages
@@ -77,7 +77,7 @@ jobs:
 
           git config --global user.name "Howard Lau"
           git config --global user.email "howardlau1999@hotmail.com"
-          
+
           cd $RUNNER_TEMP/gitee_pages
           git init
           git checkout -b gh-pages
