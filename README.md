@@ -12,17 +12,18 @@
 **由于 Typst 还处于初期的快速开发阶段，本项目需要使用从源码编译的 Typst 版本才能正常生成 PDF。仓库提供了一键安装脚本，按照使用说明运行即可。**
 
 <!-- TODO: 提供 typst.universe 版本 -->
+<!-- TODO: 在 typst.universe 版本上线后分离模板项目 -->
 
 ### Windows 用户
 
-1. [下载本仓库](https://github.com/howardlau1999/sysu-thesis-typst/archive/refs/heads/master.zip)，或者使用 `git clone https://github.com/howardlau1999/sysu-thesis-typst` 命令克隆本仓库。
+1. [下载本仓库](https://gitlab.com/sysu-gitlab/thesis-template/better-thesis/-/archive/main/better-thesis-main.zip)，或者使用 `git clone https://gitlab.com/sysu-gitlab/thesis-template/better-thesis` 命令克隆本仓库。
 2. 右键 `install_typst.ps1` 文件，选择“用 Powershell 运行”，等待 Typst 安装完成。
 3. 根据 [Typst 文档](https://typst.app/docs/)，参考 [项目结构](#项目结构) 中的说明，按照你的需要修改论文的各个部分。
 4. 双击运行 `compile.bat`，即可生成 `thesis.pdf` 文件。
 
 ### Linux/macOS 用户
 
-1. [下载本仓库](https://github.com/howardlau1999/sysu-thesis-typst/archive/refs/heads/master.zip)，或者使用 `git clone https://github.com/howardlau1999/sysu-thesis-typst` 命令克隆本仓库。
+1. [下载本仓库](https://gitlab.com/sysu-gitlab/thesis-template/better-thesis/-/archive/main/better-thesis-main.zip)，或者使用 `git clone https://gitlab.com/sysu-gitlab/thesis-template/better-thesis` 命令克隆本仓库。
 2. 使用命令行安装 Rust 工具链以及 Typst：
 
 ```bash
@@ -31,7 +32,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 source $HOME/.cargo/env
 
 # 安装 Typst CLI
-cargo install --git https://github.com/typst/typst.git typst-cli
+cargo install typst-cli
 
 # 访问缓慢的话，执行以下命令设置清华镜像源，并从镜像站安装
 cat << EOF > $HOME/.cargo/config
