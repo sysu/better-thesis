@@ -14,7 +14,8 @@ before_script:
   - export PATH="$PATH:$CARGO_HOME/bin"
   - cargo install typst-cli git-cliff
 
-build:
+# each merge request are required to ensure compiling the `.typ`s file successfully.
+merge-check:
   stage: check
   script:
     - typst compile --root=$CI_PROJECT_DIR --font-path=$CI_PROJECT_DIR/fonts $CI_PROJECT_DIR/template/thesis.typ
