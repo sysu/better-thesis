@@ -12,7 +12,7 @@ stages:
 
 before_script:
   - export PATH="$PATH:$CARGO_HOME/bin"
-  - cargo install typst-cli
+  - cargo install typst-cli git-cliff
 
 build:
   stage: check
@@ -22,7 +22,7 @@ build:
     - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
     - if: $CI_PIPELINE_SOURCE == "web"
 
-pages:
+gitlab-release:
   stage: release
   image: registry.gitlab.com/gitlab-org/release-cli:latest
   script:
@@ -35,3 +35,4 @@ pages:
     - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
   release:
     tag_name: '$CI_COMMIT_TAG'
+    description: '$CI_COMMIT_TAG'
