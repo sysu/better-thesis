@@ -17,7 +17,7 @@ before_script:
 build:
   stage: check
   script:
-    - typst compile --root=$CI_PROJECT_DIR --font-path=$CI_PROJECT_DIR/fonts $CI_PROJECT_DIR/template/theis.typ
+    - typst compile --root=$CI_PROJECT_DIR --font-path=$CI_PROJECT_DIR/fonts $CI_PROJECT_DIR/template/thesis.typ
   rules:
     - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
     - if: $CI_PIPELINE_SOURCE == "web"
