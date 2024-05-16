@@ -22,17 +22,19 @@ build:
     - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
     - if: $CI_PIPELINE_SOURCE == "web"
 
-gitlab-release:
-  stage: release
-  image: registry.gitlab.com/gitlab-org/release-cli:latest
-  script:
-    - mkdir prview && typst compile --root=. --font-path=fonts template/thesis.typ prview/thesis.pdf
-  dependencies:
-    - build
-  rules:
-    - if: '$CI_COMMIT_TAG'
-      when: never
-    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
-  release:
-    tag_name: '$CI_COMMIT_TAG'
-    description: '$CI_COMMIT_TAG'
+# TODO: this compile output need to move to pre-release
+# gitlab-release:
+#   stage: release
+#   image: registry.gitlab.com/gitlab-org/release-cli:latest
+#   script:
+#     - mkdir prview && typst compile --root=. --font-path=fonts template/thesis.typ prview/thesis.pdf
+#   dependencies:
+#     - build
+#   rules:
+#     - if: '$CI_COMMIT_TAG'
+#       when: never
+#     - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+#     - if: $CI_PIPELINE_SOURCE == "web"
+#   release:
+#     tag_name: '$CI_COMMIT_TAG'
+#     description: '$CI_COMMIT_TAG'
