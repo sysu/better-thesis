@@ -12,7 +12,7 @@ stages:
 
 before_script:
   - export PATH="$PATH:$CARGO_HOME/bin"
-  - cargo install typst
+  - cargo install typst-cli
 
 build:
   stage: check
