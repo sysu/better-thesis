@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.1-alpha.3] - 2024-05-17
+
+### ⚙️ Miscellaneous Tasks
+
+- *(gitlab-ci)* 修复CI脚本复用问题
+
 ## [0.1.1-alpha.2] - 2024-05-17
 
 ### 📚 Documentation
