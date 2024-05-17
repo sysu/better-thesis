@@ -45,7 +45,7 @@ release-commit:
     - |
       sd 'version = ".*"' 'version = "$VERSION"' $CI_PROJECT_DIR/typst.toml
     - |
-      git add . && git commit -m "ci(release):$VERSION"
+      git add $CI_PROJECT_DIR/* && git commit -m "ci(release):$VERSION"
       git tag $VERSION -m --file=release-note.md
       git push --tags
 
