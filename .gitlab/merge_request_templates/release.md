@@ -16,6 +16,7 @@
 - [ ] 最后一个提交已更新 `CHANGELOG.md`:
     ```sh
     git cliff --unreleased --tag $BUMPED_VERSION --prepend CHANGELOG.md -- --newest
+    git add CHANGELOG.md
     ```
 - [ ] 最后一个提交的提交信息符合 `chore(release): $BUMPED_VERSION`
     ```sh
