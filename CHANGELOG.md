@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.1-alpha.4] - 2024-05-17
+
+### ⚙️ Miscellaneous Tasks
+
+- *(gitlab-ci)* 修复 tag 标签检查发版流程触发逻辑
+- *(template)* 修改发版 MR 模板
+
 ## [0.1.1-alpha.3] - 2024-05-17
 
 ### ⚙️ Miscellaneous Tasks
