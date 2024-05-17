@@ -15,12 +15,15 @@
     ```
 - [ ] 最后一个提交已更新 `CHANGELOG.md`:
     ```sh
-    git cliff --unreleased --tag $BUMPED_VERSION --prepend CHANGELOG.md
+    git cliff --unreleased --tag $BUMPED_VERSION --prepend CHANGELOG.md -- --newest
     ```
 - [ ] 最后一个提交的提交信息符合 `chore(release): $BUMPED_VERSION`
+    ```sh
+    git commit -m "chore(release): $BUMPED_VERSION"
+    ```
 - [ ] 最后一个提交带有标签，标签头 `$BUMPED_VERSION`，并且标签描述通过 `git cliff` 生成：
     ```sh
-    git cliff --bump --unreleased > release_$BUMPED_VERSION.md
+    git cliff --bump --unreleased -- --newest > release_$BUMPED_VERSION.md
     git tag '$BUMPED_VERSION' --file release_$BUMPED_VERSION.md
     ```
 - [ ] （可选）标签是否经过 GPG 签名
