@@ -33,26 +33,8 @@ check-default-branch:
   #   paths:
   #     - $CI_PROJECT_DIR/thesis_preview.pdf
 
-release-commit:
-  stage: release
-  rules:
-    - if: ($CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH) && ($CI_PIPELINE_SOURCE == "web")
-  script:
-    - git config user.name $GITLAB_USER_NAME && git config user.email $GITLAB_USER_EMAIL
-    - |
-      VERSION=$(git cliff --bumped-version --unreleased)
-      git cliff --bump --unreleased > release-note.md
-    - |
-      sd 'version = ".*"' 'version = "$VERSION"' $CI_PROJECT_DIR/typst.toml
-    - |
-      git add $CI_PROJECT_DIR/typst.toml && git commit -m "ci(release):$VERSION"
-      git tag $VERSION -m --file=release-note.md
-      git push --tags
-
 gitlab-release:
   stage: release
-  needs:
-    - release-commit
   image: registry.gitlab.com/gitlab-org/release-cli:latest
   script:
     - echo "releasing $CI_COMMIT_TAG on GitLab!"
