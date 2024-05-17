@@ -3,7 +3,7 @@ stages:
     - release
 
 # each merge request are required to ensure compiling the `.typ`s file successfully.
-check-merge-request:
+check-typst-compile:
   stage: check
   image: rust
   variables:
@@ -13,25 +13,9 @@ check-merge-request:
       - $CARGO_HOME
   rules:
     - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
-  before_script:
-    - export PATH="$PATH:$CARGO_HOME/bin"
-    - cargo install typst-cli
-  script:
-    - typst compile
-        --root=$CI_PROJECT_DIR
-        --font-path=$CI_PROJECT_DIR/fonts
-        $CI_PROJECT_DIR/template/thesis.typ
-
-check-default-branch:
-  stage: check
-  image: rust
-  variables:
-    CARGO_HOME: $CI_PROJECT_DIR/cargo
-  cache:
-    paths:
-      - $CARGO_HOME
-  rules:
-    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH && $CI_COMMIT_TAG
+    - if: $CI_COMMIT_TAG
+      when: manual
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
       when: manual
   before_script:
     - export PATH="$PATH:$CARGO_HOME/bin"
@@ -51,8 +35,9 @@ gitlab-release:
   stage: release
   image: registry.gitlab.com/gitlab-org/release-cli:latest
   rules:
-    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH && $CI_COMMIT_TAG
-      when: manual
+    - if: $CI_COMMIT_TAG
+      when: never
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
   script:
     - echo "releasing $CI_COMMIT_TAG on GitLab!"
   release:
