@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.1-alpha.2] - 2024-05-17
+
+### 📚 Documentation
+
+- *(template)* 添加发布版本的 Merge Request 模板
+
+### ⚙️ Miscellaneous Tasks
+
+- *(gitlab)* Fix syntax error in .gitlab/ci.yml
+- *(cliff)* Add cliff config
+- *(gitlab-ci)* 注释自动发布版本流程
+- *(gitlab-ci)* Pull the checks for each merge request
+- *(gitlab-ci)* Check when merged to the default branch
+- Change gitlab-ci's trigger rules
+- *(gitlab-ci)* 一键发布新版本
+- *(gitlab-ci)* Fix syntax error rasied by wrong use of colon
+- *(merging)* 'ci-refactor-build-flow' into 'main'
+- *(gitlab-ci)* 修复 git-cliff 命令错误
+- *(merging)* 'ci-refactor-build-flow' into 'main'
+- *(gitlab-ci)* 修复添加缓存文件的问题
+- *(merging)* 'ci-refactor-build-flow' into 'main'
+- *(gitlab-ci)* 修复添加缓存文件的问题
+- *(gitlab-ci)* 删去在 CI 中提交代码的操作
+- *(CHANGELOG)* Init
+- *(template)* 修改 CHANGELOG.md 需要的参数
+
+## [0.1.1-alpha.1] - 2024-05-17
+
 ### 📚 Documentation
 
 - *(github stars)* Github badge changed to the stars one
