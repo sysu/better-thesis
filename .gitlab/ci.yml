@@ -12,7 +12,7 @@ stages:
 
 before_script:
   - export PATH="$PATH:$CARGO_HOME/bin"
-  - cargo install typst-cli git-cliff
+  - cargo install typst-cli git-cliff sd
 
 # each merge request are required to ensure compiling the `.typ`s file successfully.
 check-merge-request:
@@ -33,18 +33,29 @@ check-default-branch:
   #   paths:
   #     - $CI_PROJECT_DIR/thesis_preview.pdf
 
-# gitlab-release:
-#   stage: release
-#   image: registry.gitlab.com/gitlab-org/release-cli:latest
-#   script:
-#     - mkdir prview && typst compile --root=. --font-path=fonts template/thesis.typ prview/thesis.pdf
-#   dependencies:
-#     - build
-#   rules:
-#     - if: '$CI_COMMIT_TAG'
-#       when: never
-#     - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
-#     - if: $CI_PIPELINE_SOURCE == "web"
-#   release:
-#     tag_name: '$CI_COMMIT_TAG'
-#     description: '$CI_COMMIT_TAG'
+release-commit:
+  stage: release
+  rules:
+    - if: ($CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH) && ($CI_PIPELINE_SOURCE == "web")
+  script:
+    - git config user.name $GITLAB_USER_NAME && git config user.email $GITLAB_USER_EMAIL
+    - VERSION=$(git cliff --bumped-version --unrelease)
+    - git cliff --bump --unreleased > release-note.md
+    - |
+      sd 'version = ".*"' 'version = "$VERSION"' $CI_PROJECT_DIR/typst.toml
+    - git add . && git commit -m "ci(release): $VERSION"
+    - git tag $VERSION -m --file=release-note.md
+    - git push --tags
+
+gitlab-release:
+  stage: release
+  needs:
+    - release-commit
+  image: registry.gitlab.com/gitlab-org/release-cli:latest
+  script:
+    - echo "releasing $CI_COMMIT_TAG on GitLab!"
+  rules:
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH && '$CI_COMMIT_TAG'
+  release:
+    tag_name: '$CI_COMMIT_TAG'
+    description: '$CI_COMMIT_TAG_MESSAGE'
