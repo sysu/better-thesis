@@ -1,6 +1,5 @@
 ## 发布版本
 这是一个发版新版本的 Merge Request，请确认已经完成以下操作：
-- [ ] 该 PR 只有一个提交，并且发起 Merge Request 时已勾选 squash
 - [ ] 通过 `git cliff --bumped-version` 命令生成新版本号 `$BUMPED_VERSION`:
     ```sh
     BUMPED_VERSION=$(git cliff --bumped-version)
