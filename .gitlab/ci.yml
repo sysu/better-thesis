@@ -15,7 +15,7 @@ check-merge-request:
     - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
   before_script:
     - export PATH="$PATH:$CARGO_HOME/bin"
-    - cargo install typst-cli git-cliff sd
+    - cargo install typst-cli
   script:
     - typst compile
         --root=$CI_PROJECT_DIR
@@ -31,10 +31,11 @@ check-default-branch:
     paths:
       - $CARGO_HOME
   rules:
-    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH && $CI_COMMIT_TAG
+      when: "web"
   before_script:
     - export PATH="$PATH:$CARGO_HOME/bin"
-    - cargo install typst-cli git-cliff sd
+    - cargo install typst-cli
   script:
     - typst compile
         --root=$CI_PROJECT_DIR
@@ -51,6 +52,7 @@ gitlab-release:
   image: registry.gitlab.com/gitlab-org/release-cli:latest
   rules:
     - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH && $CI_COMMIT_TAG
+      when: "web"
   script:
     - echo "releasing $CI_COMMIT_TAG on GitLab!"
   release:
