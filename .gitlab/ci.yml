@@ -1,3 +1,15 @@
+variables:
+  CARGO_HOME: $CI_PROJECT_DIR/cargo
+
+default:
+  image: rust
+  cache:
+    paths:
+      - $CARGO_HOME
+  before_script:
+    - export PATH="$PATH:$CARGO_HOME/bin"
+    - cargo install typst-cli
+
 stages:
     - check
     - release
@@ -5,19 +17,10 @@ stages:
 # each merge request are required to ensure compiling the `.typ`s file successfully.
 check-typst-compile:
   stage: check
-  image: rust
-  variables:
-    CARGO_HOME: $CI_PROJECT_DIR/cargo
-  cache:
-    paths:
-      - $CARGO_HOME
   rules:
     - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
     - if: $CI_COMMIT_TAG
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-  before_script:
-    - export PATH="$PATH:$CARGO_HOME/bin"
-    - cargo install typst-cli
   script:
     - typst compile
         --root=$CI_PROJECT_DIR
