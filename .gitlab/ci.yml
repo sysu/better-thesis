@@ -43,13 +43,19 @@ release-commit:
       git config user.email $GITLAB_USER_EMAIL
       git remote set-url --push origin "https://sysu-bot:$SYSU_BOT_TOKEN@gitlab.com/sysu-gitlab/thesis-template/better-thesis.git"
     - |
-      VERSION=$(git cliff --bumped-version --unreleased)
-      git cliff --bump --unreleased > release-note.md
+      BUMPED_VERSION=$(git cliff --bumped-version --unreleased)
+      git cliff --bump --unreleased -- --newest > release-note.md
     - |
-      sd 'version = ".*"' 'version = "$VERSION"' $CI_PROJECT_DIR/typst.toml
+      sd 'version = ".*"' 'version = "$BUMPED_VERSION"' $CI_PROJECT_DIR/typst.toml
+      sd 'version = "v(.*)"' "version = \"$1\"" typst.toml
+      git add $CI_PROJECT_DIR/typst.toml
+    - | 
+      git cliff --unreleased --tag $BUMPED_VERSION --prepend CHANGELOG.md -- --newest
+      git add $CI_PROJECT_DIR/CHANGELOG.md
     - |
-      git add $CI_PROJECT_DIR/typst.toml && git commit -m "ci(release):$VERSION"
-      git tag $VERSION -m --file=release-note.md
+      git status
+      git commit -m "chore(release): prepare for $BUMPED_VERSION"
+      git tag $BUMPED_VERSION -m --file=release-note.md
       git push --tags
 
 gitlab-release:
