@@ -2,6 +2,37 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.1-alpha.4] - 2024-05-20
+
+### ⚙️ Miscellaneous Tasks
+
+- *(gitlab-ci)* 尝试修复合并后错误触发流水作业
+- *(gitlab-ci)* 仅在 tag 推送到 default branch，并且在页面上指定 tag 标签时执行流水线
+- *(gitlab-ci)* 修复变量错误
+- *(gitlab-ci)* 修复 tag 标签检查发版流程触发逻辑
+- *(template)* 修改发版 MR 模板
+- *(release)* Prepare for v0.1.1-alpha.4
+- *(gitlab-ci)* Automate everything!
+- *(gitlab-ci)* 提取默认镜像配置
+- *(gitlab-ci)* 恢复手动触发打标签
+- *(gitlab-ci)* 更新打版命令
+- *(GitLab-ci)* 分离每一步命令以检查命令执行原因
+- *(git-cliff)* Release-note 排除自动化提交的记录
+- *(gitlab-ci)* 修复版本 bump up 命令与推送问题
+- *(gitlab-ci)* 修复语法错误
+- *(gitlab-ci)* Fix cache issue
+- *(gitlab-ci)* 修复打版提交推送不成功的问题
+- *(gitlab-ci)* 尝试修复 release-commit 无法推送到分支的问题
+- *(gitlab-ci)* 重新合并经过验证的命令
+- *(GitLab-ci)* 更换安全git-lfs 的命令
+- *(gitlab-ci)* 更换安装 lfs 的命令
+- *(gitlab-ci)* 再次更换安装 lfs 的命令
+- *(GitLab-ci)* 切换回默认分支进行验证
+
+### Build
+
+- *(typst)* 修复错误的版本号格式
+
 ## [0.1.1-alpha.4] - 2024-05-17
 
 ### ⚙️ Miscellaneous Tasks
