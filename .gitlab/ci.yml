@@ -41,7 +41,7 @@ release-commit:
   before_script:
     - export PATH="$PATH:$CARGO_HOME/bin"
     - cargo install git-cliff sd
-    - apt install git-lfs
+    - apk add git-lfs
   script:
     - |
       git config user.name $GITLAB_USER_NAME
