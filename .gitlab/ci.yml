@@ -86,14 +86,13 @@ typst.universe-release:
   before_script:
     - export PATH="$PATH:$CARGO_HOME/bin"
     - cargo install sd
+    - SEMVER=$(echo $CI_COMMIT_TAG | sd 'v(.*)' '$1')
     - |
       git clone https://sysu:$TYPST_PACKAGES_FORK_TOKEN@github.com/sysu/packages.git typst-universe
+    - cd typst-universe/packages/preview/modern-sysu-thesis/
     - |
       git config user.name $GITLAB_USER_NAME
       git config user.email $GITLAB_USER_EMAIL
-    - cd typst-universe/packages/preview/modern-sysu-thesis/
-    - pwd
-    - SEMVER=$(echo $CI_COMMIT_TAG | sd 'v(.*)' '$1')
   script:
     - |
       git switch main
