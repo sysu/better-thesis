@@ -6,8 +6,6 @@ default:
   cache:
     paths:
       - $CARGO_HOME
-  before_script:
-    - export PATH="$PATH:$CARGO_HOME/bin"
 
 stages:
     - check
@@ -21,6 +19,7 @@ check-typst-compile:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     - if: $CI_COMMIT_TAG
   before_script:
+    - export PATH="$PATH:$CARGO_HOME/bin"
     - cargo install typst-cli
   script:
     - typst compile
@@ -39,6 +38,7 @@ release-commit:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
       when: manual
   before_script:
+    - export PATH="$PATH:$CARGO_HOME/bin"
     - cargo install git-cliff sd
   script:
     - git config user.name $GITLAB_USER_NAME
