@@ -114,6 +114,6 @@ typst.universe-release:
     - git status
     - git add .
     - git commit -m "chore(release):prepare for modern-sysu-thesis:$SEMVER"
-    - git push
+    - git push --set-upstream origin $SEMVER
   after_script:
     - rm -r typst-universe
