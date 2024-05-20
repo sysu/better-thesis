@@ -35,11 +35,13 @@ check-typst-compile:
 release-commit:
   stage: release
   rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-      when: manual
+    # - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    #   when: manual
+    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
   before_script:
     - export PATH="$PATH:$CARGO_HOME/bin"
     - cargo install git-cliff sd
+    - apt install git-lfs
   script:
     - git config user.name $GITLAB_USER_NAME
     - git config user.email $GITLAB_USER_EMAIL
