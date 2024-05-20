@@ -35,9 +35,8 @@ check-typst-compile:
 release-commit:
   stage: release
   rules:
-    # - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-    #   when: manual
-    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      when: manual
   before_script:
     - export PATH="$PATH:$CARGO_HOME/bin"
     - cargo install git-cliff sd
