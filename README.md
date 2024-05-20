@@ -1,5 +1,5 @@
 # 基于 Typst 的中山大学学位论文模板
-[![GitLab 仓库](https://gitlab.com/sysu-gitlab/thesis-template/better-thesis/-/badges/release.svg?style=flat-square)](https://gitlab.com/sysu-gitlab/thesis-template/better-thesis) [![GitHub stars](https://img.shields.io/github/stars/sysu/better-thesis.svg?style=social&label=Star&maxAge=2592000)](https://github.com/sysu/better-thesis)
+[![GitLab 仓库](https://gitlab.com/sysu-gitlab/thesis-template/better-thesis/-/badges/release.svg?style=flat-square&value_width=100)](https://gitlab.com/sysu-gitlab/thesis-template/better-thesis) [![GitHub stars](https://img.shields.io/github/stars/sysu/better-thesis.svg?style=social&label=Star&maxAge=2592000)](https://github.com/sysu/better-thesis)
 
 当前还未完全符合学位论文格式要求，欢迎同学/校友们[贡献代码](https://gitlab.com/sysu-gitlab/thesis-template/better-thesis/-/merge_requests/new)/反馈问题（[GitLab issue](https://gitlab.com/sysu-gitlab/thesis-template/better-thesis/-/issues/new)/[邮件](mailto:contact-project+sysu-gitlab-thesis-template-better-thesis-57823416-issue-@incoming.gitlab.com)）！模板交流 QQ 群：[797942860](https://jq.qq.com/?_wv=1027&k=m58va1kd)
 
