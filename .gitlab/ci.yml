@@ -55,8 +55,8 @@ release-commit:
     - git status
     - git commit -m "chore(release):prepare for $BUMPED_VERSION"
     - git tag $BUMPED_VERSION --file=release-note.md
-    - git push ci
-    - git push ci --tags
+    - git push ci HEAD:$CI_COMMIT_BRANCH
+    - git push ci HEAD:$CI_COMMIT_BRANCH --tags
 
 gitlab-release:
   stage: release
