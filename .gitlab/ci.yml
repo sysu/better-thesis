@@ -41,11 +41,12 @@ release-commit:
     - |
       curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
       apt-get install git-lfs
-    - git remote add ci "https://sysu-bot:$SYSU_BOT_TOKEN@gitlab.com/sysu-gitlab/thesis-template/better-thesis.git"
-  script:
     - |
       git config user.name $GITLAB_USER_NAME
       git config user.email $GITLAB_USER_EMAIL
+    - git remote add ci "https://sysu-bot:$SYSU_BOT_TOKEN@gitlab.com/sysu-gitlab/thesis-template/better-thesis.git"
+    - git pull ci $CI_COMMIT_BRANCH --tags
+  script:
     - |
       BUMPED_VERSION=$(git cliff --bumped-version --unreleased)
       git cliff --bump --unreleased -- --newest > release-note.md
@@ -60,7 +61,6 @@ release-commit:
     - |
       git commit -m "chore(release):prepare for $BUMPED_VERSION"
       git tag $BUMPED_VERSION --file=release-note.md
-    - git push ci HEAD:$CI_COMMIT_BRANCH
     - git push ci HEAD:$CI_COMMIT_BRANCH --tags
   after_script:
     - git remote rm ci
