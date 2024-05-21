@@ -16,7 +16,7 @@ check-typst-compile:
   stage: check
   rules:
     - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
-    - if: $CI_COMMIT_TAG =~ /v[1-9][0-9]*\.[1-9][0-9]*\.[1-9][0-9]*/
+    - if: $CI_COMMIT_TAG =~ /v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)/
   before_script:
     - export PATH="$PATH:$CARGO_HOME/bin"
     - cargo install typst-cli
@@ -69,7 +69,7 @@ gitlab-release:
   stage: release
   image: registry.gitlab.com/gitlab-org/release-cli:latest
   rules:
-    - if: $CI_COMMIT_TAG =~ /v[1-9][0-9]*\.[1-9][0-9]*\.[1-9][0-9]*/
+    - if: $CI_COMMIT_TAG =~ /v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)/
   script:
     - echo "releasing $CI_COMMIT_TAG on GitLab!"
   release:
@@ -79,7 +79,7 @@ gitlab-release:
 typst.universe-release:
   stage: release
   rules:
-    - if: $CI_COMMIT_TAG =~ /v[1-9][0-9]*\.[1-9][0-9]*\.[1-9][0-9]*/
+    - if: $CI_COMMIT_TAG =~ /v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)/
   before_script:
     - export PATH="$PATH:$CARGO_HOME/bin"
     - cargo install sd
