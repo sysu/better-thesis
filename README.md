@@ -44,7 +44,7 @@ replace-with = "tuna"
 [source.tuna]
 registry = "https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git"
 EOF
-cargo install --git https://ghproxy.com/https://github.com/typst/typst.git
+cargo install typst-cli
 ```
 
 3. 根据 [Typst 文档](https://typst.app/docs/)，参考 [项目结构](#项目结构) 中的说明，按照你的需要修改论文的各个部分。
