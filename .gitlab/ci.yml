@@ -15,9 +15,8 @@ stages:
 check-typst-compile:
   stage: check
   rules:
-    # - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
-    # - if: $CI_COMMIT_TAG =~ /v[1-9][0-9]*\.[1-9][0-9]*\.[1-9][0-9]*/
-    - if: $CI_COMMIT_TAG  # trigger rule for debugging
+    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_TAG =~ /v[1-9][0-9]*\.[1-9][0-9]*\.[1-9][0-9]*/
   before_script:
     - export PATH="$PATH:$CARGO_HOME/bin"
     - cargo install typst-cli
@@ -35,8 +34,7 @@ check-typst-compile:
 release-commit:
   stage: release
   rules:
-    # - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "web"
-    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH  # trigger rules for debugging
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "web"
   before_script:
     - export PATH="$PATH:$CARGO_HOME/bin"
     - cargo install git-cliff sd
@@ -81,8 +79,7 @@ gitlab-release:
 typst.universe-release:
   stage: release
   rules:
-    # - if: $CI_COMMIT_TAG =~ /v[1-9][0-9]*\.[1-9][0-9]*\.[1-9][0-9]*/
-    - if: $CI_COMMIT_TAG  # trigger rule for debugging
+    - if: $CI_COMMIT_TAG =~ /v[1-9][0-9]*\.[1-9][0-9]*\.[1-9][0-9]*/
   before_script:
     - export PATH="$PATH:$CARGO_HOME/bin"
     - cargo install sd
