@@ -41,6 +41,7 @@ release-commit:
     - |
       curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
       apt-get install git-lfs
+    - git remote add ci "https://sysu-bot:$SYSU_BOT_TOKEN@gitlab.com/sysu-gitlab/thesis-template/better-thesis.git"
   script:
     - |
       git config user.name $GITLAB_USER_NAME
@@ -64,6 +65,8 @@ release-commit:
       git tag $BUMPED_VERSION --file=release-note.md
     - git push ci HEAD:$CI_COMMIT_BRANCH
     - git push ci HEAD:$CI_COMMIT_BRANCH --tags
+  after_script:
+    - git remote rm ci
 
 gitlab-release:
   stage: release
