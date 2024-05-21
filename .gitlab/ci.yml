@@ -17,6 +17,7 @@ check-typst-compile:
   rules:
     - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
     - if: $CI_COMMIT_TAG =~ /v[1-9][0-9]*\.[1-9][0-9]*\.[1-9][0-9]*/
+    # - if: $CI_COMMIT_TAG  # trigger rule for debugging
   before_script:
     - export PATH="$PATH:$CARGO_HOME/bin"
     - cargo install typst-cli
@@ -35,6 +36,7 @@ release-commit:
   stage: release
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE = "web"
+    # - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH  # trigger rules for debugging
   before_script:
     - export PATH="$PATH:$CARGO_HOME/bin"
     - cargo install git-cliff sd
@@ -46,9 +48,6 @@ release-commit:
     - |
       git config user.name $GITLAB_USER_NAME
       git config user.email $GITLAB_USER_EMAIL
-    - |
-      git remote rm ci || true
-      git remote add ci "https://sysu-bot:$SYSU_BOT_TOKEN@gitlab.com/sysu-gitlab/thesis-template/better-thesis.git"
     - |
       BUMPED_VERSION=$(git cliff --bumped-version --unreleased)
       git cliff --bump --unreleased -- --newest > release-note.md
@@ -83,6 +82,7 @@ typst.universe-release:
   stage: release
   rules:
     - if: $CI_COMMIT_TAG =~ /v[1-9][0-9]*\.[1-9][0-9]*\.[1-9][0-9]*/
+    # - if: $CI_COMMIT_TAG  # trigger rule for debugging
   before_script:
     - export PATH="$PATH:$CARGO_HOME/bin"
     - cargo install sd
