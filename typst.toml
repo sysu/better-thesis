@@ -1,6 +1,6 @@
 [package]
 name = "morden-sysu-thesis"
-version = "0.1.1-alpha.4"
+version = "0.1.1-alpha.5"
 entrypoint = "lib.typ"
 repository = "https://gitlab.com/sysu-gitlab/thesis-template/better-thesis"
 authors = ["howardlau1999 <@howardlau1999>", "Sunny Huang <@huangjj27>"]

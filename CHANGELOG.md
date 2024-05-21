@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.1-alpha.5] - 2024-05-21
+
+### ⚙️ Miscellaneous Tasks
+
+- *(README)* 修复 README 图标显示版本号不全问题
+- *(typst.universe)* 添加自动打包发布到 sysu/package 仓库的流水线
+- *(typst.universe)* 修复脚本顺序错误导致的程序执行失败
+- *(typst-universe)* Fix push problem
+- *(gitlab-ci)* 修改流水线作业触发条件
+- *(gitlab-ci)* 调整发布提交任务中命令的顺序
+- *(gitlab-ci)* 补充用于检测流水线的触发规则
+- *(gitlab-ci)* 启用调试规则
+- *(gitlab-ci)* 去除无法使用的测试流水线触发规则
+
 ## [0.1.1-alpha.4] - 2024-05-20
 
 ### ⚙️ Miscellaneous Tasks
