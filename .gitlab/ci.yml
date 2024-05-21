@@ -16,8 +16,7 @@ check-typst-compile:
   stage: check
   rules:
     - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_TAG =~ /v[1-9][0-9]*\.[1-9][0-9]*\.[1-9][0-9]*/
   before_script:
     - export PATH="$PATH:$CARGO_HOME/bin"
     - cargo install typst-cli
@@ -35,21 +34,18 @@ check-typst-compile:
 release-commit:
   stage: release
   rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-      when: manual
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "web"
   before_script:
     - export PATH="$PATH:$CARGO_HOME/bin"
     - cargo install git-cliff sd
     - |
       curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
       apt-get install git-lfs
+    - git remote add ci "https://sysu-bot:$SYSU_BOT_TOKEN@gitlab.com/sysu-gitlab/thesis-template/better-thesis.git"
   script:
     - |
       git config user.name $GITLAB_USER_NAME
       git config user.email $GITLAB_USER_EMAIL
-    - |
-      git remote rm ci || true
-      git remote add ci "https://sysu-bot:$SYSU_BOT_TOKEN@gitlab.com/sysu-gitlab/thesis-template/better-thesis.git"
     - |
       BUMPED_VERSION=$(git cliff --bumped-version --unreleased)
       git cliff --bump --unreleased -- --newest > release-note.md
@@ -66,12 +62,14 @@ release-commit:
       git tag $BUMPED_VERSION --file=release-note.md
     - git push ci HEAD:$CI_COMMIT_BRANCH
     - git push ci HEAD:$CI_COMMIT_BRANCH --tags
+  after_script:
+    - git remote rm ci
 
 gitlab-release:
   stage: release
   image: registry.gitlab.com/gitlab-org/release-cli:latest
   rules:
-    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_TAG =~ /v[1-9][0-9]*\.[1-9][0-9]*\.[1-9][0-9]*/
   script:
     - echo "releasing $CI_COMMIT_TAG on GitLab!"
   release:
@@ -81,8 +79,7 @@ gitlab-release:
 typst.universe-release:
   stage: release
   rules:
-    - if: $CI_COMMIT_TAG
-    # - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_TAG =~ /v[1-9][0-9]*\.[1-9][0-9]*\.[1-9][0-9]*/
   before_script:
     - export PATH="$PATH:$CARGO_HOME/bin"
     - cargo install sd
