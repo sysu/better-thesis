@@ -70,5 +70,13 @@ cargo install typst-cli
         - 本地使用模板时，模板组件可以简单地通过 `typst` 命令自动管理安装
     - 语法简洁：typst 是与 markdown 类似的标记性语言，可以通过标记的方式来轻松控制语法（如`= 标题`、`*粗体*`、`_斜体_` `@引用`、 数学公式`$E = m c^2$`）
 
-### 为什么有两份 Typst 模板（[sysu-thesis-typst](https://github.com/howardlau1999/sysu-thesis-typst) 和 modern-sysu-thesis）？
-后者是在前者的基础上，同时参考 [modern-nju-thesis](https://typst.app/universe/package/modern-nju-thesis) ，改造后适配了 [typst.app/universe](https://typst.app/universe)。以及，放到 [@sysu](https://github.com/sysu) 组织下提高了曝光度。
+### 为什么有两份 Typst 模板（[sysu-thesis-typst] 和 modern-sysu-thesis）？
+后者是在前者的基础上，同时参考 [modern-nju-thesis] ，改造后适配了 [typst.app/universe](https://typst.app/universe)。以及，放到 [@sysu](https://github.com/sysu) 组织下提高了曝光度。
+
+## 致谢
+- 感谢 [sysu-thesis-typst] 提供了中山大学的页面样式与初版源码
+- 感谢 [modern-nju-thesis] 提供了一个更好的代码组织架构
+- 感谢中山大学 Typst 模板交流群（[797942860](https://jq.qq.com/?_wv=1027&k=m58va1kd)）、Typst 中文交流群（793548390）群友的帮助交流。
+
+[sysu-thesis-typst]: https://github.com/howardlau1999/sysu-thesis-typst
+[modern-nju-thesis]: https://typst.app/universe/package/modern-nju-thesis
