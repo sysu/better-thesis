@@ -4,7 +4,7 @@
 // 参考规范: https://spa.sysu.edu.cn/zh-hans/article/1744
 #let doc(
   // 毕业论文基本信息
-  thesis_info: (
+  thesis-info: (
     // 论文标题，将展示在封面、扉页与页眉上
     // 多行标题请使用数组传入 `("thesis title", "with part next line")`，或使用换行符：`"thesis title\nwith part next line"`
     title: ("基于 Typst 的", "中山大学学位论文模板"),
@@ -45,31 +45,28 @@
     department: "数据科学与计算机学院",
     major: "软件工程",
   )
-  thesis_info.author = thesis_info.at("author", default: default-author)
+  thesis-info.author = thesis-info.at("author", default: default-author)
 
-  let default_thesis_info = (
+  let default-thesis-info = (
     title: ("中山大学本科生毕业论文（设计）", "写作与印制规范"),
-    author: (
-      sno: "1xxxxxxx",
-      name: "张三",
-      grade: "2024",
-      department: "某学院",
-      major: "某专业",
-    ),
+    title-en: ("The Specification of Writting and Printing", "for SYSU thesis"),
     supervisor: ("李四", "教授"),
     submit-date: datetime.today(),
   )
-  thesis_info = default_thesis_info + thesis_info
+  thesis-info = default-thesis-info + thesis-info
 
   // 文档元数据处理
-  if type(thesis_info.title) == str {
-    thesis_info.title = thesis_info.title.split("\n")
+  if type(thesis-info.title) == str {
+    thesis-info.title = thesis-info.title.split("\n")
+  }
+  if type(thesis-info.title-en) == str {
+    thesis-info.title-en = thesis-info.title-en.split("\n")
   }
 
   set document(
-    title: thesis_info.title.join(""),
-    author: thesis_info.author.name,
-    // keywords: thesis_info.abstract.keywords,
+    title: thesis-info.title.join(""),
+    author: thesis-info.author.name,
+    // keywords: thesis-info.abstract.keywords,
   )
 
   // 纸张大小：A4。页边距：上边距25 mm，下边距20 mm，左右边距均为30 mm。
@@ -77,7 +74,10 @@
 
   // 依序渲染页面
   [
-    #if pages.cover { cover(info: thesis_info) }
+    #if pages.cover {
+      pagebreak(weak: true, to: if twoside { "odd" })
+      cover(info: thesis-info)
+    }
     #content
   ]
 }
