@@ -1,3 +1,5 @@
+#import "/specifications/bachelor/cover.typ": cover
+
 // 中山大学本科生毕业论文（设计）写作与印制规范
 // 参考规范: https://spa.sysu.edu.cn/zh-hans/article/1744
 #let doc(
@@ -22,10 +24,29 @@
     // 提交日期，默认为论文 PDF 生成日期
     submit-date: datetime.today(),
   ),
+
+  pages: (
+    cover: true,
+  ),
+
+  // 双面模式，会加入空白页，便于打印
+  twoside: false,
+
+  // 论文正文信息，包括绪论、主体、结论
   content
 ) = {
   // 文档默认参数处理
   // 论文信息默认参数。函数传入参数会完全覆盖参数值，因此需要提供默认参数补充。
+  // 彩蛋：如果论文参数不传递作者参数，那么论文就会被署名论文模板作者
+  let default-author = (
+    sno: "13xxxx87",
+    name: "Sunny Huang",
+    grade: "2013",
+    department: "数据科学与计算机学院",
+    major: "软件工程",
+  )
+  thesis_info.author = thesis_info.at("author", default: default-author)
+
   let default_thesis_info = (
     title: ("中山大学本科生毕业论文（设计）", "写作与印制规范"),
     author: (
@@ -56,7 +77,7 @@
 
   // 依序渲染页面
   [
-
+    #if pages.cover { cover(info: thesis_info) }
     #content
   ]
 }
