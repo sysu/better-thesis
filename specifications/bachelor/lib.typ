@@ -1,6 +1,8 @@
 #import "/specifications/bachelor/cover.typ": cover
 #import "/specifications/bachelor/titlepage.typ": titlepage
 #import "/specifications/bachelor/declaration.typ": declaration
+#import "/specifications/bachelor/abstract.typ": abstract, abstract-page
+#import "/specifications/bachelor/abstract-en.typ": abstract-en, abstract-en-page
 
 // 中山大学本科生毕业论文（设计）写作与印制规范
 // 参考规范: https://spa.sysu.edu.cn/zh-hans/article/1744
@@ -33,6 +35,8 @@
     cover: true,
     titlepage: true,
     declaration: true,
+    abstract: true,
+    abstract-en: true,
   ),
 
   // 双面模式，会加入空白页，便于打印
@@ -96,6 +100,16 @@
       declaration()
     }
 
+    #if pages.abstract {
+      pagebreak(weak: true, to: if twoside { "odd" })
+      abstract-page()
+    }
+    #if pages.abstract-en {
+      pagebreak(weak: true, to: if twoside { "odd" })
+      abstract-en-page()
+    }
+
+    #pagebreak()
     #content
   ]
 }
