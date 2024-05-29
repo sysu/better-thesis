@@ -1,4 +1,5 @@
 #import "/specifications/bachelor/cover.typ": cover
+#import "/specifications/bachelor/titlepage.typ": titlepage
 
 // 中山大学本科生毕业论文（设计）写作与印制规范
 // 参考规范: https://spa.sysu.edu.cn/zh-hans/article/1744
@@ -8,6 +9,7 @@
     // 论文标题，将展示在封面、扉页与页眉上
     // 多行标题请使用数组传入 `("thesis title", "with part next line")`，或使用换行符：`"thesis title\nwith part next line"`
     title: ("基于 Typst 的", "中山大学学位论文模板"),
+    title-en: "A Typst Template for SYSU thesis",
 
     // 论文作者信息：学号、姓名、院系、专业、指导老师
     author: (
@@ -25,8 +27,10 @@
     submit-date: datetime.today(),
   ),
 
+  // 控制页面是否渲染
   pages: (
     cover: true,
+    titlepage: true,
   ),
 
   // 双面模式，会加入空白页，便于打印
@@ -78,11 +82,15 @@
       pagebreak(weak: true, to: if twoside { "odd" })
       cover(info: thesis-info)
     }
+    #if pages.titlepage {
+      pagebreak(weak: true, to: if twoside { "odd" })
+      titlepage(info: thesis-info)
+    }
     #content
   ]
 }
 
 // 以下为校对用测试 preview 页面
-#show: doc
+#show: doc.with(thesis-info: (:))
 
 = 第一章
