@@ -51,6 +51,9 @@
     // keywords: thesis_info.abstract.keywords,
   )
 
+  // 纸张大小：A4。页边距：上边距25 mm，下边距20 mm，左右边距均为30 mm。
+  set page(paper: "a4", margin: (top: 25mm, bottom: 20mm, x: 30mm))
+
   // 依序渲染页面
   [
 
