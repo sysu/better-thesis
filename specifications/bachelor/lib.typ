@@ -76,7 +76,8 @@
   // 纸张大小：A4。页边距：上边距25 mm，下边距20 mm，左右边距均为30 mm。
   set page(paper: "a4", margin: (top: 25mm, bottom: 20mm, x: 30mm))
 
-  // 依序渲染页面
+  // 毕业论文应按以下顺序装订和存档：
+  // 封面->扉页->学术诚信声明->摘要->目录->正文->参考文献（->附录）->致谢。
   [
     #if pages.cover {
       pagebreak(weak: true, to: if twoside { "odd" })
