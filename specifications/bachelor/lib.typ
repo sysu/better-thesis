@@ -82,6 +82,13 @@
   // 纸张大小：A4。页边距：上边距25 mm，下边距20 mm，左右边距均为30 mm。
   set page(paper: "a4", margin: (top: 25mm, bottom: 20mm, x: 30mm))
 
+  // 行距：1.5倍行距
+  // 行距理解为默认行距（1em * 120%）的1.5倍，由于目前尚未实现 [line-height 模
+  // 型]，故换算成行间距（leading）
+  //
+  // [line-height 模型]: https://github.com/typst/typst/issues/4224
+  set par(leading: 1em * 120% * 1.5 - 1em)
+
   // 毕业论文应按以下顺序装订和存档：
   // 封面->扉页->学术诚信声明->摘要->目录->正文->参考文献（->附录）->致谢。
   [
