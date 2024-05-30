@@ -4,6 +4,8 @@
 #import "/specifications/bachelor/abstract.typ": abstract, abstract-page
 #import "/specifications/bachelor/abstract-en.typ": abstract-en, abstract-en-page
 
+#import "@preview/numblex:0.1.1": numblex
+
 // 中山大学本科生毕业论文（设计）写作与印制规范
 // 参考规范: https://spa.sysu.edu.cn/zh-hans/article/1744
 #let doc(
@@ -38,6 +40,11 @@
     abstract: true,
     abstract-en: true,
   ),
+
+  // 论文内文各大部分的标题用“一、二…… （或1、2……）”， 次级标题为“（一）、（二）……（或
+  // 1.1、2.1……）”，三级标题用“1、2……（或1.1.1、2.1.1……）”，四级标题用“（1）、（2）……
+  //（或1.1.1.1、2.1.1.1……）”，不再使用五级以下标题。两类标题不要混编。
+  numbering: "一",
 
   // 双面模式，会加入空白页，便于打印
   twoside: false,
@@ -89,6 +96,13 @@
   // [line-height 模型]: https://github.com/typst/typst/issues/4224
   set par(leading: 1em * 120% * 1.5 - 1em)
 
+  // 论文内文各大部分的标题用“一、二…… （或1、2……）”， 次级标题为“（一）、（二）……（或
+  // 1.1、2.1……）”，三级标题用“1、2……（或1.1.1、2.1.1……）”，四级标题用“（1）、（2）……
+  //（或1.1.1.1、2.1.1.1……）”，不再使用五级以下标题。两类标题不要混编。
+  set heading(depth: 4, numbering: if numbering == "一" {
+    numblex(numberings: ("一", "（一）","1", "（1）"))
+  } else { "1.1.1.1 "})
+
   // 毕业论文应按以下顺序装订和存档：
   // 封面->扉页->学术诚信声明->摘要->目录->正文->参考文献（->附录）->致谢。
   [
@@ -124,4 +138,8 @@
 // 以下为校对用测试 preview 页面
 #show: doc.with(thesis-info: (:))
 
+// 正文各部分的标题应简明扼要，不使用标点符号。
 = 第一章
+== 节标题
+=== 小节标题
+==== 四级标题
