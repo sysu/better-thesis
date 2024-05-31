@@ -25,8 +25,6 @@ The English abstract and its keywords should be the same as the Chinese one. Bot
   outline-title: "ABSTRACT",
   outlined: false,
 ) = {
-  pagebreak(weak: true, to: if twoside { "odd" })
-
   [
     #set text(size: 字号.小四)
 
