@@ -4,6 +4,8 @@
 #import "/specifications/bachelor/abstract.typ": abstract, abstract-page
 #import "/specifications/bachelor/abstract-en.typ": abstract-en, abstract-en-page
 
+#import "/utils/style.typ": 字号, 字体,
+
 #import "@preview/numblex:0.1.1": numblex
 
 // 中山大学本科生毕业论文（设计）写作与印制规范
@@ -96,12 +98,27 @@
   // [line-height 模型]: https://github.com/typst/typst/issues/4224
   set par(leading: 1em * 120% * 1.5 - 1em)
 
+  // 正文内容 宋体小四号
+  set text(lang: "zh", font: 字体.宋体, size: 字号.小四)
+
   // 论文内文各大部分的标题用“一、二…… （或1、2……）”， 次级标题为“（一）、（二）……（或
   // 1.1、2.1……）”，三级标题用“1、2……（或1.1.1、2.1.1……）”，四级标题用“（1）、（2）……
   //（或1.1.1.1、2.1.1.1……）”，不再使用五级以下标题。两类标题不要混编。
   set heading(depth: 4, numbering: if numbering == "一" {
     numblex(numberings: ("一", "（一）","1", "（1）"))
   } else { "1.1.1.1 "})
+
+  // 正文各章标题 黑体三号居中
+  show heading.where(level: 1): text.with(font: 字体.黑体, size: 字号.三号)
+  show heading.where(level: 1): align.with(center)
+
+  // 正文各节一级标题 黑体四号左对齐
+  show heading.where(level: 2): text.with(font: 字体.黑体, size: 字号.四号)
+
+  // 正文各节二级及以下标题 宋体小四号加粗左对齐空两格
+  show heading: text.with(font: 字体.宋体, size: 字号.小四, weight: "bold")
+  show heading.where(level: 3): it => pad(left: 2em, it)
+  show heading.where(level: 4): it => pad(left: 2em, it)
 
   // 毕业论文应按以下顺序装订和存档：
   // 封面->扉页->学术诚信声明->摘要->目录->正文->参考文献（->附录）->致谢。
@@ -143,3 +160,4 @@
 == 节标题
 === 小节标题
 ==== 四级标题
+写一下测试的内容
