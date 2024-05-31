@@ -36,11 +36,8 @@
 
   // 控制页面是否渲染
   pages: (
+    // 封面可能由学院统一打印提供，因此可以不渲染
     cover: true,
-    titlepage: true,
-    declaration: true,
-    abstract: true,
-    abstract-en: true,
   ),
 
   // 论文内文各大部分的标题用“一、二…… （或1、2……）”， 次级标题为“（一）、（二）……（或
@@ -127,34 +124,24 @@
 
   // 毕业论文应按以下顺序装订和存档：
   // 封面->扉页->学术诚信声明->摘要->目录->正文->参考文献（->附录）->致谢。
-  [
-    #if pages.cover {
-      pagebreak(weak: true, to: if twoside { "odd" })
-      cover(info: thesis-info)
-    }
+  if pages.cover {
+    pagebreak(weak: true, to: if twoside { "odd" })
+    cover(info: thesis-info)
+  }
 
-    #if pages.titlepage {
-      pagebreak(weak: true, to: if twoside { "odd" })
-      titlepage(info: thesis-info)
-    }
+  pagebreak(weak: true, to: if twoside { "odd" })
+  titlepage(info: thesis-info)
 
-    #if pages.declaration {
-      pagebreak(weak: true, to: if twoside { "odd" })
-      declaration()
-    }
+  pagebreak(weak: true, to: if twoside { "odd" })
+  declaration()
 
-    #if pages.abstract {
-      pagebreak(weak: true, to: if twoside { "odd" })
-      abstract-page()
-    }
-    #if pages.abstract-en {
-      pagebreak(weak: true, to: if twoside { "odd" })
-      abstract-en-page()
-    }
+  pagebreak(weak: true, to: if twoside { "odd" })
+  abstract-page()
+  pagebreak(weak: true, to: if twoside { "odd" })
+  abstract-en-page()
 
-    #pagebreak()
-    #content
-  ]
+  pagebreak()
+  content
 }
 
 // 以下为校对用测试 preview 页面
