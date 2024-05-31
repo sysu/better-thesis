@@ -104,6 +104,7 @@
   set heading(depth: 4, numbering: if numbering == "一" {
     numblex(numberings: ("一", "（一）","1", "（1）"))
   } else { "1.1.1.1 "})
+  show heading: set text(weight: "regular")
 
   // 章和节标题段前段后各空0.5行
   // 行理解为当前行距，故在 "1.5倍行距" 的基准上再算一半，也即 "0.75倍行距"
@@ -111,14 +112,15 @@
   show heading.where(level: 2): set block(above: 1em * 120% * 0.75, below: 1em * 120% * 0.75)
 
   // 正文各章标题 黑体三号居中
-  show heading.where(level: 1): text.with(font: 字体.黑体, size: 字号.三号)
-  show heading.where(level: 1): align.with(center)
+  show heading.where(level: 1): set text(font: 字体.黑体, size: 字号.三号)
+  show heading.where(level: 1): set align(center)
 
   // 正文各节一级标题 黑体四号左对齐
-  show heading.where(level: 2): text.with(font: 字体.黑体, size: 字号.四号)
+  show heading.where(level: 2): set text(font: 字体.黑体, size: 字号.四号)
 
   // 正文各节二级及以下标题 宋体小四号加粗左对齐空两格
-  show heading: text.with(font: 字体.宋体, size: 字号.小四, weight: "bold")
+  show heading.where(level: 3): set text(font: 字体.宋体, size: 字号.小四, weight: "bold")
+  show heading.where(level: 4): set text(font: 字体.宋体, size: 字号.小四, weight: "bold")
   show heading.where(level: 3): it => pad(left: 2em, it)
   show heading.where(level: 4): it => pad(left: 2em, it)
 
