@@ -92,7 +92,7 @@
   set page(paper: "a4", margin: (top: 25mm, bottom: 20mm, x: 30mm))
 
   // 行距：1.5倍行距
-  // 行距理解为默认行距（1em * 120%）的1.5倍，由于目前尚未实现 [line-height 模
+  // 行距理解为 word 默认行距（1em * 120%）的1.5倍，由于目前尚未实现 [line-height 模
   // 型]，故换算成行间距（leading）
   //
   // [line-height 模型]: https://github.com/typst/typst/issues/4224
@@ -107,6 +107,11 @@
   set heading(depth: 4, numbering: if numbering == "一" {
     numblex(numberings: ("一", "（一）","1", "（1）"))
   } else { "1.1.1.1 "})
+
+  // 章和节标题段前段后各空0.5行
+  // 行理解为当前行距，故在 "1.5倍行距" 的基准上再算一半，也即 "0.75倍行距"
+  show heading.where(level: 1): set block(above: 1em * 120% * 0.75, below: 1em * 120% * 0.75)
+  show heading.where(level: 2): set block(above: 1em * 120% * 0.75, below: 1em * 120% * 0.75)
 
   // 正文各章标题 黑体三号居中
   show heading.where(level: 1): text.with(font: 字体.黑体, size: 字号.三号)
