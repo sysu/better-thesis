@@ -143,6 +143,9 @@
   pagebreak(weak: true, to: if twoside { "odd" })
   abstract-en-page()
 
+  pagebreak(weak: true, to: if twoside { "odd" })
+  outline()
+
   // 正文段落按照中文惯例缩进两格
   {
     // 通过插入假段落修复[章节第一段不缩进问题](https://github.com/typst/typst/issues/311)
