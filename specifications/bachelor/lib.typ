@@ -96,7 +96,9 @@
   // [line-height 模型]: https://github.com/typst/typst/issues/4224
   set par(leading: 1em * 120% * 1.5 - 1em)
 
+  // 目录内容 宋体小四号
   // 正文内容 宋体小四号
+  // 致谢、附录内容	宋体小四号
   set text(lang: "zh", font: 字体.宋体, size: 字号.小四)
 
   // 论文内文各大部分的标题用“一、二…… （或1、2……）”， 次级标题为“（一）、（二）……（或
@@ -112,7 +114,10 @@
   show heading.where(level: 1): set block(above: 1em * 120% * 0.75, below: 1em * 120% * 0.75)
   show heading.where(level: 2): set block(above: 1em * 120% * 0.75, below: 1em * 120% * 0.75)
 
+  // 目录标题 黑体三号居中
   // 正文各章标题 黑体三号居中
+  // 参考文献标题 黑体三号居中
+  // 致谢、附录标题	黑体三号居中
   show heading.where(level: 1): set text(font: 字体.黑体, size: 字号.三号)
   show heading.where(level: 1): set align(center)
 
