@@ -1,6 +1,5 @@
 // 利用 state 捕获摘要参数，并通过 context 传递给渲染函数
 #import "/utils/style.typ": 字号, 字体
-#import "/utils/invisible-heading.typ": invisible-heading
 
 #let abstract-en-keywords = state("keywords-en", (
   "Sun Yat-sen University",
@@ -20,27 +19,25 @@ The English abstract and its keywords should be the same as the Chinese one. Bot
 }
 
 // 英文摘要页
-#let abstract-en-page(
-  twoside: false,
-  outline-title: "ABSTRACT",
-  outlined: false,
-) = {
+#let abstract-en-page() = {
+  // 英文摘要内容 Times New Roman小四号
+  set text(font: 字体.宋体, size: 字号.小四)
+
+  // 英文摘要标题	Times New Roman加粗三号全部大写
+  show heading.where(level: 1): set text(font: 字体.宋体, size: 字号.三号, weight: "bold")
+  
+  // 摘要标题不编号
+  show heading.where(level: 1): set heading(numbering: none)
+
   [
-    #set text(size: 字号.小四)
-
-    // 标记一个不可见的标题用于目录生成
-    #invisible-heading(level: 1, outlined: outlined, outline-title)
-
-    #align(center)[
-      #set text(size: 字号.三号, weight: "bold")
-      [ABSTRACT]
-      #v(1em)
-    ]
+    = ABSTRACT
 
     #context abstract-en-content.final()
 
     #v(1em)
 
+    // 摘要正文下方另起一行顶格打印“关键词”款项，后加冒号，多个关键词以逗号分隔。
+    // （标题“Keywords”加粗）
     *Keywords:* #context abstract-en-keywords.final().join(", ")
   ]
 }

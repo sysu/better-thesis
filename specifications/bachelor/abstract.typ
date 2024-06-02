@@ -1,6 +1,6 @@
 // 利用 state 捕获摘要参数，并通过 context 传递给渲染函数
 #import "/utils/style.typ": 字号, 字体
-#import "/utils/invisible-heading.typ": invisible-heading
+#import "/utils/indent.typ": fake-par
 
 #let abstract-keywords = state("keywords", ("中山大学", "论文", "学位论文", "规范"))
 #let abstract-content = state("abstract", [
@@ -15,31 +15,33 @@
 }
 
 // 中文摘要页
-#let abstract-page(
-  outline-title: "中文摘要",
-  outlined: false,
-) = {
+#let abstract-page() = {
+  // 中文摘要内容 宋体小四号
+  set text(font: 字体.宋体, size: 字号.小四)
+
+  // 中文摘要标题 黑体三号居中
+  show heading.where(level: 1): set text(font: 字体.黑体, size: 字号.三号)
+  
+  // 摘要标题不编号
+  show heading.where(level: 1): set heading(numbering: none)
+  
+  // 通过插入假段落修复[章节第一段不缩进问题](https://github.com/typst/typst/issues/311)
+  show heading.where(level: 1): it => {
+    it
+    fake-par
+  }
+
   [
-    #set text(font: 字体.宋体, size: 字号.小四)
+    = 摘　要
 
-    // 标记一个不可见的标题用于目录生成
-    #invisible-heading(level: 1, outlined: outlined, outline-title)
-
-    #align(center)[
-      #set text(size: 字号.三号, font: 字体.黑体)
-      【摘#h(1em)要】
-      #v(1em)
-    ]
-
-    #[
-      #set par(first-line-indent: 2em)
-
-      #context abstract-content.final()
-    ]
+    #set par(first-line-indent: 2em)
+    #context abstract-content.final()
 
     #v(1em)
 
     // 摘要正文下方另起一行顶格打印“关键词”款项，后加冒号，多个关键词以逗号分隔。
+    // （标题“关键词”加粗）
+    #set par(first-line-indent: 0em)
     *关键词：*#context abstract-keywords.final().join("，")
   ]
 }
