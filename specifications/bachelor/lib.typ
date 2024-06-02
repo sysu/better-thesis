@@ -128,23 +128,27 @@
   // 毕业论文应按以下顺序装订和存档：
   // 封面->扉页->学术诚信声明->摘要->目录->正文->参考文献（->附录）->致谢。
   if pages.cover {
-    pagebreak(weak: true, to: if twoside { "odd" })
     cover(info: thesis-info)
+    pagebreak(weak: true, to: if twoside { "odd" })
   }
 
-  pagebreak(weak: true, to: if twoside { "odd" })
   titlepage(info: thesis-info)
-
   pagebreak(weak: true, to: if twoside { "odd" })
+
   declaration()
-
   pagebreak(weak: true, to: if twoside { "odd" })
+
+  // 摘要开始至绪论之前以大写罗马数字（Ⅰ，Ⅱ，Ⅲ…）单独编连续码
+  set page(numbering: "I")
+  counter(page).update(1)
+
   abstract-page()
   pagebreak(weak: true, to: if twoside { "odd" })
   abstract-en-page()
-
   pagebreak(weak: true, to: if twoside { "odd" })
+
   outline()
+  pagebreak(weak: true, to: if twoside { "odd" })
 
   // 正文段落按照中文惯例缩进两格
   {
@@ -155,9 +159,12 @@
     }
     set par(first-line-indent: 2em)
 
-    pagebreak()
+    // 绪论开始至论文结尾，以阿拉伯数字（1，2，3…）编连续码
+    set page(numbering: "1")
+    counter(page).update(1)
     content
   }
+  pagebreak(weak: true, to: if twoside { "odd" })
 }
 
 // 以下为校对用测试 preview 页面
