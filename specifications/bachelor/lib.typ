@@ -170,6 +170,13 @@
     content
   }
   pagebreak(weak: true, to: if twoside { "odd" })
+
+  // 参考文献
+  {
+    // 参考文献内容 宋体五号
+    set text(font: 字体.宋体, size: 字号.五号)
+    bilingual-bibliography(bibliography: bibliography, full: true)
+  }
 }
 
 // 以下为校对用测试 preview 页面
