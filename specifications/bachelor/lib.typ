@@ -4,8 +4,9 @@
 #import "/specifications/bachelor/abstract.typ": abstract, abstract-page
 #import "/specifications/bachelor/abstract-en.typ": abstract-en, abstract-en-page
 
-#import "/utils/style.typ": 字号, 字体,
+#import "/utils/bilingual-bibliography.typ": bilingual-bibliography
 #import "/utils/indent.typ": fake-par
+#import "/utils/style.typ": 字号, 字体,
 
 #import "@preview/numblex:0.1.1": numblex
 
@@ -34,6 +35,9 @@
     // 提交日期，默认为论文 PDF 生成日期
     submit-date: datetime.today(),
   ),
+
+  // 参考文献来源
+  bibliography: bibliography.with("ref.bib"),
 
   // 控制页面是否渲染
   pages: (
@@ -155,20 +159,20 @@
   outline()
   pagebreak(weak: true, to: if twoside { "odd" })
 
-  // 正文段落按照中文惯例缩进两格
-  {
-    // 通过插入假段落修复[章节第一段不缩进问题](https://github.com/typst/typst/issues/311)
-    show heading: it => {
-      it
-      fake-par
-    }
-    set par(first-line-indent: 2em)
+  // 绪论开始至论文结尾，以阿拉伯数字（1，2，3…）编连续码
+  set page(numbering: "1")
+  counter(page).update(1)
 
-    // 绪论开始至论文结尾，以阿拉伯数字（1，2，3…）编连续码
-    set page(numbering: "1")
-    counter(page).update(1)
-    content
+  // 正文段落按照中文惯例缩进两格
+  set par(first-line-indent: 2em)
+
+  // 通过插入假段落修复[章节第一段不缩进问题](https://github.com/typst/typst/issues/311)
+  show heading: it => {
+    it
+    fake-par
   }
+
+  content
   pagebreak(weak: true, to: if twoside { "odd" })
 
   // 参考文献
