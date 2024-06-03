@@ -3,6 +3,7 @@
 #import "/specifications/bachelor/declaration.typ": declaration
 #import "/specifications/bachelor/abstract.typ": abstract, abstract-page
 #import "/specifications/bachelor/abstract-en.typ": abstract-en, abstract-en-page
+#import "/specifications/bachelor/acknowledgement.typ": acknowledgement, acknowledgement-page
 
 #import "/utils/bilingual-bibliography.typ": bilingual-bibliography
 #import "/utils/indent.typ": fake-par
@@ -181,6 +182,11 @@
     set text(font: 字体.宋体, size: 字号.五号)
     bilingual-bibliography(bibliography: bibliography, full: true)
   }
+  pagebreak(weak: true, to: if twoside { "odd" })
+
+  // 致谢
+  acknowledgement-page()
+  pagebreak(weak: true, to: if twoside { "odd" })
 }
 
 // 以下为校对用测试 preview 页面
