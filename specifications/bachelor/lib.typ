@@ -135,6 +135,9 @@
   show heading.where(level: 3): it => pad(left: 2em, it)
   show heading.where(level: 4): it => pad(left: 2em, it)
 
+  // 图题、表题	宋体五号
+  show figure.caption: set text(font: 字体.宋体, size: 字号.五号)
+
   // 毕业论文应按以下顺序装订和存档：
   // 封面->扉页->学术诚信声明->摘要->目录->正文->参考文献（->附录）->致谢。
   if pages.cover {
