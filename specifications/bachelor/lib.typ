@@ -9,7 +9,7 @@
 #import "/utils/indent.typ": fake-par
 #import "/utils/style.typ": 字号, 字体,
 
-#import "@preview/numblex:0.1.1": numblex
+#import "@preview/numblex:0.1.1": numblex, circle_numbers
 
 // 中山大学本科生毕业论文（设计）写作与印制规范
 // 参考规范: https://spa.sysu.edu.cn/zh-hans/article/1744
@@ -135,8 +135,14 @@
   show heading.where(level: 3): it => pad(left: 2em, it)
   show heading.where(level: 4): it => pad(left: 2em, it)
 
-  // 图题、表题	宋体五号
+  // 图题、表题 宋体五号
   show figure.caption: set text(font: 字体.宋体, size: 字号.五号)
+
+  // 脚注、尾注 宋体小五号
+  show footnote.entry: set text(font: 字体.宋体, size: 字号.小五)
+
+  // 注释：毕业论文（设计）中有个别名词或情况需要解释时，可加注说明。注释采用脚注或尾注，应根据注释的先后顺序编排序号。注释序号以“①、②”等数字形式标示在正文中被注释词条的右上角，脚注或尾注内容中的序号应与被注释词条序号保持一致。
+  show footnote: set footnote(numbering: circle_numbers)
 
   // 毕业论文应按以下顺序装订和存档：
   // 封面->扉页->学术诚信声明->摘要->目录->正文->参考文献（->附录）->致谢。
