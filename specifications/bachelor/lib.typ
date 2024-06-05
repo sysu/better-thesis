@@ -138,6 +138,9 @@
   // 图题、表题 宋体五号
   show figure.caption: set text(font: 字体.宋体, size: 字号.五号)
 
+  // 标题放置在表格上方
+  show figure.where(kind: table): set figure.caption(position: top)
+
   // 脚注、尾注 宋体小五号
   show footnote.entry: set text(font: 字体.宋体, size: 字号.小五)
 
