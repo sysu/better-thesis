@@ -7,7 +7,7 @@
 
 #import "/utils/bilingual-bibliography.typ": bilingual-bibliography
 #import "/utils/indent.typ": fake-par
-#import "/utils/style.typ": 字号, 字体,
+#import "/utils/style.typ": 字号, 字体, sysucolor
 
 #import "@preview/numblex:0.1.1": numblex, circle_numbers
 
@@ -163,6 +163,14 @@
   pagebreak(weak: true, to: if twoside { "odd" })
 
   // 摘要开始至绪论之前以大写罗马数字（Ⅰ，Ⅱ，Ⅲ…）单独编连续码
+  // 页眉与页脚 宋体五号居中
+  set page(header:[
+      #set text(font: 字体.宋体, size: 字号.五号, stroke: sysucolor.green)
+      #set align(center)
+      中山大学本科生毕业论文（设计）
+      #v(-0.5em)
+      #line(length: 200%, stroke: 0.1em + sysucolor.green);
+  ])
   set page(numbering: "I")
   counter(page).update(1)
 
