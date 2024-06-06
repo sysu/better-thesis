@@ -57,7 +57,12 @@
   // 论文正文信息，包括绪论、主体、结论
   content
 ) = {
-  // 文档默认参数处理
+  // 论文信息参数处理。要求必须传递，且符合规格的参数
+  assert(type(thesis-info) == dictionary)
+  assert(type(thesis-info.title) == array or type(thesis-info.title) == str)
+  assert(type(thesis-info.title-en) == array
+    or type(thesis-info.title-en) == str
+  )
   // 论文信息默认参数。函数传入参数会完全覆盖参数值，因此需要提供默认参数补充。
   // 彩蛋：如果论文参数不传递作者参数，那么论文就会被署名论文模板作者
   let default-author = (
