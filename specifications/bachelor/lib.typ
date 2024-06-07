@@ -3,6 +3,7 @@
 #import "/specifications/bachelor/declaration.typ": declaration
 #import "/specifications/bachelor/abstract.typ": abstract, abstract-page
 #import "/specifications/bachelor/abstract-en.typ": abstract-en, abstract-en-page
+#import "/specifications/bachelor/appendix.typ": appendix, appendix-part
 #import "/specifications/bachelor/acknowledgement.typ": acknowledgement, acknowledgement-page
 
 #import "/utils/bilingual-bibliography.typ": bilingual-bibliography
@@ -44,6 +45,7 @@
   pages: (
     // 封面可能由学院统一打印提供，因此可以不渲染
     cover: true,
+    appendix: true,
   ),
 
   // 论文内文各大部分的标题用“一、二…… （或1、2……）”， 次级标题为“（一）、（二）……（或
@@ -210,6 +212,12 @@
     bilingual-bibliography(bibliography: bibliography, full: true)
   }
   pagebreak(weak: true, to: if twoside { "odd" })
+
+  // 附录
+  if pages.appendix {
+    appendix-part()
+    pagebreak(weak: true, to: if twoside { "odd" })
+  }
 
   // 致谢
   acknowledgement-page()
