@@ -18,8 +18,8 @@
   thesis-info: (
     // 论文标题，将展示在封面、扉页与页眉上
     // 多行标题请使用数组传入 `("thesis title", "with part next line")`，或使用换行符：`"thesis title\nwith part next line"`
-    title: ("基于 Typst 的", "中山大学学位论文模板"),
-    title-en: "A Typst Template for SYSU thesis",
+    title: ("中山大学本科生毕业论文（设计）", "写作与印制规范（2020-）"),
+    title-en: ("The Specification of Writting and Printing", "for SYSU thesis"),
 
     // 论文作者信息：学号、姓名、院系、专业、指导老师
     author: (
@@ -38,7 +38,7 @@
   ),
 
   // 参考文献来源
-  bibliography: bibliography.with("ref.bib"),
+  bibliography: none,
 
   // 控制页面是否渲染
   pages: (
