@@ -8,7 +8,8 @@
 ))
 #let abstract-en-content = state("abstract-en", [
 英文摘要及关键词内容应与中文摘要及关键词内容相同。中英文摘要及其关键词各置一页内。
-The English abstract and its keywords should be the same as the Chinese one. Both Chinese and English should be in seperated pages.
+The English abstract and its keywords should be the same as the Chinese one. 
+Both Chinese and English should be in seperated pages.
 ])
 #let abstract-en(
   keywords: (),
