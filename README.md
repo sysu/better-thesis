@@ -3,7 +3,7 @@
 
 **[点击此处注册 typst.app 并创建你的论文工程](https://typst.app/app?template=modern-sysu-thesis&version=0.1.1)**
 
-当前还未完全符合学位论文格式要求，欢迎同学/校友们[贡献代码](https://gitlab.com/sysu-gitlab/thesis-template/better-thesis/-/merge_requests)/反馈问题（[GitLab issue](https://gitlab.com/sysu-gitlab/thesis-template/better-thesis/-/issues)/[邮件](mailto:contact-project+sysu-gitlab-thesis-template-better-thesis-57823416-issue-@incoming.gitlab.com)）！
+当前大部分已经符合学位论文格式要求（#6），欢迎同学/校友们[贡献代码](https://gitlab.com/sysu-gitlab/thesis-template/better-thesis/-/merge_requests)/反馈问题（[GitLab issue](https://gitlab.com/sysu-gitlab/thesis-template/better-thesis/-/issues)/[邮件](mailto:contact-project+sysu-gitlab-thesis-template-better-thesis-57823416-issue-@incoming.gitlab.com)）！
 
 模板交流 QQ 群：[797942860](https://jq.qq.com/?_wv=1027&k=m58va1kd)
 
