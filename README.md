@@ -3,11 +3,14 @@
 
 **[点击此处注册 typst.app 并创建你的论文工程](https://typst.app/app?template=modern-sysu-thesis&version=0.1.1)**
 
-当前还未完全符合学位论文格式要求，欢迎同学/校友们[贡献代码](https://gitlab.com/sysu-gitlab/thesis-template/better-thesis/-/merge_requests)/反馈问题（[GitLab issue](https://gitlab.com/sysu-gitlab/thesis-template/better-thesis/-/issues)/[邮件](mailto:contact-project+sysu-gitlab-thesis-template-better-thesis-57823416-issue-@incoming.gitlab.com)）！模板交流 QQ 群：[797942860](https://jq.qq.com/?_wv=1027&k=m58va1kd)
+当前大部分已经符合学位论文格式要求（#6），欢迎同学/校友们[贡献代码](https://gitlab.com/sysu-gitlab/thesis-template/better-thesis/-/merge_requests)/反馈问题（[GitLab issue](https://gitlab.com/sysu-gitlab/thesis-template/better-thesis/-/issues)/[邮件](mailto:contact-project+sysu-gitlab-thesis-template-better-thesis-57823416-issue-@incoming.gitlab.com)）！
 
-**Q：我不会 LaTeX，可以用这个模板写论文吗？**
+模板交流 QQ 群：[797942860](https://jq.qq.com/?_wv=1027&k=m58va1kd)
 
-**A：完全可以！Typst 是一个比 LaTeX 更简单的排版语言，同时安装更加方便，编译更加快速！**
+
+## 参考规范
+- 本科生论文模板参考 [中山大学本科生毕业论文（设计）写作与印制规范 2020年发](https://spa.sysu.edu.cn/zh-hans/article/1744)
+- 研究生论文模板参考 [中山大学研究生学位论文格式要求](https://graduate.sysu.edu.cn/sites/graduate.prod.dpcms4.sysu.edu.cn/files/2019-04/%E4%B8%AD%E5%B1%B1%E5%A4%A7%E5%AD%A6%E7%A0%94%E7%A9%B6%E7%94%9F%E5%AD%A6%E4%BD%8D%E8%AE%BA%E6%96%87%E6%A0%BC%E5%BC%8F%E8%A6%81%E6%B1%82.pdf)
 
 ## 使用方法
 
@@ -52,3 +55,28 @@ cargo install typst-cli
 
 ## 项目结构
 详见 `template\thesis.typ`
+
+## FAQ
+### 为什么 XXX 的功能不能用/不符合预期？
+1. 先参考 [Typst 中文支持相关问题](https://typst-doc-cn.github.io/docs/chinese/)，以及 [Typst 官方文档](https://typst.app/docs/) 与 [tpyst.app/universe 仓库](https://typst.app/universe)，了解相关问题进展或解决方案
+2. 如果在以上资料中找不到关联资料，可以参考是否在的 [issue 列表](https://gitlab.com/sysu-gitlab/thesis-template/better-thesis/-/issues) 中能找到相关问题与进展。
+3. 如果依然没有线索，欢迎反馈问题（[GitLab issue](https://gitlab.com/sysu-gitlab/thesis-template/better-thesis/-/issues)/[邮件](mailto:contact-project+sysu-gitlab-thesis-template-better-thesis-57823416-issue-@incoming.gitlab.com)）
+
+### 为什么学校学位论文已经有了 [LaTeX 模板](https://github.com/SYSU-SCC/sysu-thesis)，还有 Typst 模板？
+- 前述 LaTeX 模板目前仅有计算机学院官方指定使用，其他学院并没有统一指定
+- 考虑到 LaTeX 对于大部分非计算机/理工科的学生入门成本比较高，因此有必要提供一种更加简洁清晰并且方便的论文模板，包括：
+    - 开箱即用：
+        - 如[前文所述](#typstapp)，本模板提供了在线直接编辑/保存/备份方案
+        - 本地使用模板时，模板组件可以简单地通过 `typst` 命令自动管理安装
+    - 语法简洁：typst 是与 markdown 类似的标记性语言，可以通过标记的方式来轻松控制语法（如`= 标题`、`*粗体*`、`_斜体_` `@引用`、 数学公式`$E = m c^2$`）
+
+### 为什么有两份 Typst 模板（[sysu-thesis-typst] 和 modern-sysu-thesis）？
+后者是在前者的基础上，同时参考 [modern-nju-thesis] ，改造后适配了 [typst.app/universe](https://typst.app/universe)。以及，放到 [@sysu](https://github.com/sysu) 组织下提高了曝光度。
+
+## 致谢
+- 感谢 [sysu-thesis-typst] 提供了中山大学的页面样式与初版源码
+- 感谢 [modern-nju-thesis] 提供了一个更好的代码组织架构
+- 感谢中山大学 Typst 模板交流群（[797942860](https://jq.qq.com/?_wv=1027&k=m58va1kd)）、Typst 中文交流群（793548390）群友的帮助交流。
+
+[sysu-thesis-typst]: https://github.com/howardlau1999/sysu-thesis-typst
+[modern-nju-thesis]: https://typst.app/universe/package/modern-nju-thesis

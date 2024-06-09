@@ -1,12 +1,10 @@
-#import "../utils/datetime-display.typ": datetime-display
-#import "../utils/style.typ": 字号, 字体, sysucolor
+#import "/utils/datetime-display.typ": datetime-display
+#import "/utils/style.typ": 字号, 字体, sysucolor
 
-// 本科生封面
-#let bachelor-cover(
-  // documentclass 传入的参数
-  twoside: false,
-  fonts: (:),
+// 封面
+#let cover(
   info: (:),
+
   // 其他参数
   stoke-width: 0.5pt,
   min-title-lines: 2,
@@ -19,34 +17,18 @@
   bold-info-keys: ("title",),
   bold-level: "bold",
 ) = {
-  // 1.  默认参数
-  fonts = 字体 + fonts
-  info = (
-    title: ("基于 Typst 的", "中山大学学位论文模板"),
-    grade: "20XX",
-    student-id: "1234567890",
-    author: "张三",
-    department: "某学院",
-    major: "某专业",
-    supervisor: ("李四", "教授"),
-    submit-date: datetime.today(),
-  ) + info
 
-  // 2.  对参数进行处理
-  // 2.1 如果是字符串，则使用换行符将标题分隔为列表
-  if type(info.title) == str {
-    info.title = info.title.split("\n")
-  }
-  // 2.2 根据 min-title-lines 填充标题
+  assert(type(info.title) == array)
+  assert(type(info.author) == dictionary)
+
   info.title = info.title + range(min-title-lines - info.title.len()).map((it) => "　")
-  // 2.3 处理提交日期
   if type(info.submit-date) == datetime {
     info.submit-date = datetime-display(info.submit-date)
   }
 
-  // 3.  内置辅助函数
+  // 内置辅助函数
   let info-key(
-    font: fonts.at(info-key-font, default: "黑体"),
+    font: 字体.at(info-key-font, default: "黑体"),
     size: 字号.小三,
     body,
   ) = {
@@ -63,7 +45,7 @@
   }
 
   let info-value(
-    font: fonts.at(info-value-font, default: "宋体"),
+    font: 字体.at(info-value-font, default: "宋体"),
     size: 字号.小三,
     key,
     body,
@@ -84,7 +66,7 @@
   }
 
   let info-long-value(
-    font: fonts.at(info-value-font, default: "宋体"),
+    font: 字体.at(info-value-font, default: "宋体"),
     size: 字号.小三,
     key,
     body,
@@ -100,7 +82,7 @@
   }
 
   let info-short-value(
-    font: fonts.at(info-value-font, default: "宋体"),
+    font: 字体.at(info-value-font, default: "宋体"),
     size: 字号.小三,
     key,
     body
@@ -113,17 +95,13 @@
     )
   }
 
-
-  // 4.  正式渲染
-
-  pagebreak(weak: true, to: if twoside { "odd" })
-
+  // 正式渲染
   // 居中对齐
   set align(center)
 
   // 封面校徽
   // 使用校方官方 VI 系统的 logo，来源：https://home3.sysu.edu.cn/sysuvi/index.html
-  image("../assets/vi/sysu_logo.svg", width: 3cm)
+  image("/assets/vi/sysu_logo.svg", width: 3cm)
 
   text(size: 字号.小初, font: 字体.宋体, weight: "bold", fill: sysucolor.green)[本科生毕业论文（设计）]
   v(-2em)
@@ -152,22 +130,15 @@
     column-gutter: column-gutter,
     row-gutter: row-gutter,
     info-key("姓　　名"),
-    info-long-value("author", info.author),
+    info-long-value("author", info.author.name),
     info-key("学　　号"),
-    info-long-value("student-id", info.student-id),
+    info-long-value("student-id", info.author.sno),
     info-key("院　　系"),
-    info-long-value("department", info.department),
+    info-long-value("department", info.author.department),
     info-key("专　　业"),
-    info-long-value("major", info.major),
+    info-long-value("major", info.author.major),
     info-key("指导教师"),
-    info-long-value("supervisor", text[ #info.supervisor.at(0) #info.supervisor.at(1) ]),
-    // info-short-value("supervisor", info.supervisor.at(0)),
-    // info-key("职　　称"),
-    // info-short-value("supervisor", info.supervisor.at(1)),
-    ..(if info.supervisor-ii != () {(
-      info-key("第二导师"),
-      info-long-value("supervisor", text[ #info.supervisor-ii.at(0) #info.supervisor-ii.at(1) ]),
-    )} else {()}),
+    info-long-value("supervisor", info.supervisor.join(" ")),
   ))
   v(2em)
 
