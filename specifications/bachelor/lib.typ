@@ -53,7 +53,7 @@
   // 论文内文各大部分的标题用“一、二…… （或1、2……）”， 次级标题为“（一）、（二）……（或
   // 1.1、2.1……）”，三级标题用“1、2……（或1.1.1、2.1.1……）”，四级标题用“（1）、（2）……
   //（或1.1.1.1、2.1.1.1……）”，不再使用五级以下标题。两类标题不要混编。
-  numbering: "一",
+  numbering: none,
 
   // 双面模式，会加入空白页，便于打印
   twoside: false,
@@ -234,11 +234,34 @@
 }
 
 // 以下为校对用测试 preview 页面
-#show: doc.with(thesis-info: (:))
+#show: doc.with(
+  bibliography: bibliography.with("/template/ref.bib"),
+  pages: (
+    appendix: true
+  )
+)
+
 
 // 正文各部分的标题应简明扼要，不使用标点符号。
-= 第一章
+= 第某章 <chapter1>
 == 节标题
 === 小节标题
 ==== 四级标题
-写一下测试的内容
+写一下测试的内容 @chapter1-img，章节标题 @chapter1[("第一章")]
+
+#figure(
+  image("/template/images/sysu_logo.svg", width: 20%),
+  caption: [图片测试],
+) <chapter1-img>
+
+// #show: appendix
+= 第一章 <appendix>
+== 节标题
+=== 小节标题
+==== 四级标题
+在附录中引用图片 @appendix-img, 以及附录章节标题 @appendix[#numbering("附录A")] 
+
+#figure(
+  image("/template/images/sysu_logo.svg", width: 20%),
+  caption: [图片测试],
+) <appendix-img>
