@@ -37,7 +37,7 @@
   }
 
   [
-    = 摘　要
+    = 摘要
 
     #set par(first-line-indent: 2em)
     #context abstract-content.final()
