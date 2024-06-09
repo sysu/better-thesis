@@ -2,6 +2,39 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.2.0] - 2024-06-09
+
+### 🚀 Features
+
+- *(specification/bachelor)* 根据规范文件配置图题、标题字体
+- *(specification/bachelor)* 根据规范修改脚注样式
+- *(specification/bachelor)* 表格标题放置到表格上方
+- *(specification/bachelor)* 设置基本的页眉
+- *(specification/bachelor)* 修改参数要求
+- *(specification/bachelor)* 附录标题中取消中英文分隔
+- *(specification/bachelor)* 默认不渲染附录页，并修改附录默认参数
+
+### 🐛 Bug Fixes
+
+- *(typst.toml)* Fix typo of "morden" to modern
+- *(specification/bechelor)* 修复附录各级标题不符合规范的问题
+- *(specification/bachelor)* 修复论文编号设置错误问题
+
+### 🚜 Refactor
+
+- *(specification/bachelor)* 修改默认参数
+
+### 📚 Documentation
+
+- *(specification/bachelor)* 调整过长的规范注释
+- *(specification/bachelor)* 删去错误的文档注释
+- *(README)* 更新文档规范实现指向 #6
+
+### ⚙️ Miscellaneous Tasks
+
+- *(specification/bachelor)* 调整默认参数分行
+- *(gitlab-ci)* 自动更新模板中版本号
+
 ## [0.1.1] - 2024-05-21
 
 ### 📚 Documentation
