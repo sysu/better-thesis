@@ -19,6 +19,9 @@
   // 致谢、附录内容	宋体小四号
   set text(font: 字体.宋体, size: 字号.小四)
 
+  // 附录标题中不需要分隔中英文
+  show heading: set text(cjk-latin-spacing: none)
+
   // 致谢、附录标题 黑体三号居中
   show heading.where(level: 1): set text(font: 字体.黑体, size: 字号.三号)
 
