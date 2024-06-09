@@ -45,7 +45,9 @@
   pages: (
     // 封面可能由学院统一打印提供，因此可以不渲染
     cover: true,
-    appendix: true,
+
+    // 附录部分为可选。设置为 true 后，会在参考文献部分与致谢部分之间插入附录部分。
+    appendix: false,
   ),
 
   // 论文内文各大部分的标题用“一、二…… （或1、2……）”， 次级标题为“（一）、（二）……（或
@@ -83,6 +85,13 @@
     submit-date: datetime.today(),
   )
   thesis-info = default-thesis-info + thesis-info
+
+  // 论文渲染控制参数处理。设置可选页面的默认设置项
+  let default-pages = (
+    cover: true,
+    appendix: false,
+  )
+  pages = default-pages + pages
 
   // 文档元数据处理
   if type(thesis-info.title) == str {
