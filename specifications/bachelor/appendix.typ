@@ -22,7 +22,6 @@
   // 致谢、附录标题 黑体三号居中
   show heading.where(level: 1): set text(font: 字体.黑体, size: 字号.三号)
 
-  // 致谢标题不编号
   // 论文附录依次用大写字母“附录A、附录B、附录C……”表示，附录内的分级序号可采用“附A1、
   // 附A1.1、附A1.1.1”等表示，图、表、公式均依此类推为“图A1、表A1、式A1”等。
   set heading(numbering: numblex(numberings: ("附录A", "附A1", "附A1.1 ", "附A1.1.1")))
