@@ -3,6 +3,7 @@
 #import "/utils/indent.typ": fake-par
 
 #import "@preview/numblex:0.1.1": numblex
+#import "@preview/i-figured:0.2.4"
 
 #let appendix-content = state("appendix", [
 = 附录要求
@@ -32,6 +33,9 @@
   show heading.where(level: 2): set heading(numbering: "附A1", outlined: false)
   show heading.where(level: 3): set heading(numbering: "附A1.1", outlined: false)
   show heading.where(level: 4): set heading(numbering: "附A1.1.1", outlined: false)
+
+  show figure: i-figured.show-figure.with(numbering: "A.1")
+  show math.equation: i-figured.show-equation.with(numbering: "(A.1)")
 
   // 重置 heading 计数
   counter(heading).update(0)
