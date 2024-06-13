@@ -11,6 +11,7 @@
 #import "/utils/style.typ": 字号, 字体, sysucolor
 
 #import "@preview/numblex:0.1.1": numblex, circle_numbers
+#import "@preview/i-figured:0.2.4"
 
 // 中山大学本科生毕业论文（设计）写作与印制规范
 // 参考规范: https://spa.sysu.edu.cn/zh-hans/article/1744
@@ -151,6 +152,11 @@
   show heading.where(level: 3): it => pad(left: 2em, it)
   show heading.where(level: 4): it => pad(left: 2em, it)
 
+  // 遇到一级标题重置图、表、公式编号计数
+  show heading: i-figured.reset-counters
+  show figure: i-figured.show-figure
+  show math.equation: i-figured.show-equation
+
   // 图题、表题 宋体五号
   show figure.caption: set text(font: 字体.宋体, size: 字号.五号)
 
@@ -259,7 +265,7 @@
 == 节标题
 === 小节标题
 ==== 四级标题
-在附录中引用图片 @appendix-img, 以及附录章节标题 @appendix[#numbering("附录A")] 
+在附录中引用图片 @appendix-img, 以及附录章节标题 @appendix[#numbering("附录A")]
 
 #figure(
   image("/template/images/sysu_logo.svg", width: 20%),

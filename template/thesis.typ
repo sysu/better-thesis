@@ -78,7 +78,7 @@
 
 == 图表
 
-引用@timing，引用@timing-tlt，以及@sysu-logo。引用图表时，表格和图片分别需要加上 `tbl:`和`fig:` 前缀才能正常显示编号。
+引用@tbl:timing，引用@tbl:timing-tlt，以及@fig:sysu-logo。引用图表时，表格和图片分别需要加上 `tbl:`和`fig:` 前缀才能正常显示编号。
 
 #align(center, (stack(dir: ltr)[
   #figure(
@@ -114,13 +114,11 @@
 
 
 == 数学公式
-#set math.equation(numbering: "(1)")
-
 可以像 Markdown 一样写行内公式 $x + y$，以及带编号的行间公式：
 
 $ phi.alt := (1 + sqrt(5)) / 2 $ <ratio>
 
-引用数学公式需要加上 `eqt:` 前缀，则由@ratio，我们有：
+引用数学公式需要加上 `eqt:` 前缀，则由@eqt:ratio，我们有：
 
 $ F_n = floor(1 / sqrt(5) phi.alt^n) $
 
