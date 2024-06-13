@@ -15,7 +15,7 @@
 ## 使用方法
 
 ### typst.app
-经过近一月紧张的迭代重构，本模板已经[发布在typst-app.universe](https://typst.app/universe/package/modern-sysu-thesis)上，[点击此处直接创建你的论文工程](https://typst.app/app?template=modern-sysu-thesis&version=0.1.1)，并直接开始编写你的论文！
+经过近一月紧张的迭代重构，本模板已经[发布在typst-app.universe](https://typst.app/universe/package/modern-sysu-thesis)上，[点击此处直接创建你的论文工程](https://typst.app/app?template=modern-sysu-thesis&version=0.2.0)，并直接开始编写你的论文！
 
 <!-- TODO(#1): 在 typst.universe 版本上线后分离模板项目 -->
 
