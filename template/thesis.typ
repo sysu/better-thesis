@@ -164,7 +164,10 @@ $ F_n = floor(1 / sqrt(5) phi.alt^n) $
 
 === 附录子子标题
 
-附录内容，这里也可以加入图片，例如@appendix-img。
+附录内容，这里也可以加入图片，例如@fig:appendix-img。
+
+从正文内容里复制公式，以审查公式编号
+$ F_n = floor(1 / sqrt(5) phi.alt^n) $
 
 #figure(
   image("images/sysu_logo.svg", width: 20%),
