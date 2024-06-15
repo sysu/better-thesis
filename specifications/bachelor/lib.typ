@@ -217,6 +217,11 @@
     fake-par
   }
 
+  show heading.where(level: 1): it => {
+    pagebreak(weak: true)
+    it
+  }
+
   content
   pagebreak(weak: true, to: if twoside { "odd" })
 
