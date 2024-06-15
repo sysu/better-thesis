@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.3.0] - 2024-06-15
+
+### 🚀 Features
+
+- *(heading)* 正文及附录部分一级标题前分页
+- *(header)* 使用章标题与论文标题作为页眉
+
+### 🐛 Bug Fixes
+
+- 用 i-figured 修复图标题没有重置按章重置的问题
+- *(appendix)* 修复附录图表、公式编码样式
+
+### 📚 Documentation
+
+- *(README)* 修复 README 文档中没有链接到规范问题
+- *(README)* 说明本科生模板已经完成模板规范要求
+- *(README)* 更新typst.app使用方法中指向的模板版本
+
+### ⚙️ Miscellaneous Tasks
+
+- 修改样例文档以通过编译
+
 ## [0.2.0] - 2024-06-09
 
 ### 🚀 Features

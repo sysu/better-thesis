@@ -1,5 +1,5 @@
 // 建议在正式编辑论文时，采用 typst.app 中的已发布版本模板
-// #import "@preview/modern-sysu-thesis:0.2.0": bachelor as thesis
+// #import "@preview/modern-sysu-thesis:0.3.0": bachelor as thesis
 
 // 仅供开发调试使用
 #import "/lib.typ": bachelor as thesis
