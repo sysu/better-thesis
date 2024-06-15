@@ -1,5 +1,5 @@
 # 基于 Typst 的中山大学学位论文模板
-[![GitLab 仓库](https://gitlab.com/sysu-gitlab/thesis-template/better-thesis/-/badges/release.svg?style=flat-square&value_width=100)](https://gitlab.com/sysu-gitlab/thesis-template/better-thesis/-/releases) [![GitHub stars](https://img.shields.io/github/stars/sysu/better-thesis.svg?style=social&label=Star&maxAge=2592000)](https://github.com/sysu/better-thesis)
+[![GitLab 最新版本](https://gitlab.com/sysu-gitlab/thesis-template/better-thesis/-/badges/release.svg?style=flat-square)](https://gitlab.com/sysu-gitlab/thesis-template/better-thesis/-/releases/permalink/latest) [![GitHub stars](https://img.shields.io/github/stars/sysu/better-thesis.svg?style=social&label=Star&maxAge=2592000)](https://github.com/sysu/better-thesis)
 
 **[点击此处注册 typst.app 并创建你的论文工程](https://typst.app/app?template=modern-sysu-thesis&version=0.1.1)**
 
