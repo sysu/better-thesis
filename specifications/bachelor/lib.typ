@@ -7,6 +7,7 @@
 #import "/specifications/bachelor/acknowledgement.typ": acknowledgement, acknowledgement-page
 
 #import "/utils/bilingual-bibliography.typ": bilingual-bibliography
+#import "/utils/custom-heading.typ": active-heading, heading-display, current-heading
 #import "/utils/indent.typ": fake-par
 #import "/utils/style.typ": 字号, 字体, sysucolor
 
@@ -186,13 +187,22 @@
 
   // 摘要开始至绪论之前以大写罗马数字（Ⅰ，Ⅱ，Ⅲ…）单独编连续码
   // 页眉与页脚 宋体五号居中
-  set page(header:[
-      #set text(font: 字体.宋体, size: 字号.五号, stroke: sysucolor.green)
-      #set align(center)
-      中山大学本科生毕业论文（设计）
-      #v(-0.5em)
-      #line(length: 200%, stroke: 0.1em + sysucolor.green);
-  ])
+  set page(header: locate(loc => {
+      set text(font: 字体.宋体, size: 字号.五号, stroke: sysucolor.green)
+      set align(center)
+      let cur-heading = current-heading(level: 1, loc)
+      let first-level-heading = heading-display(active-heading(level: 1, loc)) 
+
+      if cur-heading != none {
+        thesis-info.title.join("")
+      } else if not twoside or calc.rem(loc.page(), 2) == 1 {
+        first-level-heading 
+      } else {
+        thesis-info.title.join("")
+      }
+      line(length: 200%, stroke: 0.1em + sysucolor.green);
+    }),
+  )
   set page(numbering: "I")
   counter(page).update(1)
 
@@ -215,6 +225,11 @@
   show heading: it => {
     it
     fake-par
+  }
+
+  show heading.where(level: 1): it => {
+    pagebreak(weak: true)
+    it
   }
 
   content
