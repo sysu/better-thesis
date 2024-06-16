@@ -9,6 +9,7 @@
 #import "/utils/bilingual-bibliography.typ": bilingual-bibliography
 #import "/utils/custom-heading.typ": active-heading, heading-display, current-heading
 #import "/utils/indent.typ": fake-par
+#import "/utils/meta.typ": with-info-dafault, with-pages-default
 #import "/utils/style.typ": 字号, 字体, sysucolor
 
 #import "@preview/numblex:0.1.1": numblex, circle_numbers
@@ -63,45 +64,8 @@
   // 论文正文信息，包括绪论、主体、结论
   content
 ) = {
-  // 论文信息参数处理。要求必须传递，且符合规格的参数
-  assert(type(thesis-info) == dictionary)
-  assert(type(thesis-info.title) == array or type(thesis-info.title) == str)
-  assert(type(thesis-info.title-en) == array
-    or type(thesis-info.title-en) == str
-  )
-  // 论文信息默认参数。函数传入参数会完全覆盖参数值，因此需要提供默认参数补充。
-  // 彩蛋：如果论文参数不传递作者参数，那么论文就会被署名论文模板作者
-  let default-author = (
-    sno: "13xxxx87",
-    name: "Sunny Huang",
-    grade: "2013",
-    department: "数据科学与计算机学院",
-    major: "软件工程",
-  )
-  thesis-info.author = thesis-info.at("author", default: default-author)
-
-  let default-thesis-info = (
-    title: ("中山大学本科生毕业论文（设计）", "写作与印制规范"),
-    title-en: ("The Specification of Writting and Printing", "for SYSU thesis"),
-    supervisor: ("李四", "教授"),
-    submit-date: datetime.today(),
-  )
-  thesis-info = default-thesis-info + thesis-info
-
-  // 论文渲染控制参数处理。设置可选页面的默认设置项
-  let default-pages = (
-    cover: true,
-    appendix: false,
-  )
-  pages = default-pages + pages
-
-  // 文档元数据处理
-  if type(thesis-info.title) == str {
-    thesis-info.title = thesis-info.title.split("\n")
-  }
-  if type(thesis-info.title-en) == str {
-    thesis-info.title-en = thesis-info.title-en.split("\n")
-  }
+  let thesis-info = with-info-dafault(info: thesis-info)
+  let pages = with-pages-default(pages: pages)
 
   set document(
     title: thesis-info.title.join(""),
