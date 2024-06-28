@@ -84,6 +84,10 @@ filter_commits = false
 # sort the tags topologically
 topo_order = false
 # sort the commits inside sections by oldest/newest order
-sort_commits = "oldest"
+sort_commits = "newest"
 # limit the number of commits included in the changelog.
 # limit_commits = 42
+
+[bump]
+features_always_bump_minor = false
+breaking_always_bump_major = false
