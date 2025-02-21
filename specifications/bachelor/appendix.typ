@@ -1,6 +1,5 @@
 // 利用 state 捕获摘要参数，并通过 context 传递给渲染函数
 #import "/utils/style.typ": 字号, 字体
-#import "/utils/indent.typ": fake-par
 
 #import "@preview/numblex:0.1.1": numblex
 #import "@preview/i-figured:0.2.4"
@@ -39,12 +38,6 @@
 
   // 重置 heading 计数
   counter(heading).update(0)
-
-  // 通过插入假段落修复[章节第一段不缩进问题](https://github.com/typst/typst/issues/311)
-  show heading.where(level: 1): it => {
-    it
-    fake-par
-  }
 
   context appendix-content.final()
 }
