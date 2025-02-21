@@ -1,6 +1,5 @@
 // 利用 state 捕获摘要参数，并通过 context 传递给渲染函数
 #import "/utils/style.typ": 字号, 字体
-#import "/utils/indent.typ": fake-par
 
 #let abstract-keywords = state("keywords", ("中山大学", "论文", "学位论文", "规范"))
 #let abstract-content = state("abstract", [
@@ -26,20 +25,14 @@
 
   // 中文摘要标题 黑体三号居中
   show heading.where(level: 1): set text(font: 字体.黑体, size: 字号.三号)
-  
+
   // 摘要标题不编号
   show heading.where(level: 1): set heading(numbering: none)
-  
-  // 通过插入假段落修复[章节第一段不缩进问题](https://github.com/typst/typst/issues/311)
-  show heading.where(level: 1): it => {
-    it
-    fake-par
-  }
 
   [
     = 摘要
 
-    #set par(first-line-indent: 2em)
+    #set par(first-line-indent: (amount: 2em, all: true))
     #context abstract-content.final()
 
     #v(1em)
