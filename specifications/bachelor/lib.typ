@@ -8,7 +8,6 @@
 
 #import "/utils/bilingual-bibliography.typ": bilingual-bibliography
 #import "/utils/custom-heading.typ": active-heading, heading-display, current-heading
-#import "/utils/indent.typ": fake-par
 #import "/utils/style.typ": 字号, 字体, sysucolor
 
 #import "@preview/numblex:0.1.1": numblex, circle_numbers
@@ -187,22 +186,22 @@
 
   // 摘要开始至绪论之前以大写罗马数字（Ⅰ，Ⅱ，Ⅲ…）单独编连续码
   // 页眉与页脚 宋体五号居中
-  set page(header: locate(loc => {
+  set page(header: context {
       set text(font: 字体.宋体, size: 字号.五号, stroke: sysucolor.green)
       set align(center)
+      let loc = here()
       let cur-heading = current-heading(level: 1, loc)
-      let first-level-heading = heading-display(active-heading(level: 1, loc)) 
+      let first-level-heading = heading-display(active-heading(level: 1, loc))
 
       if cur-heading != none {
         thesis-info.title.join("")
       } else if not twoside or calc.rem(loc.page(), 2) == 1 {
-        first-level-heading 
+        first-level-heading
       } else {
         thesis-info.title.join("")
       }
       line(length: 200%, stroke: 0.1em + sysucolor.green);
-    }),
-  )
+  })
   set page(numbering: "I")
   counter(page).update(1)
 
@@ -219,13 +218,7 @@
   counter(page).update(1)
 
   // 正文段落按照中文惯例缩进两格
-  set par(first-line-indent: 2em)
-
-  // 通过插入假段落修复[章节第一段不缩进问题](https://github.com/typst/typst/issues/311)
-  show heading: it => {
-    it
-    fake-par
-  }
+  set par(first-line-indent: (amount: 2em, all: true))
 
   show heading.where(level: 1): it => {
     pagebreak(weak: true)
