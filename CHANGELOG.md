@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.4.0] - 2025-02-22
+
+### 🐛 Bug Fixes
+
+- *(page-header)* 修复页眉因 locate 函数变化不可用问题
+
+### 🚜 Refactor
+
+- *(fonts)* 将中文中的英文采用英文默认字体
+- *(first-line-indent)* [**breaking**] 将 fake-par 修复方案替换为 typst first-line-indent
+
 ## [0.3.1] - 2025-02-22
 
 ### 🐛 Bug Fixes
