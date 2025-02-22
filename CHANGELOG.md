@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.3.1] - 2025-02-22
+
+### 🐛 Bug Fixes
+
+- *(page-header)* 修复页眉因 locate 函数变化不可用问题
+
+### 🚜 Refactor
+
+- *(heading-numbering)* 使用 numbly 替换 numblex 生成章节编号
+- *(fonts)* 将中文中的英文采用英文默认字体
+
+### 📚 Documentation
+
+- *(README)* 更新最新版本链接以直接跳转最新版本地址
+
+### ⚙️ Miscellaneous Tasks
+
+- *(cliff)* 修改版本自动升级规则
+
 ## [0.3.0] - 2024-06-15
 
 ### 🚀 Features
