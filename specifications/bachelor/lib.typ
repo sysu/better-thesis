@@ -10,7 +10,8 @@
 #import "/utils/custom-heading.typ": active-heading, heading-display, current-heading
 #import "/utils/style.typ": 字号, 字体, sysucolor
 
-#import "@preview/numblex:0.1.1": numblex, circle_numbers
+#import "@preview/numbly:0.1.0": numbly
+#import "@preview/numblex:0.1.1": circle_numbers
 #import "@preview/i-figured:0.2.4"
 
 // 中山大学本科生毕业论文（设计）写作与印制规范
@@ -127,7 +128,7 @@
   // 1.1、2.1……）”，三级标题用“1、2……（或1.1.1、2.1.1……）”，四级标题用“（1）、（2）……
   //（或1.1.1.1、2.1.1.1……）”，不再使用五级以下标题。两类标题不要混编。
   set heading(depth: 4, numbering: if numbering == "一" {
-    numblex(numberings: ("一", "（一）","1", "（1）"))
+    numbly("{1:一}", "（{2:一}）", "{3}", "（{4}）")
   } else { "1.1.1.1 "})
   show heading: set text(weight: "regular")
 

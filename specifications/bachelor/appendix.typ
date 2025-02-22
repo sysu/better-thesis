@@ -1,7 +1,6 @@
 // 利用 state 捕获摘要参数，并通过 context 传递给渲染函数
 #import "/utils/style.typ": 字号, 字体
 
-#import "@preview/numblex:0.1.1": numblex
 #import "@preview/i-figured:0.2.4"
 
 #let appendix-content = state("appendix", [
