@@ -1,0 +1,39 @@
+on:
+  pull_request:
+    branches: main
+
+jobs:
+  typst:
+    runs-on: ubuntu-latest
+    # runs-on: ${{ matrix.os }}
+    # strategy:
+    #   matrix:
+    #     os: [ubuntu-latest, macos-latest, windows-latest]
+    #     arch: [x86_64, aarch64]
+    steps:
+      - name: Prepare Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+      - name: Install Typst
+        uses: actions-rs/install@v0.1
+        with:
+          crate: typst-cli
+          version: latest
+          use-tool-cache: true
+
+  check_template:
+    needs:
+      - typst
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the Repo
+        uses: actions/checkout@v4
+      - name: Install Typst
+        uses: actions-rs/install@v0.1
+        with:
+          crate: typst-cli
+          version: latest
+          use-tool-cache: true
+      - name: Check the template
+        run: typst compile --root=.  --font-path=./fonts ./template/thesis.typ ./thesis_preview.pdf
