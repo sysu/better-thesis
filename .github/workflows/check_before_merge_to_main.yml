@@ -23,11 +23,9 @@ jobs:
             ~/.cargo/git/db/
 
       - name: Install Typst
-        if: steps.restore.outputs.cache-hit != 'true'
-        run: cargo install typst-cli
+        run: cargo install typst-cli || true
 
       - name: Cache Cargo
-        if: steps.restore.outputs.cache-hit != 'true'
         uses: actions/cache/save@v4
         with:
           key: cargo
