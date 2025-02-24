@@ -53,6 +53,9 @@ jobs:
             ~/.cargo/registry/cache/
             ~/.cargo/git/db/
 
+      - name: checkout
+        uses: actions/checkout@v4
+
       # Check but not save. All pull requests to the main branch are considered
       # as single-feature of the whole template.
       - name: Check the template
