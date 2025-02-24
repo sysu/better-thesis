@@ -59,7 +59,7 @@ jobs:
       # Check but not save. All pull requests to the main branch are considered
       # as single-feature of the whole template.
       - name: Check the template
-        run: >
+        run:
           typst compile
             --root=.
             --font-path=./fonts
