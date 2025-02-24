@@ -1,9 +1,10 @@
 # 基于 Typst 的中山大学学位论文模板
-[![GitLab 最新版本](https://gitlab.com/sysu-gitlab/thesis-template/better-thesis/-/badges/release.svg?style=flat-square)](https://gitlab.com/sysu-gitlab/thesis-template/better-thesis/-/releases/permalink/latest) [![GitHub stars](https://img.shields.io/github/stars/sysu/better-thesis.svg?style=social&label=Star&maxAge=2592000)](https://github.com/sysu/better-thesis)
+<!-- [![GitLab 最新版本](https://gitlab.com/sysu-gitlab/thesis-template/better-thesis/-/badges/release.svg?style=flat-square)](https://gitlab.com/sysu-gitlab/thesis-template/better-thesis/-/releases/permalink/latest) -->
+[![GitHub stars](https://img.shields.io/github/stars/sysu/better-thesis.svg?style=social&label=Star&maxAge=2592000)](https://github.com/sysu/better-thesis)
 
-**[点击此处注册 typst.app 并创建你的论文工程](https://typst.app/app?template=modern-sysu-thesis&version=0.1.1)**
+**[点击此处注册 typst.app 并创建你的论文工程](https://typst.app/app?template=modern-sysu-thesis&version=0.3.0)**
 
-本科生模板已经符合学位论文格式要求（[#6](https://gitlab.com/sysu-gitlab/thesis-template/better-thesis/-/issues/6)），欢迎同学/校友们[贡献代码](https://gitlab.com/sysu-gitlab/thesis-template/better-thesis/-/merge_requests)/反馈问题（[GitLab issue](https://gitlab.com/sysu-gitlab/thesis-template/better-thesis/-/issues)/[邮件](mailto:contact-project+sysu-gitlab-thesis-template-better-thesis-57823416-issue-@incoming.gitlab.com)）！
+本科生模板已经符合学位论文格式要求（~~[#6](https://gitlab.com/sysu-gitlab/thesis-template/better-thesis/-/issues/6)~~），欢迎同学/校友们[贡献代码](https://github.com/sysu/better-thesis/pulls)/反馈问题（[GitHub issue][issues]）！
 
 模板交流 QQ 群：[797942860](https://jq.qq.com/?_wv=1027&k=m58va1kd)
 
@@ -15,20 +16,20 @@
 ## 使用方法
 
 ### typst.app
-经过近一月紧张的迭代重构，本模板已经[发布在typst-app.universe](https://typst.app/universe/package/modern-sysu-thesis)上，[点击此处直接创建你的论文工程](https://typst.app/app?template=modern-sysu-thesis&version=0.2.0)，并直接开始编写你的论文！
+经过近一月紧张的迭代重构，本模板已经[发布在typst-app.universe](https://typst.app/universe/package/modern-sysu-thesis)上，[点击此处直接创建你的论文工程](https://typst.app/app?template=modern-sysu-thesis&version=0.3.0)，并直接开始编写你的论文！
 
 <!-- TODO(#1): 在 typst.universe 版本上线后分离模板项目 -->
 
 ### Windows 用户
 
-1. [下载本仓库](https://gitlab.com/sysu-gitlab/thesis-template/better-thesis/-/archive/main/better-thesis-main.zip)，或者使用 `git clone https://gitlab.com/sysu-gitlab/thesis-template/better-thesis` 命令克隆本仓库。
+1. [下载本仓库][download]，或者使用 `git clone https://github.com/sysu/better-thesis` 命令克隆本仓库。
 2. 右键 `install_typst.ps1` 文件，选择“用 Powershell 运行”，等待 Typst 安装完成。
 3. 根据 [Typst 文档](https://typst.app/docs/)，参考 [项目结构](#项目结构) 中的说明，按照你的需要修改论文的各个部分。
 4. 双击运行 `compile.bat`，即可生成 `thesis.pdf` 文件。
 
 ### Linux/macOS 用户
 
-1. [下载本仓库](https://gitlab.com/sysu-gitlab/thesis-template/better-thesis/-/archive/main/better-thesis-main.zip)，或者使用 `git clone https://gitlab.com/sysu-gitlab/thesis-template/better-thesis` 命令克隆本仓库。
+1. [下载本仓库][download]，或者使用 `git clone https://github.com/sysu/better-thesis` 命令克隆本仓库。
 2. 使用命令行安装 Rust 工具链以及 Typst：
 
 ```bash
@@ -59,8 +60,8 @@ cargo install typst-cli
 ## FAQ
 ### 为什么 XXX 的功能不能用/不符合预期？
 1. 先参考 [Typst 中文支持相关问题](https://typst-doc-cn.github.io/docs/chinese/)，以及 [Typst 官方文档](https://typst.app/docs/) 与 [tpyst.app/universe 仓库](https://typst.app/universe)，了解相关问题进展或解决方案
-2. 如果在以上资料中找不到关联资料，可以参考是否在的 [issue 列表](https://gitlab.com/sysu-gitlab/thesis-template/better-thesis/-/issues) 中能找到相关问题与进展。
-3. 如果依然没有线索，欢迎反馈问题（[GitLab issue](https://gitlab.com/sysu-gitlab/thesis-template/better-thesis/-/issues)/[邮件](mailto:contact-project+sysu-gitlab-thesis-template-better-thesis-57823416-issue-@incoming.gitlab.com)）
+2. 如果在以上资料中找不到关联资料，可以参考是否在的 [issue 列表][issues] 中能找到相关问题与进展。
+3. 如果依然没有线索，欢迎反馈问题（[GitHub issue][issues]）
 
 ### 为什么学校学位论文已经有了 [LaTeX 模板](https://github.com/SYSU-SCC/sysu-thesis)，还有 Typst 模板？
 - 前述 LaTeX 模板目前仅有计算机学院官方指定使用，其他学院并没有统一指定
@@ -78,5 +79,7 @@ cargo install typst-cli
 - 感谢 [modern-nju-thesis] 提供了一个更好的代码组织架构
 - 感谢中山大学 Typst 模板交流群（[797942860](https://jq.qq.com/?_wv=1027&k=m58va1kd)）、Typst 中文交流群（793548390）群友的帮助交流。
 
+[issues]: https://github.com/sysu/better-thesis/issues
+[download]: https://github.com/sysu/better-thesis
 [sysu-thesis-typst]: https://github.com/howardlau1999/sysu-thesis-typst
 [modern-nju-thesis]: https://typst.app/universe/package/modern-nju-thesis
