@@ -15,8 +15,12 @@ jobs:
       - id: restore
         uses: actions/cache/restore@v4
         with:
-          path: ~/.cargo/bin/
-          key: cargo-${{ hashFiles('**/typst.toml') }}
+          key: cargo
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
 
       - name: Install Typst
         if: steps.restore.outputs.cache-hit != 'true'
@@ -26,12 +30,12 @@ jobs:
         if: steps.restore.outputs.cache-hit != 'true'
         uses: actions/cache/save@v4
         with:
+          key: cargo
           path: |
             ~/.cargo/bin/
             ~/.cargo/registry/index/
             ~/.cargo/registry/cache/
             ~/.cargo/git/db/
-          key: cargo-${{ hashFiles('**/typst.toml') }}
 
   check_template:
     needs:
@@ -42,9 +46,12 @@ jobs:
       - name: Restore Typst
         uses: actions/cache/restore@v4
         with:
+          key: cargo
           path: |
             ~/.cargo/bin/
-          key: cargo-${{ hashFiles('**/typst.toml') }}
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
 
       # Check but not save. All pull requests to the main branch are considered
       # as single-feature of the whole template.
