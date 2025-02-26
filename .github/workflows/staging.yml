@@ -54,6 +54,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          fetch-tags: true
           token: ${{ secrets.SYSU_BOT_TOKEN }}
           persist-credentials: true
           lfs: true
@@ -74,7 +75,7 @@ jobs:
           sd 'version = ".*"' "version = \"$SEMVER\"" $CI_PROJECT_DIR/typst.toml
           git add $CI_PROJECT_DIR/typst.toml
 
-      - name: Bump template for Release
+      - name: Bump template/thesis.typ
         run: |
           sd '"@preview/modern-sysu-thesis:.*"' "\"@preview/modern-sysu-thesis:$SEMVER\"" $CI_PROJECT_DIR/template/thesis.typ
           git add $CI_PROJECT_DIR/template/thesis.typ
