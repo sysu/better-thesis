@@ -73,18 +73,18 @@ jobs:
 
       - name: Bump typst.toml
         run: |
-          sd 'version = ".*"' "version = \"$SEMVER\"" $CI_PROJECT_DIR/typst.toml
-          git add $CI_PROJECT_DIR/typst.toml
+          sd 'version = ".*"' "version = \"$SEMVER\"" ./typst.toml
+          git add ./typst.toml
 
       - name: Bump template/thesis.typ
         run: |
-          sd '"@preview/modern-sysu-thesis:.*"' "\"@preview/modern-sysu-thesis:$SEMVER\"" $CI_PROJECT_DIR/template/thesis.typ
-          git add $CI_PROJECT_DIR/template/thesis.typ
+          sd '"@preview/modern-sysu-thesis:.*"' "\"@preview/modern-sysu-thesis:$SEMVER\"" ./template/thesis.typ
+          git add ./template/thesis.typ
 
       - name: Update & stage CHANGELOG.md
         run: |
           git cliff --unreleased --tag $BUMPED_VERSION --prepend CHANGELOG.md
-          git add $CI_PROJECT_DIR/CHANGELOG.md
+          git add ./CHANGELOG.md
 
       - run: git status
 
