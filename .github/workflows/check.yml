@@ -1,0 +1,66 @@
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  typst:
+    runs-on: ubuntu-latest
+    steps:
+      - id: toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      # Check if there are caches before. If there is some, the typst-cli
+      # should be installed.
+      - id: restore
+        uses: actions/cache/restore@v4
+        with:
+          key: cargo
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+
+      - name: Install Typst
+        run: cargo install typst-cli || true
+
+      - name: Cache Cargo
+        uses: actions/cache/save@v4
+        with:
+          key: cargo
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+
+  template:
+    needs:
+      - typst
+    runs-on: ubuntu-latest
+    steps:
+      # After the `typst` job, there should be typst-cli command in cache
+      - name: Restore Typst
+        uses: actions/cache/restore@v4
+        with:
+          key: cargo
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+
+      - name: checkout
+        uses: actions/checkout@v4
+
+      # Check but not save. Each pull request to the main branch is considered
+      # as a single feature/fix of the template, so no need to perserve an
+      # output pdf.
+      - name: Check the template
+        run:
+          typst compile
+            --root=.
+            --font-path=./fonts
+            ./template/thesis.typ
+            ./thesis_preview.pdf
