@@ -56,7 +56,7 @@ jobs:
         with:
           fetch-depth: 0
           fetch-tags: true
-          token: ${{ secrets.SYSU_BOT_TOKEN }}
+          # token: ${{ secrets.SYSU_BOT_TOKEN }}
           persist-credentials: true
           lfs: true
 
