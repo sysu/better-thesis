@@ -59,6 +59,11 @@ jobs:
           # token: ${{ secrets.SYSU_BOT_TOKEN }}
           persist-credentials: true
 
+      - name: Configure triger user for git
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+
       - name: Set bumped version enviornment
         run: |
           BUMPED_VERSION=$(git cliff --bumped-version --unreleased)
