@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.4.1] - 2025-02-27
+
+### 📚 Documentation
+
+- *(README)* 更新链接指向 GitHub
+
+### ⚙️ Miscellaneous Tasks
+
+- *(github)* 修复 CI TOKEN 权限，以便后续流程可以自动触发
+- *(github)* Configure git user for bump commit
+- *(GitHub)* 删去 lfs 需求
+- *(github)* 尝试使用默认 token 来排除 token 问题
+- *(github)* 修复误传 GitLab CI 参数问题
+- *(github)* Fix jobs' needs
+- *(github)* Fix tag fetching
+- *(github)* 迁移 GitLab 发版前 bump 版本流程
+- *(github)* 流程文件重命名与文档优化
+- *(github)* 每次执行刷新缓存
+- *(github)* 修复多行命令问题
+- *(github)* 修复未检出代码导致流水线失败
+- *(github)* 修复缓存问题
+- *(github)* 删去不需要的矩阵代码
+- *(github)* 修复缓存 key 获取不正确问题
+- *(github)* 替换 toolchain 与缓存流程指令
+- *(github)* Add ci for pull requests to main branch
+
 ## [0.4.0] - 2025-02-22
 
 ### 🐛 Bug Fixes
