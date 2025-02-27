@@ -1,8 +1,16 @@
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: '目标分支'
+        required: true
+        default: 'main'
+        type: choice
+        options:
+          - main
 
 jobs:
   restore-tools:
-    if: github.ref_name == github.event.repository.default_branch
     runs-on: ubuntu-latest
     steps:
       - id: toolchain
@@ -37,8 +45,6 @@ jobs:
             ~/.cargo/git/db/
 
   bump-version:
-    needs: restore-tools
-    if: github.ref_name == github.event.repository.default_branch
     runs-on: ubuntu-latest
     steps:
       - name: Restore Tools
