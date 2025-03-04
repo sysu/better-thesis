@@ -71,6 +71,7 @@ jobs:
           echo "BUMPED_VERSION=$BUMPED_VERSION" >> $GITHUB_ENV
           SEMVER=$(echo $BUMPED_VERSION | sd 'v(.*)' '$1')
           echo "SEMVER=$SEMVER" >> $GITHUB_ENV
+          echo "SEMVER=$SEMVER" >> $GITHUB_OUTPUT
 
       - name: Generate release note for tagging
         run: |
@@ -101,51 +102,40 @@ jobs:
       - name: push to upstream
         run: git push origin
 
-  validate-semver:
+  publish2universe:
     runs-on: ubuntu-latest
     needs:
       - bump-version
     steps:
-      - name: Checkout repository
+      - name: Restore Tools
+        uses: actions/cache/restore@v4
+        with:
+          key: cargo
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+
+      - name: Restore semver-tag
+        run: |
+          SEMVER = ${{ needs.bump-version.outputs.SEMVER }}
+          echo "SEMVER=$SEMVER" >> $GITHUB_ENV
+
+      - name: Checkout Repository with tagged commit
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          fetch-tags: true
 
-      - name: Validate semver tag
-        id: semver-check
-        run: |
-          TAG_NAME=${GITHUB_REF#refs/tags/}
+      - name: Checkout Packages fork
+        uses: actions/checkout@v4
+        with:
+          repository: sysu/packages
+          fetch-depth: 0
+          fetch-tags: true
+          token: ${{ secrets.TYPST_PACKAGES_FORK_TOKEN }}
+          persist-credentials: true
 
-          SEMVER_REGEX="^v(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*)?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$"
-
-          if [[ ! $TAG_NAME =~ $SEMVER_REGEX ]]; then
-            echo "错误：标签 $TAG_NAME 不符合语义化版本规范"
-            exit 1
-          fi
-
-          # 提取 SemVer 组件
-          MAJOR=${BASH_REMATCH[1]}
-          MINOR=${BASH_REMATCH[2]}
-          PATCH=${BASH_REMATCH[3]}
-          PRE_RELEASE=${BASH_REMATCH[4]}
-          BUILD=${BASH_REMATCH[5]}
-
-          # 输出变量供后续步骤使用
-          echo "SEMVER_MAJOR=$MAJOR" >> $GITHUB_OUTPUT
-          echo "SEMVER_MINOR=$MINOR" >> $GITHUB_OUTPUT
-          echo "SEMVER_PATCH=$PATCH" >> $GITHUB_OUTPUT
-          echo "SEMVER_PRE_RELEASE=$PRE_RELEASE" >> $GITHUB_OUTPUT
-          echo "SEMVER_BUILD=$BUILD" >> $GITHUB_OUTPUT
-
-      - name: Verify tag is on main HEAD
-        run: |
-          # 获取 main 分支最新提交的 SHA
-          MAIN_SHA=$(git rev-parse refs/heads/main)
-
-          # 获取当前标签指向的 SHA
-          TAG_SHA=$(git rev-parse $GITHUB_REF)
-
-          if [ "$MAIN_SHA" != "$TAG_SHA" ]; then
-            echo "错误：标签 $GITHUB_REF 未指向 main 分支的最新提交"
-            exit 1
-          fi
+      - name: ls for check
+        run: ls
