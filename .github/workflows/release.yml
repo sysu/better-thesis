@@ -148,11 +148,6 @@ jobs:
           persist-credentials: true
           path: sysu-packages
 
-      - name: Configure triger user for git
-        run: |
-          git config user.name "${{ github.actor }}"
-          git config user.email "${{ github.actor }}@users.noreply.github.com"
-
       - name: switch new branch for Packages
         run: |
           cd ~/sysu-packages/preview/modern-sysu-thesis
@@ -182,6 +177,11 @@ jobs:
         run: |
           sd '// #import "@preview/modern-sysu-thesis:' '#import "@preview/modern-sysu-thesis:' ./template/thesis.typ
           sd '#import "/lib.typ":' '// #import "lib.typ":' ./template/thesis.typ
+
+      - name: Configure triger user for git
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
 
       - name: Commit to Packages
         run: |
