@@ -135,7 +135,7 @@ jobs:
 
       - name: Store CI_PROJECT_DIR
         run: |
-          CI_PROJECT_DIR="~/better-thesis"
+          CI_PROJECT_DIR="./better-thesis"
           echo "CI_PROJECT_DIR=$CI_PROJECT_DIR" >> $GITHUB_ENV
 
       - name: Checkout Packages fork
@@ -150,7 +150,7 @@ jobs:
 
       - name: switch new branch for Packages
         run: |
-          cd ~/sysu-packages/preview/modern-sysu-thesis
+          cd ./sysu-packages/preview/modern-sysu-thesis
           git switch main
           git switch -c $SEMVER
 
