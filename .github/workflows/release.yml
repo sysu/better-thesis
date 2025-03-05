@@ -146,13 +146,13 @@ jobs:
           fetch-tags: true
           token: ${{ secrets.TYPST_PACKAGES_FORK_TOKEN }}
           persist-credentials: true
-          path: sysu-packages
+          path: sysu-fork
 
       - run: ls
 
       - name: switch new branch for Packages
         run: |
-          cd ./sysu-packages/preview/modern-sysu-thesis
+          cd ./sysu-fork/packages/preview/modern-sysu-thesis
           git switch main
           git switch -c $SEMVER
 
