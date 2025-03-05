@@ -2,7 +2,7 @@ on: workflow_dispatch
 
 jobs:
   restore-tools:
-    if: github.ref_name == github.event.repository.default_branch
+    # if: github.ref_name == github.event.repository.default_branch
     runs-on: ubuntu-latest
     steps:
       - id: toolchain
@@ -37,7 +37,7 @@ jobs:
             ~/.cargo/git/db/
 
   bump-version:
-    if: github.ref_name == github.event.repository.default_branch
+    # if: github.ref_name == github.event.repository.default_branch
     runs-on: ubuntu-latest
     needs:
       - restore-tools
@@ -106,7 +106,7 @@ jobs:
         run: git push origin
 
   publish2universe:
-    if: github.ref_name == github.event.repository.default_branch
+    # if: github.ref_name == github.event.repository.default_branch
     runs-on: ubuntu-latest
     needs:
       - bump-version
@@ -147,6 +147,8 @@ jobs:
           token: ${{ secrets.TYPST_PACKAGES_FORK_TOKEN }}
           persist-credentials: true
           path: sysu-packages
+
+      - run: ls
 
       - name: switch new branch for Packages
         run: |
