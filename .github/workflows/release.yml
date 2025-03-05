@@ -156,10 +156,14 @@ jobs:
           git switch main
           git switch -c $SEMVER
 
+      - run: ls
+
       - name: create new version directory
         run: |
           mkdir $SEMVER
           cd $SEMVER
+
+      - run: ls
 
       - name: Copy project files
         run: |
@@ -174,6 +178,8 @@ jobs:
           cp -r $CI_PROJECT_DIR/pages .
           cp -r $CI_PROJECT_DIR/specifications .
           cp -r $CI_PROJECT_DIR/template .
+
+      - run: ls
 
       - name: Switch to preview import
         run: |
