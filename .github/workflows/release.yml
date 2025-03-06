@@ -148,24 +148,23 @@ jobs:
           persist-credentials: true
           path: sysu-fork
 
-      - run: ls
+      - name: Store MODERN_SYSU_THESIS
+        run: |
+          MODERN_SYSU_THESIS=./sysu-fork/packages/preview/modern-sysu-thesis
+          echo "MODERN_SYSU_THESIS=$MODERN_SYSU_THESIS" >> $GITHUB_ENV
 
       - name: switch new branch for Packages
+        working-directory: $MODERN_SYSU_THESIS
         run: |
-          cd ./sysu-fork/packages/preview/modern-sysu-thesis
           git switch main
           git switch -c $SEMVER
-
-      - run: ls
 
       - name: create new version directory
         run: |
           mkdir $SEMVER
-          cd $SEMVER
-
-      - run: ls
 
       - name: Copy project files
+        working-directory: $MODERN_SYSU_THESIS/$SEMVER
         run: |
           cp $CI_PROJECT_DIR/LICENSE .
           cp $CI_PROJECT_DIR/README.md .
@@ -179,19 +178,20 @@ jobs:
           cp -r $CI_PROJECT_DIR/specifications .
           cp -r $CI_PROJECT_DIR/template .
 
-      - run: ls
-
       - name: Switch to preview import
+        working-directory: $MODERN_SYSU_THESIS/$SEMVER
         run: |
           sd '// #import "@preview/modern-sysu-thesis:' '#import "@preview/modern-sysu-thesis:' ./template/thesis.typ
           sd '#import "/lib.typ":' '// #import "lib.typ":' ./template/thesis.typ
 
       - name: Configure triger user for git
+        working-directory: $MODERN_SYSU_THESIS/$SEMVER
         run: |
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
 
       - name: Commit to Packages
+        working-directory: $MODERN_SYSU_THESIS/$SEMVER
         run: |
           git status
           git add .
