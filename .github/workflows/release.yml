@@ -134,7 +134,7 @@ jobs:
 
       - name: Store CI_PROJECT_DIR
         run: |
-          CI_PROJECT_DIR="${pwd}"
+          CI_PROJECT_DIR="$(pwd)"
           echo "CI_PROJECT_DIR=$CI_PROJECT_DIR" >> $GITHUB_ENV
 
       - name: Checkout Packages fork
@@ -147,7 +147,51 @@ jobs:
           persist-credentials: true
           path: sysu-fork
 
-      - name: Check current directory
+      - name: Store MODERN_SYSU_THESIS
+        run: |
+          MODERN_SYSU_THESIS="$(pwd)/sysu-fork/packages/preview/modern-sysu-thesis"
+          echo "MODERN_SYSU_THESIS=$MODERN_SYSU_THESIS" >> $GITHUB_ENV
+
+      - name: switch new branch for Packages
+        working-directory: ${{ env.MODERN_SYSU_THESIS }}
+        run: |
+          git switch main
+          git switch -c $SEMVER
+
+      - name: create new version directory
+        working-directory: ${{ env.MODERN_SYSU_THESIS }}
+        run: |
+          mkdir $SEMVER
+
+      - name: Copy project files
+        working-directory: ${{ env.MODERN_SYSU_THESIS }}/${{ env.SEMVER }}
+        run: |
+          cp $CI_PROJECT_DIR/LICENSE .
+          cp $CI_PROJECT_DIR/README.md .
+          cp $CI_PROJECT_DIR/typst.toml .
+          cp $CI_PROJECT_DIR/thumbnail.png .
+          cp $CI_PROJECT_DIR/lib.typ .
+          cp -r $CI_PROJECT_DIR/assets .
+          cp -r $CI_PROJECT_DIR/layouts .
+          cp -r $CI_PROJECT_DIR/utils .
+          cp -r $CI_PROJECT_DIR/pages .
+          cp -r $CI_PROJECT_DIR/specifications .
+          cp -r $CI_PROJECT_DIR/template .
+
+      - name: Switch to preview import
+        working-directory: ${{ env.MODERN_SYSU_THESIS }}/${{ env.SEMVER }}
+        run: |
+          sd '// #import "@preview/modern-sysu-thesis:' '#import "@preview/modern-sysu-thesis:' ./template/thesis.typ
+          sd '#import "/lib.typ":' '// #import "lib.typ":' ./template/thesis.typ
+
+      - name: Configure triger user for git
+        working-directory: ${{ env.MODERN_SYSU_THESIS }}
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+
+      - name: Commit to Packages
+        working-directory: ${{ env.MODERN_SYSU_THESIS }}
         run: |
           pwd
           ls
