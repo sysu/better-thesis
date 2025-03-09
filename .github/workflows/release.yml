@@ -131,11 +131,10 @@ jobs:
         with:
           fetch-depth: 0
           fetch-tags: true
-          path: better-thesis
 
       - name: Store CI_PROJECT_DIR
         run: |
-          CI_PROJECT_DIR="./better-thesis"
+          CI_PROJECT_DIR="$(pwd)"
           echo "CI_PROJECT_DIR=$CI_PROJECT_DIR" >> $GITHUB_ENV
 
       - name: Checkout Packages fork
@@ -146,20 +145,26 @@ jobs:
           fetch-tags: true
           token: ${{ secrets.TYPST_PACKAGES_FORK_TOKEN }}
           persist-credentials: true
-          path: sysu-packages
+          path: sysu-fork
+
+      - name: Store MODERN_SYSU_THESIS
+        run: |
+          MODERN_SYSU_THESIS="$(pwd)/sysu-fork/packages/preview/modern-sysu-thesis"
+          echo "MODERN_SYSU_THESIS=$MODERN_SYSU_THESIS" >> $GITHUB_ENV
 
       - name: switch new branch for Packages
+        working-directory: ${{ env.MODERN_SYSU_THESIS }}
         run: |
-          cd ./sysu-packages/preview/modern-sysu-thesis
           git switch main
           git switch -c $SEMVER
 
       - name: create new version directory
+        working-directory: ${{ env.MODERN_SYSU_THESIS }}
         run: |
           mkdir $SEMVER
-          cd $SEMVER
 
       - name: Copy project files
+        working-directory: ${{ env.MODERN_SYSU_THESIS }}/${{ env.SEMVER }}
         run: |
           cp $CI_PROJECT_DIR/LICENSE .
           cp $CI_PROJECT_DIR/README.md .
@@ -174,16 +179,19 @@ jobs:
           cp -r $CI_PROJECT_DIR/template .
 
       - name: Switch to preview import
+        working-directory: ${{ env.MODERN_SYSU_THESIS }}/${{ env.SEMVER }}
         run: |
           sd '// #import "@preview/modern-sysu-thesis:' '#import "@preview/modern-sysu-thesis:' ./template/thesis.typ
           sd '#import "/lib.typ":' '// #import "lib.typ":' ./template/thesis.typ
 
       - name: Configure triger user for git
+        working-directory: ${{ env.MODERN_SYSU_THESIS }}
         run: |
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
 
       - name: Commit to Packages
+        working-directory: ${{ env.MODERN_SYSU_THESIS }}
         run: |
           git status
           git add .
