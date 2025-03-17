@@ -26,6 +26,9 @@ jobs:
       - name: Install sd
         run: cargo install sd || true
 
+      - name: Install Typst
+        run: cargo install typst-cli || true
+
       - name: Cache Cargo
         uses: actions/cache/save@v4
         with:
