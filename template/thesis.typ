@@ -2,7 +2,7 @@
 // #import "@preview/modern-sysu-thesis:0.4.0": bachelor as thesis
 
 // 仅供开发调试使用
-#import "/lib.typ": bachelor as thesis
+#import "/lib.typ": doctor as thesis
 #import thesis: abstract, acknowledgement, appendix
 
 // 你首先应该安装 https://gitlab.com/sysu-gitlab/thesis-template/better-thesis/-/tree/main/fonts 里的所有字体，
@@ -15,7 +15,6 @@
     // 多行标题请使用数组传入 `("thesis title", "with part next line")`，或使用换行符：`"thesis title\nwith part next line"`
     title: ("基于 Typst 的", "中山大学学位论文模板"),
     title-en: "A Typst Template for SYSU thesis",
-
     // 论文作者信息：学号、姓名、院系、专业、指导老师
     author: (
       sno: "1xxxxxxx",
@@ -24,10 +23,8 @@
       department: "某学院",
       major: "某专业",
     ),
-
     // 指导老师信息，以`("name", "title")` 数组方式传入
     supervisor: ("李四", "教授"),
-
     // 提交日期，默认为论文 PDF 生成日期
     submit-date: datetime.today(),
   ),
@@ -39,7 +36,6 @@
   pages: (
     // 封面可能由学院统一打印提供，因此可以不渲染
     cover: true,
-
     // 附录部分为可选。设置为 true 后，会在参考文献部分与致谢部分之间插入附录部分。
     appendix: true,
   ),
@@ -80,32 +76,34 @@
 
 引用@tbl:timing，引用@tbl:timing-tlt，以及@fig:sysu-logo。引用图表时，表格和图片分别需要加上 `tbl:`和`fig:` 前缀才能正常显示编号。
 
-#align(center, (stack(dir: ltr)[
-  #figure(
-    table(
-      align: center + horizon,
-      columns: 4,
-      [t], [1], [2], [3],
-      [y], [0.3s], [0.4s], [0.8s],
-    ),
-    caption: [常规表],
-  ) <timing>
-][
-  #h(50pt)
-][
-  #figure(
-    table(
-      columns: 4,
-      stroke: none,
-      table.hline(),
-      [t], [1], [2], [3],
-      table.hline(stroke: .5pt),
-      [y], [0.3s], [0.4s], [0.8s],
-      table.hline(),
-    ),
-    caption: [三线表],
-  ) <timing-tlt>
-]))
+#align(center, (
+  stack(dir: ltr)[
+    #figure(
+      table(
+        align: center + horizon,
+        columns: 4,
+        [t], [1], [2], [3],
+        [y], [0.3s], [0.4s], [0.8s],
+      ),
+      caption: [常规表],
+    ) <timing>
+  ][
+    #h(50pt)
+  ][
+    #figure(
+      table(
+        columns: 4,
+        stroke: none,
+        table.hline(),
+        [t], [1], [2], [3],
+        table.hline(stroke: .5pt),
+        [y], [0.3s], [0.4s], [0.8s],
+        table.hline(),
+      ),
+      caption: [三线表],
+    ) <timing-tlt>
+  ]
+))
 
 #figure(
   image("images/sysu_logo.svg", width: 20%),
@@ -143,7 +141,7 @@ $ F_n = floor(1 / sqrt(5) phi.alt^n) $
   def add(x, y):
     return x + y
   ```,
-  caption:[代码块],
+  caption: [代码块],
 ) <code>
 
 
