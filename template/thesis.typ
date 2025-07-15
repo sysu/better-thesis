@@ -2,7 +2,7 @@
 // #import "@preview/modern-sysu-thesis:0.4.0": bachelor as thesis
 
 // 仅供开发调试使用
-#import "/lib.typ": doctor as thesis
+#import "/lib.typ": postgraduate as thesis
 #import thesis: abstract, acknowledgement, appendix
 
 // 你首先应该安装 https://gitlab.com/sysu-gitlab/thesis-template/better-thesis/-/tree/main/fonts 里的所有字体，
@@ -27,6 +27,8 @@
     supervisor: ("李四", "教授"),
     // 提交日期，默认为论文 PDF 生成日期
     submit-date: datetime.today(),
+    discipline: "工学",
+    degree: "博士",
   ),
 
   // 参考文献来源
@@ -35,7 +37,7 @@
   // 控制页面是否渲染
   pages: (
     // 封面可能由学院统一打印提供，因此可以不渲染
-    cover: true,
+    cover: false,
     // 附录部分为可选。设置为 true 后，会在参考文献部分与致谢部分之间插入附录部分。
     appendix: true,
   ),
@@ -49,7 +51,7 @@
   twoside: false,
 )
 
-= 导　论
+= 导 论
 
 == 列表
 
