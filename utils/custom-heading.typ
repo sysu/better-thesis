@@ -1,5 +1,5 @@
 // 展示一个标题
-#let heading-display(it) = {
+#let heading-display-postgraduate(it) = {
   if it != none {
     if it.body == [附录] {
       ""
@@ -7,6 +7,18 @@
       [第]
       numbering(it.numbering, ..counter(heading).at(it.location()))
       [章 ]
+    }
+    it.body
+  } else {
+    ""
+  }
+}
+
+#let heading-display(it) = {
+  if it != none {
+    if it.has("numbering") and it.numbering != none {
+      numbering(it.numbering, ..counter(heading).at(it.location()))
+      [ ]
     }
     it.body
   } else {

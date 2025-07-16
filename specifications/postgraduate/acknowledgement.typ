@@ -1,15 +1,15 @@
 // 利用 state 捕获摘要参数，并通过 context 传递给渲染函数
-#import "/utils/style.typ": 字号, 字体
+#import "/utils/style.typ": 字体, 字号
+
+#let contents(..titles) = context titles.named().at(text.lang)
 
 // 致谢内容
 #let acknowledgement-content = state("acknowledgement", [
-致谢应以简短的文字对课题研究与论文撰写过程中曾直接给予帮助的人员(例如指导教师、答疑教师
-及其他人员)表达自己的谢意，这不仅是一种礼貌，也是对他人劳动的尊重，是治学者应当遵循的学
-术规范。内容限一页。
+  致谢应以简短的文字对课题研究与论文撰写过程中曾直接给予帮助的人员(例如指导教师、答疑教师及其他人员)表达自己的谢意，这不仅是一种礼貌，也是对他人劳动的尊重，是治学者应当遵循的学术规范。内容限一页。
 ])
 
 #let acknowledgement(
-  body
+  body,
 ) = {
   context acknowledgement-content.update(body)
 }
@@ -25,7 +25,7 @@
   show heading.where(level: 1): set heading(numbering: none)
 
   [
-    = 致谢
+    = #contents(zh: "致谢", en: "Acknowledgements")
 
     #set par(first-line-indent: (amount: 2em, all: true))
     #context acknowledgement-content.final()

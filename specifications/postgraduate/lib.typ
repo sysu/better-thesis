@@ -9,16 +9,19 @@
 #import "/specifications/postgraduate/acknowledgement.typ": (
   acknowledgement, acknowledgement-page,
 )
+#import "/specifications/postgraduate/contents.typ": contents-page
 
 #import "/utils/bilingual-bibliography.typ": bilingual-bibliography
 #import "/utils/custom-heading.typ": (
-  active-heading, current-heading, heading-display,
+  active-heading, current-heading, heading-display-postgraduate,
 )
-#import "/utils/style.typ": sysucolor, 字体, 字号
+#import "/utils/style.typ": 字体, 字号
 
 #import "@preview/numbly:0.1.0": numbly
 #import "@preview/numblex:0.1.1": circle_numbers
 #import "@preview/i-figured:0.2.4"
+
+#let contents(..titles) = context titles.named().at(text.lang)
 
 // 中山大学本科生毕业论文（设计）写作与印制规范
 // 参考规范: https://spa.sysu.edu.cn/zh-hans/article/1744
@@ -149,7 +152,7 @@
   show heading.where(level: 1): it => {
     set text(font: 字体.黑体, size: 字号.三号)
     set align(center)
-    heading-display(it)
+    heading-display-postgraduate(it)
   }
 
   // 正文各节一级标题 黑体四号左对齐
@@ -208,10 +211,13 @@
     set align(center)
     let loc = here()
     let cur-heading = current-heading(level: 1, loc)
-    let first-level-heading = heading-display(active-heading(level: 1, loc))
+    let first-level-heading = heading-display-postgraduate(active-heading(
+      level: 1,
+      loc,
+    ))
 
     if cur-heading != none {
-      heading-display(current-heading(level: 1, loc))
+      heading-display-postgraduate(current-heading(level: 1, loc))
     } else if calc.rem(loc.page(), 2) == 1 {
       [中山大学] + thesis-info.discipline + thesis-info.degree + [学位论文]
     } else {
@@ -231,8 +237,7 @@
   abstract-en-page()
   pagebreak(weak: true, to: if twoside { "odd" })
 
-  outline()
-  pagebreak(weak: true, to: if twoside { "odd" })
+  contents-page()
 
   // 绪论开始至论文结尾，以阿拉伯数字（1，2，3…）编连续码
   set page(numbering: "1")

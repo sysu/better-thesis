@@ -1,5 +1,6 @@
 // 利用 state 捕获摘要参数，并通过 context 传递给渲染函数
 #import "/utils/style.typ": 字体, 字号
+#let contents(..titles) = context titles.named().at(text.lang)
 
 #let abstract-keywords = state("keywords", (
   "中山大学",
@@ -30,7 +31,7 @@
   show heading.where(level: 1): set heading(numbering: none)
 
   [
-    = 摘要
+    = #contents(zh: "摘要", en: "Abstract (In Chinese)")
 
     #set par(first-line-indent: (amount: 2em, all: true))
     #context abstract-content.final()
