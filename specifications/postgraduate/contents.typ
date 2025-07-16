@@ -24,6 +24,7 @@
 
     if text.lang == "en" {
       if it.element.numbering == "附录A" {
+        set text(weight: "bold")
         strong(link(
           it.element.location(),
           it.indented(none, it.inner()),

@@ -1,7 +1,7 @@
 // 展示一个标题
 #let heading-display-postgraduate(it) = {
   if it != none {
-    if it.body == [附录] {
+    if it.numbering == "附录A" {
       ""
     } else if it.has("numbering") and it.numbering != none {
       [第]
@@ -27,7 +27,7 @@
 }
 
 // 获取当前激活的 heading，参数 prev 用于标志优先使用之前页面的 heading
-#let active-heading(level: 1, prev: false, loc) = {
+#let active-heading(level: 1, prev: true, loc) = {
   // 之前页面的标题
   let prev-headings = query(selector(heading.where(level: level)).before(loc))
   // 当前页面的标题
