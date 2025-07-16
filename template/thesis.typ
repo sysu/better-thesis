@@ -3,7 +3,7 @@
 
 // 仅供开发调试使用
 #import "/lib.typ": postgraduate as thesis
-#import thesis: abstract, acknowledgement, appendix
+#import thesis: abstract, acknowledgement, appendix, contents
 
 // 你首先应该安装 https://gitlab.com/sysu-gitlab/thesis-template/better-thesis/-/tree/main/fonts 里的所有字体，
 // 如果是 Web App 上编辑，你应该手动上传这些字体文件，否则不能正常使用「楷体」和「仿宋」，导致显示错误。
@@ -51,30 +51,31 @@
   twoside: false,
 )
 
-= 导 论
+// 本科模板无需双语目录，不需要使用#contents函数，请自行删除并直接输入标题
+= #contents(zh: "导 论", en: "Introduction")
 
-== 列表
+== #contents(zh: "列表", en: "List")
 
-=== 无序列表
+=== #contents(zh: "无序列表", en: "Unordered list")
 
 - 无序列表项一
 - 无序列表项二
   - 无序子列表项一
   - 无序子列表项二
 
-=== 有序列表
+=== #contents(zh: "有序列表", en: "Ordered list")
 
 + 有序列表项一
 + 有序列表项二
   + 有序子列表项一
   + 有序子列表项二
 
-=== 术语列表
+=== #contents(zh: "术语列表", en: "List of terms")
 
 / 术语一: 术语解释
 / 术语二: 术语解释
 
-== 图表
+== #contents(zh: "图表", en: "Figures")
 
 引用@tbl:timing，引用@tbl:timing-tlt，以及@fig:sysu-logo。引用图表时，表格和图片分别需要加上 `tbl:`和`fig:` 前缀才能正常显示编号。
 
@@ -113,7 +114,7 @@
 ) <sysu-logo>
 
 
-== 数学公式
+== #contents(zh: "数学公式", en: "Mathematical formula")
 可以像 Markdown 一样写行内公式 $x + y$，以及带编号的行间公式：
 
 $ phi.alt := (1 + sqrt(5)) / 2 $ <ratio>
@@ -130,11 +131,11 @@ $ y = integral_1^2 x^2 dif x $ <->
 
 $ F_n = floor(1 / sqrt(5) phi.alt^n) $
 
-== 参考文献
+== #contents(zh: "参考文献", en: "References")
 
 可以像这样引用参考文献：图书#[@蒋有绪1998]和会议#[@中国力学学会1990]。
 
-== 代码块
+== #contents(zh: "代码块", en: "Code block")
 
 代码块支持语法高亮。引用时需要加上 `lst:` @lst:code
 
@@ -147,18 +148,18 @@ $ F_n = floor(1 / sqrt(5) phi.alt^n) $
 ) <code>
 
 
-= 正　文
+= #contents(zh: "正　文", en: "Main body")
 
-== 正文子标题
+== #contents(zh: "正文子标题", en: "Subtitle of main body")
 
-=== 正文子子标题
+=== #contents(zh: "正文子子标题", en: "Subsubtitle of main body")
 
 正文内容
 
 // 附录
 #show: appendix
 
-= 附录
+= #contents(zh: "附录", en: "Appendix")
 
 == 附录章节题
 
