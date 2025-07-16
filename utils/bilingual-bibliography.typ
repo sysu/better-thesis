@@ -1,23 +1,30 @@
 // Authors: csimide, OrangeX4
 // Tested only on GB-7714-2015-Numeric
+#let contents(..titles) = context titles.named().at(text.lang)
 #let bilingual-bibliography(
   bibliography: none,
-  title: "参考文献",
+  title: contents(zh: "参考文献", en: "References"),
   full: false,
   style: "gb-7714-2015-numeric",
   mapping: (:),
 ) = {
-  assert(bibliography != none, message: "请传入带有 source 的 bibliography 函数。")
+  assert(
+    bibliography != none,
+    message: "请传入带有 source 的 bibliography 函数。",
+  )
 
   // Please fill in the remaining mapping table here
   mapping = (
-    //"等": "et al",
-    "卷": "Vol.",
-    "册": "Bk.",
-    // "译": "tran",
-    // "等译": "et al. tran",
-    // 注: 请见下方译者数量判断部分。
-  ) + mapping
+    (
+      //"等": "et al",
+      "卷": "Vol.",
+      "册": "Bk.",
+      // "译": "tran",
+      // "等译": "et al. tran",
+      // 注: 请见下方译者数量判断部分。
+    )
+      + mapping
+  )
 
   let to-string(content) = {
     if content.has("text") {
@@ -37,7 +44,10 @@
     // 后续的操作是对 string 进行的。
     let ittext = to-string(it)
     // 判断是否为中文文献：去除特定词组后，仍有至少两个连续汉字。
-    let pureittext = ittext.replace(regex("[等卷册和版本章期页篇译间者(不详)]"), "")
+    let pureittext = ittext.replace(
+      regex("[等卷册和版本章期页篇译间者(不详)]"),
+      "",
+    )
     if pureittext.find(regex("\p{sc=Hani}{2,}")) != none {
       ittext
     } else {
@@ -100,7 +110,27 @@
           "et al."
           // 如果原文就是 `等.`，则仅需简单替换，不需要额外处理
           // 如果原文 `等` 后没有跟随英文标点，则需要补充一个空格
-          if not itt.text.last() in (".", ",", ";", ":", "[", "]", "/", "\\", "<", ">", "?", "(", ")", " ", "\"", "'") {
+          if not (
+            itt.text.last()
+              in (
+                ".",
+                ",",
+                ";",
+                ":",
+                "[",
+                "]",
+                "/",
+                "\\",
+                "<",
+                ">",
+                "?",
+                "(",
+                ")",
+                " ",
+                "\"",
+                "'",
+              )
+          ) {
             " "
           }
           // 原文有英文句号时不需要重复句号，否则需要将匹配到的最后一个字符吐回来

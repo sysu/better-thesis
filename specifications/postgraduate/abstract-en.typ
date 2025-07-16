@@ -1,5 +1,6 @@
 // 利用 state 捕获摘要参数，并通过 context 传递给渲染函数
-#import "/utils/style.typ": 字号, 字体
+#import "/utils/style.typ": 字体, 字号
+#let contents(..titles) = context titles.named().at(text.lang)
 
 #let abstract-en-keywords = state("keywords-en", (
   "Sun Yat-sen University",
@@ -7,9 +8,9 @@
   "specification",
 ))
 #let abstract-en-content = state("abstract-en", [
-英文摘要及关键词内容应与中文摘要及关键词内容相同。中英文摘要及其关键词各置一页内。
-The English abstract and its keywords should be the same as the Chinese one. 
-Both Chinese and English should be in seperated pages.
+  英文摘要及关键词内容应与中文摘要及关键词内容相同。中英文摘要及其关键词各置一页内。
+  The English abstract and its keywords should be the same as the Chinese one.
+  Both Chinese and English should be in seperated pages.
 ])
 #let abstract-en(
   keywords: (),
@@ -25,13 +26,17 @@ Both Chinese and English should be in seperated pages.
   set text(font: 字体.宋体, size: 字号.小四)
 
   // 英文摘要标题	Times New Roman加粗三号全部大写
-  show heading.where(level: 1): set text(font: 字体.宋体, size: 字号.三号, weight: "bold")
-  
+  show heading.where(level: 1): set text(
+    font: 字体.宋体,
+    size: 字号.三号,
+    weight: "bold",
+  )
+
   // 摘要标题不编号
   show heading.where(level: 1): set heading(numbering: none)
 
   [
-    = ABSTRACT
+    = #contents(zh: "ABSTRACT", en: "Abstract (In English)")
 
     #context abstract-en-content.final()
 

@@ -4,5 +4,4 @@
 // https://typst.app/universe/package/modern-sysu-thesis
 
 #import "/specifications/bachelor/lib.typ" as bachelor
-#import "/specifications/master/lib.typ" as master
-#import "/specifications/doctor/lib.typ" as doctor
+#import "/specifications/postgraduate/lib.typ" as postgraduate

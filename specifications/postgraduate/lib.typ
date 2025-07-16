@@ -1,22 +1,27 @@
-#import "/specifications/doctor/cover.typ": cover
-#import "/specifications/doctor/titlepage.typ": titlepage
-#import "/specifications/doctor/declaration.typ": declaration
-#import "/specifications/doctor/abstract.typ": abstract, abstract-page
-#import "/specifications/doctor/abstract-en.typ": abstract-en, abstract-en-page
-#import "/specifications/doctor/appendix.typ": appendix, appendix-part
-#import "/specifications/doctor/acknowledgement.typ": (
+#import "/specifications/postgraduate/cover.typ": cover
+#import "/specifications/postgraduate/titlepage.typ": titlepage
+#import "/specifications/postgraduate/declaration.typ": declaration
+#import "/specifications/postgraduate/abstract.typ": abstract, abstract-page
+#import "/specifications/postgraduate/abstract-en.typ": (
+  abstract-en, abstract-en-page,
+)
+#import "/specifications/postgraduate/appendix.typ": appendix, appendix-part
+#import "/specifications/postgraduate/acknowledgement.typ": (
   acknowledgement, acknowledgement-page,
 )
+#import "/specifications/postgraduate/contents.typ": contents-page
 
 #import "/utils/bilingual-bibliography.typ": bilingual-bibliography
 #import "/utils/custom-heading.typ": (
-  active-heading, current-heading, heading-display,
+  active-heading, current-heading, heading-display-postgraduate,
 )
-#import "/utils/style.typ": sysucolor, 字体, 字号
+#import "/utils/style.typ": 字体, 字号
 
 #import "@preview/numbly:0.1.0": numbly
 #import "@preview/numblex:0.1.1": circle_numbers
 #import "@preview/i-figured:0.2.4"
+
+#let contents(..titles) = context titles.named().at(text.lang)
 
 // 中山大学本科生毕业论文（设计）写作与印制规范
 // 参考规范: https://spa.sysu.edu.cn/zh-hans/article/1744
@@ -39,13 +44,15 @@
     supervisor: ("李四", "教授"),
     // 提交日期，默认为论文 PDF 生成日期
     submit-date: datetime.today(),
+    discipline: "工学",
+    degree: "博士",
   ),
   // 参考文献来源
   bibliography: none,
   // 控制页面是否渲染
   pages: (
     // 封面可能由学院统一打印提供，因此可以不渲染
-    cover: true,
+    cover: false,
     // 附录部分为可选。设置为 true 后，会在参考文献部分与致谢部分之间插入附录部分。
     appendix: false,
   ),
@@ -127,7 +134,7 @@
   } else { "1.1.1.1 " })
   show heading: set text(weight: "regular")
 
-  // 章和节标题段前段后各空0.5行
+  // o章和节标题段前段后各空0.5行
   // 行理解为当前行距，故在 "1.5倍行距" 的基准上再算一半，也即 "0.75倍行距"
   show heading.where(level: 1): set block(
     above: 1em * 120% * 0.75,
@@ -142,8 +149,11 @@
   // 正文各章标题 黑体三号居中
   // 参考文献标题 黑体三号居中
   // 致谢、附录标题	黑体三号居中
-  show heading.where(level: 1): set text(font: 字体.黑体, size: 字号.三号)
-  show heading.where(level: 1): set align(center)
+  show heading.where(level: 1): it => {
+    set text(font: 字体.黑体, size: 字号.三号)
+    set align(center)
+    heading-display-postgraduate(it)
+  }
 
   // 正文各节一级标题 黑体四号左对齐
   show heading.where(level: 2): set text(font: 字体.黑体, size: 字号.四号)
@@ -197,20 +207,27 @@
   // 摘要开始至绪论之前以大写罗马数字（Ⅰ，Ⅱ，Ⅲ…）单独编连续码
   // 页眉与页脚 宋体五号居中
   set page(header: context {
-    set text(font: 字体.宋体, size: 字号.五号, stroke: sysucolor.green)
+    set text(font: 字体.宋体, size: 字号.五号)
     set align(center)
     let loc = here()
     let cur-heading = current-heading(level: 1, loc)
-    let first-level-heading = heading-display(active-heading(level: 1, loc))
+    let first-level-heading = heading-display-postgraduate(active-heading(
+      level: 1,
+      loc,
+    ))
 
     if cur-heading != none {
-      thesis-info.title.join("")
-    } else if not twoside or calc.rem(loc.page(), 2) == 1 {
-      first-level-heading
+      heading-display-postgraduate(current-heading(level: 1, loc))
+    } else if calc.rem(loc.page(), 2) == 1 {
+      [中山大学] + thesis-info.discipline + thesis-info.degree + [学位论文]
     } else {
-      thesis-info.title.join("")
+      first-level-heading
     }
-    line(length: 200%, stroke: 0.1em + sysucolor.green)
+    stack(
+      line(length: 100%, stroke: 2pt),
+      v(2pt),
+      line(length: 100%, stroke: 1pt),
+    )
   })
   set page(numbering: "I")
   counter(page).update(1)
@@ -220,8 +237,7 @@
   abstract-en-page()
   pagebreak(weak: true, to: if twoside { "odd" })
 
-  outline()
-  pagebreak(weak: true, to: if twoside { "odd" })
+  contents-page()
 
   // 绪论开始至论文结尾，以阿拉伯数字（1，2，3…）编连续码
   set page(numbering: "1")
