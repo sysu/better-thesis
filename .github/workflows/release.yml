@@ -93,6 +93,12 @@ jobs:
           sd '"@preview/modern-sysu-thesis:.*"' "\"@preview/modern-sysu-thesis:$SEMVER\"" ./template/thesis.typ
           git add ./template/thesis.typ
 
+      - name: Bump README.md
+        run: |
+          SEMVER_REGEX='(?P<major>0|[1-9]\d*)\.(?P<minor>0|[1-9]\d*)\.(?P<patch>0|[1-9]\d*)(?:-(?P<prerelease>(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+(?P<buildmetadata>[0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?'
+          sd 'version=$SEMVER_REGEX' "version=$SEMVER" ./README.md
+          git add ./README.md
+
       - name: Update & stage CHANGELOG.md
         run: |
           git cliff --unreleased --tag $BUMPED_VERSION --prepend CHANGELOG.md
