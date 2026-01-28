@@ -78,6 +78,7 @@ cargo install typst-cli
 - 感谢 [sysu-thesis-typst] 提供了中山大学的页面样式与初版源码
 - 感谢 [modern-nju-thesis] 提供了一个更好的代码组织架构
 - 感谢中山大学 Typst 模板交流群（[797942860](https://jq.qq.com/?_wv=1027&k=m58va1kd)）、Typst 中文交流群（793548390）群友的帮助交流。
+- 感谢 @debeetle 完善了硕博士论文模板（[#26](https://github.com/sysu/better-thesis/pull/26)）
 
 [issues]: https://github.com/sysu/better-thesis/issues
 [download]: https://github.com/sysu/better-thesis
