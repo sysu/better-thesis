@@ -134,7 +134,7 @@
   } else { "1.1.1.1 " })
   show heading: set text(weight: "regular")
 
-  // o章和节标题段前段后各空0.5行
+  // 章和节标题段前段后各空0.5行
   // 行理解为当前行距，故在 "1.5倍行距" 的基准上再算一半，也即 "0.75倍行距"
   show heading.where(level: 1): set block(
     above: 1em * 120% * 0.75,
