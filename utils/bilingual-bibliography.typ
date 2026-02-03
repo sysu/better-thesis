@@ -26,6 +26,7 @@
       + mapping
   )
 
+
   let to-string(content) = {
     if content.has("text") {
       content.text
