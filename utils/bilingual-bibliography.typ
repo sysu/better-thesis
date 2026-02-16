@@ -15,16 +15,13 @@
 
   // Please fill in the remaining mapping table here
   mapping = (
-    (
       //"等": "et al",
       "卷": "Vol.",
       "册": "Bk.",
       // "译": "tran",
       // "等译": "et al. tran",
       // 注: 请见下方译者数量判断部分。
-    )
-      + mapping
-  )
+    ) + mapping
 
 
   let to-string(content) = {
