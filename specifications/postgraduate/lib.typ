@@ -2,19 +2,13 @@
 #import "/specifications/postgraduate/titlepage.typ": titlepage
 #import "/specifications/postgraduate/declaration.typ": declaration
 #import "/specifications/postgraduate/abstract.typ": abstract, abstract-page
-#import "/specifications/postgraduate/abstract-en.typ": (
-  abstract-en, abstract-en-page,
-)
+#import "/specifications/postgraduate/abstract-en.typ": abstract-en, abstract-en-page
 #import "/specifications/postgraduate/appendix.typ": appendix, appendix-part
-#import "/specifications/postgraduate/acknowledgement.typ": (
-  acknowledgement, acknowledgement-page,
-)
+#import "/specifications/postgraduate/acknowledgement.typ": acknowledgement, acknowledgement-page
 #import "/specifications/postgraduate/contents.typ": contents-page
 
 #import "/utils/bilingual-bibliography.typ": bilingual-bibliography
-#import "/utils/custom-heading.typ": (
-  active-heading, current-heading, heading-display-postgraduate,
-)
+#import "/utils/custom-heading.typ": active-heading, current-heading, heading-display-postgraduate
 #import "/utils/style.typ": 字体, 字号
 
 #import "@preview/numbly:0.1.0": numbly
@@ -218,7 +212,7 @@
 
     if cur-heading != none {
       heading-display-postgraduate(current-heading(level: 1, loc))
-    } else if calc.rem(loc.page(), 2) == 1 {
+    } else if calc.rem(loc.page(), 2) == 0 {
       [中山大学] + thesis-info.discipline + thesis-info.degree + [学位论文]
     } else {
       first-level-heading
@@ -295,13 +289,13 @@
 ) <chapter1-img>
 
 // #show: appendix
-= 第一章 <appendix>
-== 节标题
-=== 小节标题
-==== 四级标题
-在附录中引用图片 @appendix-img, 以及附录章节标题 @appendix[#numbering("附录A")]
+// = 第一章 <appendix>
+// == 节标题
+// === 小节标题
+// ==== 四级标题
+// 在附录中引用图片 @appendix-img, 以及附录章节标题 @appendix[#numbering("附录A")]
 
-#figure(
-  image("/template/images/sysu_logo.svg", width: 20%),
-  caption: [图片测试],
-) <appendix-img>
+// #figure(
+//   image("/template/images/sysu_logo.svg", width: 20%),
+//   caption: [图片测试],
+// ) <appendix-img>

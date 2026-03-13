@@ -1,2 +1,5 @@
 **/*.pdf
 .vscode
+
+# macOS
+.DS_Store
