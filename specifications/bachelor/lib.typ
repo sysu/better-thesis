@@ -7,11 +7,11 @@
 #import "/specifications/bachelor/acknowledgement.typ": acknowledgement, acknowledgement-page
 
 #import "/utils/bilingual-bibliography.typ": bilingual-bibliography
+#import "/utils/circle-numbers.typ": circle_numbers
 #import "/utils/custom-heading.typ": active-heading, heading-display, current-heading
 #import "/utils/style.typ": 字号, 字体, sysucolor
 
 #import "@preview/numbly:0.1.0": numbly
-#import "@preview/numblex:0.1.1": circle_numbers
 #import "@preview/i-figured:0.2.4"
 
 // 中山大学本科生毕业论文（设计）写作与印制规范

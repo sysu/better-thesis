@@ -8,11 +8,11 @@
 #import "/specifications/postgraduate/contents.typ": contents-page
 
 #import "/utils/bilingual-bibliography.typ": bilingual-bibliography
+#import "/utils/circle-numbers.typ": circle_numbers
 #import "/utils/custom-heading.typ": active-heading, current-heading, heading-display-postgraduate
 #import "/utils/style.typ": 字体, 字号
 
 #import "@preview/numbly:0.1.0": numbly
-#import "@preview/numblex:0.1.1": circle_numbers
 #import "@preview/i-figured:0.2.4"
 
 #let contents(..titles) = context titles.named().at(text.lang)
