@@ -90,7 +90,7 @@ jobs:
 
       - name: Bump template/thesis.typ
         run: |
-          sd '\"@preview/modern-sysu-thesis:.*\"" "\"@preview/modern-sysu-thesis:$SEMVER\"" ./template/thesis.typ
+          sd "\"@preview/modern-sysu-thesis:.*\"" "\"@preview/modern-sysu-thesis:$SEMVER\"" ./template/thesis.typ
           git add ./template/thesis.typ
 
       - name: Bump README.md
