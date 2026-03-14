@@ -16,6 +16,63 @@ All notable changes to this project will be documented in this file.
 
 ### ⚙️ Miscellaneous Tasks
 
+- *(github)* Fix wrong replacement before release
+- *(github)* Allow other branch to trigger bump version check
+- *(github)* Add regex source link
+- *(github)* Double quote shell variable
+- Fix typos
+- *(typst)* Add @debeetle to authors
+- *(release)* Bump version in README.md
+- *(github)* 在发布流水线中增加安装 typst-cli
+- *(github)* 完成 GitHub 仓库流水线
+- *(github)* 修复合并冲突导致文件混乱
+- *(github)* 配置工作目录，修复命令执行工作目录错误问题
+- *(github)* 检查当前目录情况
+- *(github)* 配置工作目录，修复命令执行工作目录错误问题
+- *(github)* 输出各个步骤之后所在目录
+- *(github)* Fix packages path
+- *(github)* 通过更改条件尝试在PR中分析流水线失败原因
+- *(github)* 修复代码仓库检出错误
+- *(github)* 修复 release 分支设置 git 用户问题
+- *(github)* 仅在 default_branch 上运行
+- *(github)* 删去验证语义化标签，直接推送发布到 packages
+- *(github)* 补充验证语义化版本标签流程
+- *(github)* 修复 CI TOKEN 权限，以便后续流程可以自动触发
+- *(github)* Configure git user for bump commit
+- *(GitHub)* 删去 lfs 需求
+- *(github)* 尝试使用默认 token 来排除 token 问题
+- *(github)* 修复误传 GitLab CI 参数问题
+- *(github)* Fix jobs' needs
+- *(github)* Fix tag fetching
+- *(github)* 迁移 GitLab 发版前 bump 版本流程
+- *(github)* 流程文件重命名与文档优化
+- *(github)* 每次执行刷新缓存
+- *(github)* 修复多行命令问题
+- *(github)* 修复未检出代码导致流水线失败
+- *(github)* 修复缓存问题
+- *(github)* 删去不需要的矩阵代码
+- *(github)* 修复缓存 key 获取不正确问题
+- *(github)* 替换 toolchain 与缓存流程指令
+- *(github)* Add ci for pull requests to main branch
+
+### Gitignore
+
+- Ignore macOS .DS_Store
+
+## [0.4.1] - 2026-03-14
+
+### 🐛 Bug Fixes
+
+- *(template)* Resolve function with the right spec
+- *(ci)* Bump README
+
+### 📚 Documentation
+
+- *(README)* Bump published version to 0.4.0
+- *(README)* 更新链接指向 GitHub
+
+### ⚙️ Miscellaneous Tasks
+
 - *(github)* Allow other branch to trigger bump version check
 - *(github)* Add regex source link
 - *(github)* Double quote shell variable
