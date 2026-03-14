@@ -182,7 +182,6 @@ jobs:
           cp $CI_PROJECT_DIR/thumbnail.png .
           cp $CI_PROJECT_DIR/lib.typ .
           cp -r $CI_PROJECT_DIR/assets .
-          cp -r $CI_PROJECT_DIR/layouts .
           cp -r $CI_PROJECT_DIR/utils .
           cp -r $CI_PROJECT_DIR/pages .
           cp -r $CI_PROJECT_DIR/specifications .
