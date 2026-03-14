@@ -2,7 +2,7 @@ on: workflow_dispatch
 
 jobs:
   restore-tools:
-    if: github.ref_name == github.event.repository.default_branch
+    # if: github.ref_name == github.event.repository.default_branch
     runs-on: ubuntu-latest
     steps:
       - id: toolchain
@@ -40,7 +40,7 @@ jobs:
             ~/.cargo/git/db/
 
   bump-version:
-    if: github.ref_name == github.event.repository.default_branch
+    # if: github.ref_name == github.event.repository.default_branch
     runs-on: ubuntu-latest
     needs:
       - restore-tools
@@ -108,11 +108,13 @@ jobs:
       - run: git status
 
       - name: Tag commit
+        if: github.ref_name == github.event.repository.default_branch
         run: |
           git commit -m "chore(release):prepare for $BUMPED_VERSION"
           git tag $BUMPED_VERSION --file=release-note.md
 
       - name: push to upstream
+        if: github.ref_name == github.event.repository.default_branch
         run: git push origin
 
   publish2universe:
