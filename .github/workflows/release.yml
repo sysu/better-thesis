@@ -191,7 +191,9 @@ jobs:
       - name: Switch to preview import
         working-directory: ${{ env.MODERN_SYSU_THESIS }}/${{ env.SEMVER }}
         run: |
-          sd '// #import "@preview/modern-sysu-thesis:' '#import "@preview/modern-sysu-thesis:' ./template/thesis.typ
+          # regular expression from https://semver.org/#is-there-a-suggested-regular-expression-regex-to-check-a-semver-string
+          SEMVER_REGEX='(?P<major>0|[1-9]\d*)\.(?P<minor>0|[1-9]\d*)\.(?P<patch>0|[1-9]\d*)(?:-(?P<prerelease>(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+(?P<buildmetadata>[0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?'
+          sd "// #import \"@preview/modern-sysu-thesis:($SEMVER_REGEX)\": postgraduate" '#import "@preview/modern-sysu-thesis:$1": postgraduate' ./template/thesis.typ
           sd '#import "/lib.typ":' '// #import "lib.typ":' ./template/thesis.typ
 
       - name: Configure triger user for git
