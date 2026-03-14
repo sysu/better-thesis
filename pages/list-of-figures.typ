@@ -1,5 +1,5 @@
 #import "@preview/i-figured:0.2.4"
-#import "@preview/outrageous:0.1.0"
+#import "@preview/outrageous:0.4.1"
 #import "../utils/invisible-heading.typ": invisible-heading
 #import "../utils/style.typ": 字号, 字体
 
