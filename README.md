@@ -2,7 +2,7 @@
 <!-- [![GitLab 最新版本](https://gitlab.com/sysu-gitlab/thesis-template/better-thesis/-/badges/release.svg?style=flat-square)](https://gitlab.com/sysu-gitlab/thesis-template/better-thesis/-/releases/permalink/latest) -->
 [![GitHub stars](https://img.shields.io/github/stars/sysu/better-thesis.svg?style=social&label=Star&maxAge=2592000)](https://github.com/sysu/better-thesis)
 
-**[点击此处注册 typst.app 并创建你的论文工程](https://typst.app/app?template=modern-sysu-thesis&version=0.4.1)**
+**[点击此处注册 typst.app 并创建你的论文工程](https://typst.app/app?template=modern-sysu-thesis&version=0.4.1) (强烈推荐非计算机学院校友就此开始)**
 
 本科生模板已经符合学位论文格式要求（~~[#6](https://gitlab.com/sysu-gitlab/thesis-template/better-thesis/-/issues/6)~~），欢迎同学/校友们[贡献代码](https://github.com/sysu/better-thesis/pulls)/反馈问题（[GitHub issue][issues]）！
 
